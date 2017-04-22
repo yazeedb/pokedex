@@ -1,3 +1,5 @@
-<p>
-  home works!
-</p>
+<ul>
+  <li *ngFor="let p of pokemon; let i = index">
+    <img src="assets/pokemon-sprites/{{ i + 1 }}.png" alt="p.name">
+  </li>
+</ul>

@@ -11,17 +11,19 @@ export class HomeComponent implements OnInit {
   private previousUrl: string;
   private nextUrl: string;
 
+  pokemon: any[];
+
   constructor(private api: ApiService) { }
 
   ngOnInit() {
     this.api
-      .get('http://pokeapi.co/api/v2/pokemon/?limit=20&offset=20')
+      .get('http://pokeapi.co/api/v2/pokemon/?limit=20')
       .subscribe(res => {
         this.previousUrl = res.previous;
         this.nextUrl = res.next;
 
-        console.log(res);
+        this.pokemon = res.results;
+        console.log(this.pokemon);
       });
   }
-
 }
