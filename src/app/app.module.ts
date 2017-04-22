@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 
 import { ApiService } from './shared/api.service';
+import { CacheService } from './shared/cache.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,10 @@ import { ApiService } from './shared/api.service';
     FormsModule,
     HttpModule
   ],
-  providers: [ApiService],
+  providers: [
+    ApiService,
+    CacheService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.api
-      .get('http://pokeapi.co/api/v2/pokemon/?limit=20')
+      .get('http://pokeapi.co/api/v2/pokemon/?limit=20&offset=20')
       .subscribe(res => {
         this.previousUrl = res.previous;
         this.nextUrl = res.next;
