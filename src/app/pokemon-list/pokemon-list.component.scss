@@ -1,0 +1,11 @@
+@import '../global.variables';
+
+li {
+  display: inline-block;
+  background: linear-gradient($pkmn-background-main, $pkmn-background-secondary 50%, $pkmn-background-main);
+  min-width: 100px;
+  border: 1px solid $pkmn-list-border;
+  border-radius: 15px;
+  margin: 12px;
+  box-shadow: 2px 2px $pkmn-list-shadow;
+}

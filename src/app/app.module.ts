@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 
+import { PokemonIdPipe } from './pokemon-list/pokemon-id.pipe';
+
 import { ApiService } from './shared/api.service';
 import { CacheService } from './shared/cache.service';
 
@@ -14,7 +16,9 @@ import { CacheService } from './shared/cache.service';
   declarations: [
     AppComponent,
     HomeComponent,
-    PokemonListComponent
+    PokemonListComponent,
+
+    PokemonIdPipe
   ],
   imports: [
     BrowserModule,
