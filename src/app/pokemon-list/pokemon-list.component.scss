@@ -2,10 +2,24 @@
 
 li {
   display: inline-block;
+  position: relative;
   background: linear-gradient($pkmn-background-main, $pkmn-background-secondary 50%, $pkmn-background-main);
   min-width: 100px;
   border: 1px solid $pkmn-list-border;
   border-radius: 15px;
   margin: 12px;
   box-shadow: 2px 2px $pkmn-list-shadow;
+}
+
+span {
+  color: white;
+  font-family: avenir;
+  font-weight: 500;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+
+img {
+  padding: 10px;
 }
