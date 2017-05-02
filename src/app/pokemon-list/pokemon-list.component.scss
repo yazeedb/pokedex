@@ -22,6 +22,17 @@ li {
   }
 }
 
+.active:after {
+    border: 5px solid #F0120E;
+    content: " ";
+    border-radius: 15px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+}
+
 span {
   color: white;
   font-family: avenir;
