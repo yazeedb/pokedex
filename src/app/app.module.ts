@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 
 import { ApiService } from './shared/api.service';
 import { CacheService } from './shared/cache.service';
@@ -12,7 +13,8 @@ import { CacheService } from './shared/cache.service';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    PokemonListComponent
   ],
   imports: [
     BrowserModule,

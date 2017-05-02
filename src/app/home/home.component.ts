@@ -1,29 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
-
-import { ApiService } from '../shared/api.service';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
-  private previousUrl: string;
-  private nextUrl: string;
+export class HomeComponent {
 
-  pokemon: any[];
-
-  constructor(private api: ApiService) { }
-
-  ngOnInit() {
-    this.api
-      .get('http://pokeapi.co/api/v2/pokemon/?limit=20')
-      .subscribe(res => {
-        this.previousUrl = res.previous;
-        this.nextUrl = res.next;
-
-        this.pokemon = res.results;
-        console.log(this.pokemon);
-      });
-  }
 }

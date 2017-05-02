@@ -1,1 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
+@import './reset';
+@import './app/global.variables';
+
+body {
+  background-color: $background;    
+}
