@@ -8,10 +8,11 @@ import { ApiService } from '../shared/api.service';
   styleUrls: ['./pokemon-list.component.scss']
 })
 export class PokemonListComponent implements OnInit {
+  pokemon: any[];
+  activePokemon = 0;
+
   private previousUrl: string;
   private nextUrl: string;
-
-  pokemon: any[];
 
   constructor(private api: ApiService) { }
 
@@ -25,5 +26,9 @@ export class PokemonListComponent implements OnInit {
         this.pokemon = res.results;
         console.log(this.pokemon);
       });
+  }
+
+  setActive(index: number) {
+    this.activePokemon = index;
   }
 }
