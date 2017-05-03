@@ -16,6 +16,7 @@ import { CacheService } from './shared/cache.service';
 @NgModule({
   declarations: [
     AppComponent,
+    CursorComponent,
     HomeComponent,
     PokemonListComponent,
 
