@@ -1,6 +1,6 @@
-<app-cursor></app-cursor>
 <ul>
   <li *ngFor="let p of pokemon; let i = index" (click)="setActive(i)" [class.active]="i === activePokemon">
+    <app-cursor *ngIf="i === activePokemon"></app-cursor>
     <img src="assets/pokemon-sprites/{{ i + 1 }}.png" alt="p.name">
     <span>{{ i + 1 | pkmnId }}</span>
   </li>

@@ -22,13 +22,6 @@ $cursor-border: 3px solid red;
 }
 
 :host {
-  position: fixed;
-  width: 100px;
-  height: 100px;
-  z-index: 1;
-  top: 20px;
-  left: 20px;
-
   &:before, &:after {
     top: -10px;
   }
