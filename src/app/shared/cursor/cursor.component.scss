@@ -1,1 +1,61 @@
+@import '../../global.variables';
 
+$cursor-border: 3px solid red;
+
+:host, div {
+  &:before, &:after {
+    content: '';
+    width: 20px;
+    height: 20px;
+    position: absolute;
+  }
+
+  &:before {
+    left: -10px;
+    border-left: $cursor-border;
+  }
+
+  &:after {
+    right: -10px;
+    border-right: $cursor-border;
+  }
+}
+
+:host {
+  position: fixed;
+  width: 100px;
+  height: 100px;
+  z-index: 1;
+  top: 20px;
+  left: 20px;
+
+  &:before, &:after {
+    top: -10px;
+  }
+
+  &:before {
+    border-top: $cursor-border;
+    border-top-left-radius: $border-radius;
+  }
+
+  &:after {
+    border-top: $cursor-border;
+    border-top-right-radius: $border-radius;
+  }
+}
+
+div {
+  &:before, &:after {
+    bottom: -10px;
+  }
+
+  &:before {
+    border-bottom: $cursor-border;
+    border-bottom-left-radius: $border-radius;
+  }
+
+  &:after {
+    border-bottom: $cursor-border;
+    border-bottom-right-radius: $border-radius;
+  }
+}
