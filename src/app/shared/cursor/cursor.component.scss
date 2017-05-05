@@ -19,12 +19,10 @@ $cursor-border: 5px solid $cursor-fill;
   }
 
   &:before {
-    left: -10px;
     border-left: $cursor-border;
   }
 
   &:after {
-    right: -10px;
     border-right: $cursor-border;
   }
 }
