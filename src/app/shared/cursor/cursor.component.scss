@@ -1,6 +1,13 @@
 @import '../../global.variables';
 
-$cursor-border: 3px solid red;
+$cursor-fill: #F24447;
+$cursor-border: #B62A36;
+$cursor-border: 5px solid $cursor-fill;
+
+@include simpleExpand(top-left, top, left);
+@include simpleExpand(top-right, top, right);
+@include simpleExpand(bottom-left, bottom, left);
+@include simpleExpand(bottom-right, bottom, right);
 
 :host, div {
   &:before, &:after {
@@ -22,33 +29,29 @@ $cursor-border: 3px solid red;
 }
 
 :host {
-  &:before, &:after {
-    top: -10px;
-  }
-
   &:before {
     border-top: $cursor-border;
     border-top-left-radius: $border-radius;
+    @include simpleAnimation(top-left);
   }
 
   &:after {
     border-top: $cursor-border;
     border-top-right-radius: $border-radius;
+    @include simpleAnimation(top-right);
   }
 }
 
 div {
-  &:before, &:after {
-    bottom: -10px;
-  }
-
   &:before {
     border-bottom: $cursor-border;
     border-bottom-left-radius: $border-radius;
+    @include simpleAnimation(bottom-left);
   }
 
   &:after {
     border-bottom: $cursor-border;
     border-bottom-right-radius: $border-radius;
+    @include simpleAnimation(bottom-right);
   }
 }
