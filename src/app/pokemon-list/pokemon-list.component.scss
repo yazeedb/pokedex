@@ -6,14 +6,14 @@ li {
   background: linear-gradient($pkmn-background-main, $pkmn-background-secondary 50%, $pkmn-background-main);
   min-width: 100px;
   border: 1px solid $pkmn-list-border;
-  border-radius: 15px;
+  border-radius: $border-radius;
   margin: 12px;
   box-shadow: 2px 2px $shadow;
 
   &:before {
     content: " ";
     border: 2px solid #0765D4;
-    border-radius: 15px;
+    border-radius: $border-radius;
     position: absolute;
     top: 0px;
     left: 0px;
