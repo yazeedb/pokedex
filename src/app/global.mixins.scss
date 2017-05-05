@@ -1,0 +1,20 @@
+@mixin simpleExpand($name, $direction, $direction2) {
+  @keyframes #{$name} {
+    from {
+      #{$direction}: -8px;
+      #{$direction2}: -8px;
+    }
+
+    to {
+      #{$direction}: 0;
+      #{$direction2}: 0;
+    }
+  }
+}
+
+@mixin simpleAnimation($name) {
+  animation-name: #{$name};
+  animation-duration: .5s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
