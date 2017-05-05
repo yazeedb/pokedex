@@ -10,12 +10,12 @@ $border-radius: 15px;
 
 @mixin simpleExpand($name, $direction, $direction2) {
   @keyframes #{$name} {
-    0% {
+    from {
       #{$direction}: -8px;
       #{$direction2}: -8px;
     }
 
-    100% {
+    to {
       #{$direction}: 0;
       #{$direction2}: 0;
     }
