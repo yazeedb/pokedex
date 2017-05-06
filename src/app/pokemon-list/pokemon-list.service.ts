@@ -22,8 +22,7 @@ export class PokemonListService {
     const liWidth = li.offsetWidth;
     const liMargin = this.parsePixelValue(window.getComputedStyle(li).margin);
 
-    const a = Math.floor(document.body.offsetWidth / (liWidth + liMargin));
-    return a;
+    return Math.floor(document.body.offsetWidth / (liWidth + liMargin));
   }
 
   private parsePixelValue(pixels: string) {
