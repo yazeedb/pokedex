@@ -9,6 +9,7 @@ li {
   border-radius: $border-radius;
   margin: 12px;
   box-shadow: 2px 2px $shadow;
+  cursor: pointer;
 
   &:before {
     content: " ";
