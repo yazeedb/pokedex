@@ -12,7 +12,7 @@ import { PokemonIdPipe } from './pokemon-list/pokemon-id.pipe';
 
 import { ApiService } from './shared/api.service';
 import { CacheService } from './shared/cache.service';
-import { CursorService } from './shared/cursor/cursor.service';
+import { PokemonListService } from './pokemon-list/pokemon-list.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,7 @@ import { CursorService } from './shared/cursor/cursor.service';
   providers: [
     ApiService,
     CacheService,
-    CursorService
+    PokemonListService
   ],
   bootstrap: [AppComponent]
 })
