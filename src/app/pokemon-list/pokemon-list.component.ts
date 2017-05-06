@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
 
@@ -21,11 +21,7 @@ export class PokemonListComponent implements OnInit {
   private previousUrl: string;
   private nextUrl: string;
 
-  constructor(
-      private api: ApiService,
-      private el: ElementRef,
-      private pokemonListService: PokemonListService
-    ) { }
+  constructor(private api: ApiService, private pokemonListService: PokemonListService) { }
 
   ngOnInit() {
     this.api
