@@ -16,6 +16,8 @@ import { ApiService } from './shared/api.service';
 import { CacheService } from './shared/cache.service';
 import { PokemonListService } from './pokemon-list/pokemon-list.service';
 
+import { PokemonResolver } from './pokemon-detail/pokemon-resolver';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,13 +38,17 @@ import { PokemonListService } from './pokemon-list/pokemon-list.service';
     }, {
       path: ':pokemon',
       pathMatch: 'full',
-      component: PokemonDetailComponent
+      component: PokemonDetailComponent,
+      resolve: {
+        pokemon: PokemonResolver
+      }
     }])
   ],
   providers: [
     ApiService,
     CacheService,
-    PokemonListService
+    PokemonListService,
+    PokemonResolver
   ],
   bootstrap: [AppComponent]
 })
