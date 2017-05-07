@@ -33,12 +33,12 @@ export class PokemonListComponent implements OnInit {
         this.pokemon = res.results;
         console.log(this.pokemon);
 
-        Observable
-          .fromEvent(document, 'keydown')
-          .map((e: KeyboardEvent) => e.key)
-          .map(key => this.pokemonListService.mapKeyEvent(key))
-          .filter(num => this.validateNewIndex(num))
-          .subscribe(num => this.stepActivePokemon(num));
+        // Observable
+        //   .fromEvent(document, 'keydown')
+        //   .map((e: KeyboardEvent) => e.key)
+        //   .map(key => this.pokemonListService.mapKeyEvent(key))
+        //   .filter(num => this.validateNewIndex(num))
+        //   .subscribe(num => this.stepActivePokemon(num));
       });
   }
 
