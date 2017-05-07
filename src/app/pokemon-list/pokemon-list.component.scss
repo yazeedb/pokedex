@@ -5,9 +5,9 @@ li {
   position: relative;
   background: linear-gradient($pkmn-background-main, $pkmn-background-secondary 50%, $pkmn-background-main);
   min-width: 100px;
-  border: 1px solid $pkmn-list-border;
+  border: 2px solid $pkmn-list-border;
   border-radius: $border-radius;
-  margin: 12px;
+  margin: 4px;
   box-shadow: 2px 2px $shadow;
   cursor: pointer;
 
@@ -31,8 +31,4 @@ span {
   bottom: 5px;
   right: 5px;
   text-shadow: 2px 1px $shadow;
-}
-
-img {
-  padding: 10px;
 }
