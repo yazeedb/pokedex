@@ -8,12 +8,15 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PokemonDetailComponent implements OnInit {
   pokemon: any;
+  species: any;
 
   constructor(private route: ActivatedRoute) {
-    this.pokemon = this.route.snapshot.data.pokemon;
+    this.pokemon = this.route.snapshot.data.pokemon[0];
+    this.species = this.route.snapshot.data.pokemon[1];
   }
 
   ngOnInit() {
     console.log(this.pokemon);
+    console.log(this.species);
   }
 }
