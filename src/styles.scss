@@ -3,6 +3,10 @@
 html,
 body,
 app-root {
-  display: block;
   height: 100%;
+}
+
+app-root {
+  display: block;
+  font-family: avenir;
 }
