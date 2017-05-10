@@ -1,5 +1,7 @@
+@import '../global.variables';
+
 :host {
   display: block;
-  background-color: #258EE7;
+  background: linear-gradient($pkmn-background-main, $pkmn-background-secondary 50%, $pkmn-background-main);
   color: white;
 }
