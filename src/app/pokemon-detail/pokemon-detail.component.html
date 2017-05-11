@@ -2,8 +2,12 @@
   <img src="assets/pokemon-sprites/{{ pokemon.id }}.png" [alt]="pokemon.name">
 </header>
 
-<h1>{{ pokemon.name }}</h1>
-<span class="id">#{{ pokemon.id | pkmnId }}</span>
-<span class="genus">{{ species.genera[0].genus }} Pokémon</span>
+<div class="info">
+  <h1>{{ pokemon.name }}</h1>
+  <span class="id">#{{ pokemon.id | pkmnId }}</span>
+  <span class="genus">{{ species.genera[0].genus }} Pokémon</span>
+</div>
 
-<span *ngFor="let t of pokemon.types" class="type" [ngClass]="t.type.name">{{ t.type.name }}</span>
+<div class="types">
+  <span *ngFor="let t of pokemon.types" class="type" [ngClass]="t.type.name">{{ t.type.name }}</span>
+</div>
