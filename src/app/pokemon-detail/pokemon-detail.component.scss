@@ -11,10 +11,10 @@
 header {
   padding: 0 30px;
   text-align: center;
-}
 
-img {
-  width: 200px;
+  img {
+    width: 200px;
+  }
 }
 
 h1 {
@@ -37,7 +37,8 @@ h1 {
   line-height: 20px;
 }
 
-.egg-groups {
+.egg-groups,
+.sprites {
   text-align: center;
   margin: 20px 0;
 }
@@ -49,4 +50,8 @@ h3 {
 
 .comma {
   margin-left: -3px;
+}
+
+.sprites img {
+  margin: 0 30px;
 }

@@ -21,3 +21,9 @@
     <span class="comma" *ngIf="!lastIndex">,</span>
   </span>
 </div>
+
+<div class="sprites">
+  <h3>SPRITES</h3>
+  <img src="assets/pokemon/animated/{{ pokemon.id | pkmnId }}.gif" alt="{{ pokemon.name }} gen6 sprite">
+  <img src="assets/pokemon/animated/shiny/{{ pokemon.id | pkmnId }}.gif" alt="{{ pokemon.name }} gen6 sprite">
+</div>
