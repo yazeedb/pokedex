@@ -3,12 +3,12 @@
 </header>
 
 <div class="info">
-  <h1>{{ pokemon.name }}</h1>
+  <h1 class="capitalize">{{ pokemon.name }}</h1>
   <span>#{{ pokemon.id | pkmnId }} {{ species.genera[0].genus }} Pokémon</span>
 </div>
 
 <div class="types">
-  <span *ngFor="let t of pokemon.types" class="type" [ngClass]="t.type.name">{{ t.type.name }}</span>
+  <span *ngFor="let t of pokemon.types" class="type uppercase" [ngClass]="t.type.name">{{ t.type.name }}</span>
 </div>
 
 <p class="description">{{ species.flavor_text_entries[1].flavor_text }}</p>
