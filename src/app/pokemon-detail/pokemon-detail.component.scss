@@ -25,11 +25,16 @@ h1 {
 .type {
   font-weight: bold;
   text-transform: uppercase;
-  margin: 5px;
   display: inline-block;
+  margin: 10px 5px;
 }
 
 .info,
 .types {
   text-align: center;
+}
+
+.description {
+  margin: 0 20px;
+  line-height: 20px;
 }

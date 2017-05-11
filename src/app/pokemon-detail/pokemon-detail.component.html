@@ -4,12 +4,11 @@
 
 <div class="info">
   <h1>{{ pokemon.name }}</h1>
-  <span class="id">#{{ pokemon.id | pkmnId }}</span>
-  <span class="genus">{{ species.genera[0].genus }} Pokémon</span>
+  <span>#{{ pokemon.id | pkmnId }} {{ species.genera[0].genus }} Pokémon</span>
 </div>
 
 <div class="types">
   <span *ngFor="let t of pokemon.types" class="type" [ngClass]="t.type.name">{{ t.type.name }}</span>
 </div>
 
-<p>{{ species.flavor_text_entries[1].flavor_text }}</p>
+<p class="description">{{ species.flavor_text_entries[1].flavor_text }}</p>
