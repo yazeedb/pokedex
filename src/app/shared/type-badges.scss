@@ -1,0 +1,33 @@
+$normal: #949365;
+$fighting: #BB3333;
+$fire: #EE7F3C;
+$water: #5F81E0;
+$grass: #69B34D;
+$flying: #9A88EB;
+$poison: #893F86;
+$ground: #DFBD73;
+$rock: #B59C49;
+$bug: #99AA29;
+$ghost: #5A507A;
+$steel: #BBBDD2;
+$electric: #F6CD51;
+
+@mixin typeColor($type, $color) {
+  .#{$type} {
+    background-color: $color;
+  }
+}
+
+@include typeColor(normal, $normal);
+@include typeColor(fighting, $fighting);
+@include typeColor(fire, $fire);
+@include typeColor(water, $water);
+@include typeColor(grass, $grass);
+@include typeColor(flying, $flying);
+@include typeColor(poison, $poison);
+@include typeColor(ground, $ground);
+@include typeColor(rock, $rock);
+@include typeColor(bug, $bug);
+@include typeColor(ghost, $ghost);
+@include typeColor(steel, $steel);
+@include typeColor(electric, $electric);
