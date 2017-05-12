@@ -31,7 +31,8 @@ h1 {
   text-align: center;
 }
 
-.description {
+.description,
+.stats div {
   margin: 0 20px;
   line-height: 20px;
 }
@@ -43,6 +44,7 @@ h1 {
 }
 
 h3 {
+  text-align: center;
   text-decoration: underline;
   margin-bottom: 5px;
 }

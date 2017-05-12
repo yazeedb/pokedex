@@ -31,6 +31,6 @@
 <div class="stats">
   <h3>BASE STATS</h3>
   <div *ngFor="let s of pokemon.stats">
-    <span>{{ s.stat.name | stats }}</span>
+    <span>{{ s.stat.name | stats }} {{ s.base_stat }}</span>
   </div>
 </div>
