@@ -9,6 +9,7 @@ import { CursorComponent } from './shared/cursor/cursor.component';
 import { HomeComponent } from './home/home.component';
 import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.component';
+import { StatMeterComponent } from './pokemon-detail/stat-meter.component';
 
 import { PokemonIdPipe } from './pokemon-list/pokemon-id.pipe';
 import { PokemonStatPipe } from './shared/pokemon-stats.pipe';
@@ -27,7 +28,8 @@ import { PokemonResolver } from './pokemon-detail/pokemon-resolver';
     PokemonListComponent,
     PokemonDetailComponent,
     PokemonIdPipe,
-    PokemonStatPipe
+    PokemonStatPipe,
+    StatMeterComponent
   ],
   imports: [
     BrowserModule,

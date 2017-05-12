@@ -1,0 +1,16 @@
+$meter-background: rgba(black, 0.1);
+
+:host {
+  display: inline-block;
+  width: 80%;
+  height: 10px;
+  position: relative;
+  background: $meter-background
+}
+
+span {
+  position: absolute;
+  width: 40%;
+  height: 10px;
+  background: red;
+}
