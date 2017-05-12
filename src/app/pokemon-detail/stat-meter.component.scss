@@ -7,11 +7,10 @@ $meter-background: rgba(black, 0.1);
   width: 80%;
   height: 10px;
   position: relative;
-  background: $meter-background
+  background: $meter-background;
 }
 
 span {
   position: absolute;
   height: 10px;
-  background: red;
 }
