@@ -1,0 +1,17 @@
+$poor: #F12A2B;
+$avg: #FA9131;
+$above-avg: #F7C439;
+$great: #37F739;
+$super: #38F9F8;
+
+@mixin applyStatColor($type, $color) {
+  .#{$type} {
+    background-color: $color;
+  }
+}
+
+@include applyStatColor(poor, $poor);
+@include applyStatColor(avg, $avg);
+@include applyStatColor(above-avg, $above-avg);
+@include applyStatColor(great, $great);
+@include applyStatColor(super, $super);
