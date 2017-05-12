@@ -32,6 +32,6 @@
   <h3>BASE STATS</h3>
   <div *ngFor="let s of pokemon.stats">
     <span>{{ s.stat.name | stats }} {{ s.base_stat }}</span>
-    <app-stat-meter></app-stat-meter>
+    <app-stat-meter [stat]="s.base_stat"></app-stat-meter>
   </div>
 </div>
