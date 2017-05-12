@@ -11,6 +11,7 @@ import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.component';
 
 import { PokemonIdPipe } from './pokemon-list/pokemon-id.pipe';
+import { PokemonStatPipe } from './shared/pokemon-stats.pipe';
 
 import { ApiService } from './shared/api.service';
 import { CacheService } from './shared/cache.service';
@@ -25,7 +26,8 @@ import { PokemonResolver } from './pokemon-detail/pokemon-resolver';
     HomeComponent,
     PokemonListComponent,
     PokemonDetailComponent,
-    PokemonIdPipe
+    PokemonIdPipe,
+    PokemonStatPipe
   ],
   imports: [
     BrowserModule,

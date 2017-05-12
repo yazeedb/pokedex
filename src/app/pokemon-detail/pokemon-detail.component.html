@@ -27,3 +27,10 @@
   <img src="assets/pokemon/animated/{{ pokemon.id | pkmnId }}.gif" alt="{{ pokemon.name }} gen6 sprite">
   <img src="assets/pokemon/animated/shiny/{{ pokemon.id | pkmnId }}.gif" alt="{{ pokemon.name }} gen6 sprite">
 </div>
+
+<div class="stats">
+  <h3>BASE STATS</h3>
+  <div *ngFor="let s of pokemon.stats">
+    <span>{{ s.stat.name | stats }}</span>
+  </div>
+</div>
