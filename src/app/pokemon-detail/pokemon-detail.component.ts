@@ -19,4 +19,14 @@ export class PokemonDetailComponent implements OnInit {
     console.log(this.pokemon);
     console.log(this.species);
   }
+
+  getTotalStats() {
+    let total = 0;
+
+    this.pokemon
+      .stats
+      .forEach(s => total += s.base_stat);
+
+     return total;
+  }
 }

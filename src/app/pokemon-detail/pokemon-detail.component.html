@@ -34,4 +34,5 @@
     <span>{{ s.stat.name | stats }} {{ s.base_stat }}</span>
     <app-stat-meter [stat]="s.base_stat"></app-stat-meter>
   </div>
+  <span class="total">Total {{ getTotalStats() }}</span>
 </div>
