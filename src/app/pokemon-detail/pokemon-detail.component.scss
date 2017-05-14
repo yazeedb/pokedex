@@ -16,6 +16,11 @@ header {
   }
 }
 
+section {
+  text-align: center;
+  margin: 10px 20px;
+}
+
 h1 {
   font-size: 24px;
 }
@@ -26,29 +31,22 @@ h1 {
   margin: 10px 5px;
 }
 
-.info,
-.types {
-  text-align: center;
-}
-
 .description,
 .total,
 .stats div {
+  text-align: left;
   margin: 10px 20px;
+}
+
+.stats {
+  display: block;
 }
 
 .description {
   line-height: 20px;
 }
 
-.egg-groups,
-.sprites {
-  text-align: center;
-  margin: 20px 0;
-}
-
 h3 {
-  text-align: center;
   text-decoration: underline;
   margin-bottom: 5px;
 }
@@ -64,4 +62,21 @@ h3 {
 .stats span {
   min-width: 60px;
   display: inline-block;
+}
+
+.evolutions {
+  img {
+    display: inline-block;
+    width: 100px;
+  }
+}
+
+.evolution-arrow {
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  line-height: 50px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(-45deg);
 }

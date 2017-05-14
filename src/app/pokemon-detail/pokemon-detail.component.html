@@ -2,33 +2,33 @@
   <img src="assets/pokemon/{{ pokemon.id }}.png" [alt]="pokemon.name">
 </header>
 
-<div class="info">
+<section class="info">
   <h1 class="capitalize">{{ pokemon.name }}</h1>
   <span>#{{ pokemon.id | pkmnId }} {{ species.genera[0].genus }} Pokémon</span>
-</div>
+</section>
 
-<div class="types">
+<section class="types">
   <span *ngFor="let t of pokemon.types" class="type uppercase" [ngClass]="t.type.name">{{ t.type.name }}</span>
-</div>
+</section>
 
 <p class="description">{{ species.flavor_text_entries[1].flavor_text }}</p>
 
-<div class="egg-groups">
+<section class="egg-groups">
   <h3>EGG GROUPS</h3>
 
   <span *ngFor="let e of species.egg_groups let lastIndex = last" class="capitalize">
     {{ e.name }}
     <span class="comma" *ngIf="!lastIndex">,</span>
   </span>
-</div>
+</section>
 
-<div class="sprites">
+<section class="sprites">
   <h3>SPRITES</h3>
   <img src="assets/pokemon/animated/{{ pokemon.id | pkmnId }}.gif" alt="{{ pokemon.name }} gen6 sprite">
   <img src="assets/pokemon/animated/shiny/{{ pokemon.id | pkmnId }}.gif" alt="{{ pokemon.name }} gen6 sprite">
-</div>
+</section>
 
-<div class="stats">
+<section class="stats">
   <h3>BASE STATS</h3>
 
   <div *ngFor="let s of pokemon.stats">
@@ -37,4 +37,15 @@
   </div>
 
   <span class="total">TOTAL {{ getTotalStats() }}</span>
-</div>
+</section>
+
+<section class="evolutions">
+  <h3>EVOLUTIONS</h3>
+  <div class="evolves-from" *ngIf="species.evolves_from_species">
+    <img src="assets/pokemon/{{ getPkmnIdFromUrl(species.evolves_from_species.url) }}.png" alt="{{ species.evolves_from_species.name }}" class="from">
+
+    <span class="evolution-arrow"></span>
+
+    <img src="assets/pokemon/{{ pokemon.id }}.png" [alt]="pokemon.name" class="to">
+  </div>
+</section>

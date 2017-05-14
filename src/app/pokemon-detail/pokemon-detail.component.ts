@@ -29,4 +29,10 @@ export class PokemonDetailComponent implements OnInit {
 
      return total;
   }
+
+  getPkmnIdFromUrl(url: string) {
+    return url.match(/\d/g)
+      .splice(1, url.length)
+      .join('');
+  }
 }
