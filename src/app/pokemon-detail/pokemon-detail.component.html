@@ -30,9 +30,11 @@
 
 <div class="stats">
   <h3>BASE STATS</h3>
+
   <div *ngFor="let s of pokemon.stats">
     <span>{{ s.stat.name | stats }} {{ s.base_stat }}</span>
     <app-stat-meter [stat]="s.base_stat"></app-stat-meter>
   </div>
+
   <span class="total">Total {{ getTotalStats() }}</span>
 </div>
