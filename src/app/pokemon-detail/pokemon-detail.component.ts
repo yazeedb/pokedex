@@ -14,13 +14,11 @@ export class PokemonDetailComponent implements OnInit {
   constructor(private route: ActivatedRoute) {
     this.pokemon = this.route.snapshot.data.pokemon[0];
     this.species = this.route.snapshot.data.pokemon[1];
-    this.evolution = this.route.snapshot.data.pokemon[2];
   }
 
   ngOnInit() {
     console.log(this.pokemon);
     console.log(this.species);
-    console.log(this.evolution);
   }
 
   getTotalStats() {

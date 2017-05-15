@@ -13,8 +13,7 @@ export class PokemonResolver implements Resolve<any> {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot)  {
     return Observable.forkJoin(
       this.api.get('http://pokeapi.co/api/v2/pokemon/' + route.params.pokemon),
-      this.api.get('http://pokeapi.co/api/v2/pokemon-species/' + route.params.pokemon),
-      this.api.get('http://pokeapi.co/api/v2/evolution-chain/' + route.params.pokemon)
+      this.api.get('http://pokeapi.co/api/v2/pokemon-species/' + route.params.pokemon)
     );
   }
 }
