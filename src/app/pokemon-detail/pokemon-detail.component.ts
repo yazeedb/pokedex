@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+import { ApiService } from '../shared/api.service';
+
 @Component({
   selector: 'app-pokemon-detail',
   templateUrl: './pokemon-detail.component.html',
@@ -11,7 +13,7 @@ export class PokemonDetailComponent implements OnInit {
   pokemon: any;
   species: any;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private api: ApiService, private route: ActivatedRoute) {
     this.pokemon = this.route.snapshot.data.pokemon[0];
     this.species = this.route.snapshot.data.pokemon[1];
   }
@@ -19,6 +21,9 @@ export class PokemonDetailComponent implements OnInit {
   ngOnInit() {
     console.log(this.pokemon);
     console.log(this.species);
+    this.api
+      .get(this.species.evolution_chain.url)
+      .subscribe(res => console.log(res));
   }
 
   getTotalStats() {
