@@ -45,6 +45,16 @@ h1 {
   line-height: 20px;
 }
 
+.profile-row {
+  display: flex;
+  margin: 2px 0;
+  text-align: left;
+
+  span {
+    flex-basis: 100%;
+  }
+}
+
 h3 {
   text-decoration: underline;
   margin-bottom: 5px;
