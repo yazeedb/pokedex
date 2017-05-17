@@ -18,7 +18,7 @@ header {
 
 section {
   text-align: center;
-  margin: 10px 20px;
+  margin: 15px 20px;
 }
 
 p {
@@ -30,10 +30,14 @@ h1 {
   font-size: 24px;
 }
 
+.pkmn-id {
+  display: block;
+}
+
 .type {
   font-weight: bold;
   display: inline-block;
-  margin: 10px 5px;
+  margin: 5px;
 }
 
 .stats div {

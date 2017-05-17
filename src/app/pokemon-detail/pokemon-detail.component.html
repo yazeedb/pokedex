@@ -4,10 +4,8 @@
 
 <section class="info">
   <h1 class="capitalize">{{ pokemon.name }}</h1>
-  <span>#{{ pokemon.id | pkmnId }} {{ species.genera[0].genus }} Pokémon</span>
-</section>
+  <span class="pkmn-id">#{{ pokemon.id | pkmnId }} {{ species.genera[0].genus }} Pokémon</span>
 
-<section class="types">
   <span class="type uppercase" *ngIf="pokemon.types[1]" [ngClass]="pokemon.types[1].type.name">{{ pokemon.types[1].type.name }}</span>
   <span class="type uppercase" [ngClass]="pokemon.types[0].type.name">{{ pokemon.types[0].type.name }}</span>
 </section>
