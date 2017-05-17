@@ -63,11 +63,3 @@
 
   <p class="total">TOTAL {{ getTotalStats() }}</p>
 </section>
-
-<section class="evolutions">
-  <h3>EVOLUTIONS</h3>
-  <div class="evolves-from" *ngIf="species.evolves_from_species">
-    <img src="assets/pokemon/{{ getPkmnIdFromUrl(species.evolves_from_species.url) }}.png" alt="{{ species.evolves_from_species.name }}" class="from">
-    <p>Level 16</p>
-  </div>
-</section>
