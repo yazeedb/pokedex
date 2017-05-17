@@ -15,16 +15,38 @@
 <p class="description">{{ species.flavor_text_entries[1].flavor_text }}</p>
 
 <section class="profile">
-  
-</section>
+  <h3>PROFILE</h3>
+  <div class="profile-row">
+    <span>
+      Abilities:
+      <span class="capitalize" *ngFor="let a of pokemon.abilities; let lastIndex = last">
+        {{ a.ability.name }}
+        <span class="comma" *ngIf="!lastIndex">,</span>
+      </span>
+    </span>
+    <span class="capitalize">Habitat: {{ species.habitat.name }}</span>
+  </div>
 
-<section class="egg-groups">
-  <h3>EGG GROUPS</h3>
+  <div class="profile-row">
+    <span>Height: {{ pokemon.height }}</span>
+    <span>Weight: {{ pokemon.weight }}</span>
+  </div>
 
-  <span *ngFor="let e of species.egg_groups let lastIndex = last" class="capitalize">
-    {{ e.name }}
-    <span class="comma" *ngIf="!lastIndex">,</span>
-  </span>
+  <div class="profile-row">
+    <span>Capture rate: {{ species.capture_rate }}</span>
+    <span>Base exp: {{ pokemon.base_experience }}</span>
+  </div>
+
+  <div class="profile-row">
+    <span>Base happiness: {{ species.base_happiness }}</span>
+    <span>
+      Egg groups:
+      <span *ngFor="let e of species.egg_groups let lastIndex = last" class="capitalize">
+        {{ e.name }}
+        <span class="comma" *ngIf="!lastIndex">,</span>
+      </span>
+    </span>
+  </div>
 </section>
 
 <section class="sprites">
