@@ -8,10 +8,15 @@
 </section>
 
 <section class="types">
-  <span *ngFor="let t of pokemon.types" class="type uppercase" [ngClass]="t.type.name">{{ t.type.name }}</span>
+  <span class="type uppercase" *ngIf="pokemon.types[1]" [ngClass]="pokemon.types[1].type.name">{{ pokemon.types[1].type.name }}</span>
+  <span class="type uppercase" [ngClass]="pokemon.types[0].type.name">{{ pokemon.types[0].type.name }}</span>
 </section>
 
 <p class="description">{{ species.flavor_text_entries[1].flavor_text }}</p>
+
+<section class="profile">
+  
+</section>
 
 <section class="egg-groups">
   <h3>EGG GROUPS</h3>
