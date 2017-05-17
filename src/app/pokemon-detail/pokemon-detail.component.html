@@ -33,12 +33,12 @@
   </div>
 
   <div class="profile-row">
-    <span>Capture rate: {{ species.capture_rate }}</span>
+    <span>Base happiness: {{ species.base_happiness }}</span>
     <span>Base exp: {{ pokemon.base_experience }}</span>
   </div>
 
   <div class="profile-row">
-    <span>Base happiness: {{ species.base_happiness }}</span>
+    <span>Capture rate: {{ species.capture_rate }}</span>
     <span>
       Egg groups:
       <span *ngFor="let e of species.egg_groups let lastIndex = last" class="capitalize">
