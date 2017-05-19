@@ -7,7 +7,6 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
 
 import { AppComponent } from './app.component';
-import { CursorComponent } from './shared/cursor/cursor.component';
 import { HomeComponent } from './home/home.component';
 import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 
@@ -16,7 +15,6 @@ import { PokemonListService } from './pokemon-list/pokemon-list.service';
 @NgModule({
   declarations: [
     AppComponent,
-    CursorComponent,
     HomeComponent,
     PokemonListComponent
   ],
