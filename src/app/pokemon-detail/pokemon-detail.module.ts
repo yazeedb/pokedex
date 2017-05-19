@@ -10,6 +10,8 @@ import { PokemonResolver } from './pokemon-resolver';
 import { PokemonStatPipe } from '../shared/pokemon-stats.pipe';
 import { StatMeterComponent } from './stat-meter.component';
 
+import { MovesListComponent } from './moves-list/moves-list.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -25,6 +27,7 @@ import { StatMeterComponent } from './stat-meter.component';
     }])
   ],
   declarations: [
+    MovesListComponent,
     PokemonDetailComponent,
     PokemonStatPipe,
     StatMeterComponent
