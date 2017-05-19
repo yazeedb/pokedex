@@ -10,6 +10,7 @@ import { ApiService } from '../shared/api.service';
 })
 export class PokemonDetailComponent implements OnInit {
   evolution: any;
+  moves: any = {};
   pokemon: any;
   species: any;
 
@@ -19,6 +20,9 @@ export class PokemonDetailComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.moves = this.sortMoves(this.pokemon.moves);
+    console.log(this.moves);
+
     console.log(this.pokemon);
     console.log(this.species);
     this.api
@@ -40,5 +44,21 @@ export class PokemonDetailComponent implements OnInit {
     return url.match(/\d/g)
       .splice(1, url.length)
       .join('');
+  }
+
+  private sortMoves(moves: any[]) {
+    const moveMap = {};
+
+    moves.forEach(m => {
+      const learnMethod = m.version_group_details[0].move_learn_method.name;
+
+      if (moveMap[learnMethod]) {
+        moveMap[learnMethod].push(m);
+      } else {
+        moveMap[learnMethod] = [m];
+      }
+    });
+
+    return moveMap;
   }
 }
