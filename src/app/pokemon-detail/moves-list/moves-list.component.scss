@@ -17,10 +17,16 @@ h4 {
 .moves-filter li {
   display: inline-block;
   flex-basis: 33%;
-  border: 1px solid white;
   padding: 10px;
+  border-color: white;
+  border-style: solid;
+  border-width: 1px 1px 1px 0;
   cursor: pointer;
   user-select: none;
+
+  &:first-child {
+    border-left-width: 1px;
+  }
 
   &:hover {
     background-color: rgba(white, 0.25);

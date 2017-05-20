@@ -14,6 +14,7 @@ export class MovesListComponent implements OnInit {
 
   ngOnInit() {
     this.moveMap = this.sortMoves(this.moves);
+    console.log(this.moveMap);
   }
 
   setActiveMovelist(list: string) {
