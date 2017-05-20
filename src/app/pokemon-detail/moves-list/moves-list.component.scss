@@ -43,7 +43,6 @@ h4 {
 span {
   padding: 20px;
   display: block;
-  position: relative;
   text-align: left;
   cursor: pointer;
 
@@ -55,10 +54,8 @@ span {
 .dropdown-arrow {
   background-image: url(../../../svg/arrow-right.svg);
   background-position: right;
-  background-repeat: no-repeat;
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
+  display: inline-block;
+  width: 18px;
+  height: 12px;
+  float: right;
 }
