@@ -49,6 +49,12 @@ span {
   &:hover {
     background-color: $hover-color;
   }
+
+  &.active {
+    .dropdown-arrow {
+      transform: rotate(90deg);
+    }
+  }
 }
 
 .dropdown-arrow {
@@ -58,4 +64,6 @@ span {
   width: 18px;
   height: 12px;
   float: right;
+  transition: transform .2s ease;
+  pointer-events: none;
 }
