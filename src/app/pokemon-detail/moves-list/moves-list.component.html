@@ -7,6 +7,4 @@
   <li (click)="setActiveMovelist('tutor')" [class.active]="activeMovelist === 'tutor'">Tutor Moves</li>
 </ul>
 
-<div *ngFor="let a of moveMap[activeMovelist]">
-  <span class="move-name capitalize">{{ a.move.name }}</span>
-</div>
+<span *ngFor="let a of moveMap[activeMovelist]" class="move-name capitalize">{{ a.move.name }}</span>
