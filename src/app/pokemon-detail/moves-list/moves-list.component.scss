@@ -1,0 +1,31 @@
+@import '../../global.variables';
+
+h3 {
+  text-decoration: underline;
+  margin-bottom: 5px;
+}
+
+h4 {
+  text-align: left;
+}
+
+.moves-filter {
+  margin: 10px 0;
+}
+
+.moves-filter li {
+  display: inline-block;
+  border: 1px solid white;
+  padding: 10px;
+  margin: -3px;
+  cursor: pointer;
+
+  &:hover, &.active {
+    background-color: white;
+    color: $pkmn-background-main;      
+  }
+}
+
+.natural-moves {
+  display: flex;
+}

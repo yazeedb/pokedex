@@ -11,8 +11,15 @@ export class MovesListComponent implements OnInit {
 
   moveMap: {};
 
+  naturalMoves: any[];
+  machineMoves: any[];
+  tutorMoves: any[];
+
   ngOnInit() {
     this.moveMap = this.sortMoves(this.moves);
+    this.naturalMoves = this.moveMap['level-up'];
+    this.machineMoves = this.moveMap['machine'];
+    this.tutorMoves = this.moveMap['tutor'];
     console.log(this.moveMap);
   }
 
