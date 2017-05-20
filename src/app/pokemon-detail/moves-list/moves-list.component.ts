@@ -8,13 +8,14 @@ import { ApiService } from '../../shared/api.service';
   styleUrls: ['./moves-list.component.scss']
 })
 export class MovesListComponent implements OnInit {
-  constructor(private api: ApiService) {}
 
   @Input()
   moves: any[];
 
   moveMap: {};
   activeMovelist = 'level-up';
+
+  constructor(private api: ApiService) {}
 
   ngOnInit() {
     this.moveMap = this.sortMoves(this.moves);
