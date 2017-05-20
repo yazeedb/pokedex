@@ -11,13 +11,14 @@ h4 {
 
 .moves-filter {
   margin: 10px 0;
+  display: flex;
 }
 
 .moves-filter li {
   display: inline-block;
+  flex-basis: 33%;
   border: 1px solid white;
   padding: 10px;
-  margin: -3px;
   cursor: pointer;
   user-select: none;
 
