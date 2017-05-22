@@ -35,8 +35,6 @@ export class MovesListComponent implements OnInit {
 
     el.classList.toggle('active');
 
-    console.log(index);
-
     this.api
       .get(moveUrl)
       .subscribe(res => {
