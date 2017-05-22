@@ -35,6 +35,12 @@ export class MovesListComponent implements OnInit {
 
     el.classList.toggle('active');
 
+    // if .active is no longer there, it means the user closed
+    // the dropdown, so don't make the api call
+    if (!el.classList.contains('active')) {
+      return;
+    }
+
     this.api
       .get(moveUrl)
       .subscribe(res => {
