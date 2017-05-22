@@ -30,14 +30,15 @@ export class MovesListComponent implements OnInit {
   }
 
   toggleMoveDetail(event: Event, moveUrl: string, index: number) {
-    const el: HTMLSpanElement = <HTMLSpanElement> event.srcElement;
     const currentMove = this.moveMap[this.activeMovelist][index];
+    const currentMoveDetails = currentMove['app-move-details'];
+    const moveNameEl: HTMLSpanElement = <HTMLSpanElement> event.srcElement;
 
-    el.classList.toggle('active');
+    moveNameEl.classList.toggle('active');
 
-    // if .active is no longer there, it means the user closed
-    // the dropdown, so don't make the api call
-    if (!el.classList.contains('active')) {
+    // don't make api call if .active is not there
+    // or if we already have the move details
+    if (currentMoveDetails || !moveNameEl.classList.contains('active')) {
       return;
     }
 

@@ -54,6 +54,10 @@ span {
     .dropdown-arrow {
       transform: rotate(90deg);
     }
+
+    div {
+      height: 100px;
+    }
   }
 }
 
@@ -67,3 +71,9 @@ span {
   transition: transform .2s ease;
   pointer-events: none;
 }
+
+div {
+  height: 0px;
+  transition: height .2s ease;
+}
+
