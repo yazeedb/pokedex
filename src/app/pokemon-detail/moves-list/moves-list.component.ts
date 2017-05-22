@@ -29,13 +29,18 @@ export class MovesListComponent implements OnInit {
     this.activeMovelist = list;
   }
 
-  toggleMoveDetail(event: Event, moveUrl: string) {
+  toggleMoveDetail(event: Event, moveUrl: string, index: number) {
     const el: HTMLSpanElement = <HTMLSpanElement> event.srcElement;
+    const currentMove = this.moveMap[this.activeMovelist][index];
+
     el.classList.toggle('active');
+
+    console.log(index);
 
     this.api
       .get(moveUrl)
       .subscribe(res => {
+        currentMove['app-move-details'] = res;
         console.log(res);
       });
   }
