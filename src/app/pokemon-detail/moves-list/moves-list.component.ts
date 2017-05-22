@@ -19,7 +19,6 @@ export class MovesListComponent implements OnInit {
 
   ngOnInit() {
     this.moveMap = this.sortMoves(this.moves);
-    console.log(this.moveMap);
   }
 
   setActiveMovelist(list: string) {
@@ -31,7 +30,8 @@ export class MovesListComponent implements OnInit {
   }
 
   toggleMoveDetail(event: Event, moveUrl: string) {
-    event.srcElement.classList.toggle('active');
+    const el: HTMLSpanElement = <HTMLSpanElement> event.srcElement;
+    el.classList.toggle('active');
 
     this.api
       .get(moveUrl)
