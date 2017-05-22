@@ -38,11 +38,6 @@ export class MovesListComponent implements OnInit {
       .subscribe(res => {
         console.log(res);
       });
-    // when user clicks..
-    // activate clicked move
-    // get that move's data
-    // rotate arrow down
-    // expand move row
   }
 
   private sortMoves(moves: any[]) {
