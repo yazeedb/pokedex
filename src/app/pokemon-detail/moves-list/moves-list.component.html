@@ -9,8 +9,7 @@
 
 <span *ngFor="let a of moveMap[activeMovelist]; let i = index" (click)="toggleMoveDetail($event, a.move.url, i)" class="move-name capitalize">
   {{ a.move.name }}
+  {{ a['app-move-details']?.name }}
+
   <i class="dropdown-arrow"></i>
-  <div *ngIf="a['app-move-details']" class="move-info">
-    {{ a['app-move-details'].name }}
-  </div>
 </span>

@@ -45,6 +45,7 @@ span {
   display: block;
   text-align: left;
   cursor: pointer;
+  transition: height .2s ease;
 
   &:hover {
     background-color: $hover-color;
@@ -53,10 +54,6 @@ span {
   &.active {
     .dropdown-arrow {
       transform: rotate(90deg);
-    }
-
-    div {
-      height: 100px;
     }
   }
 }
@@ -70,10 +67,5 @@ span {
   float: right;
   transition: transform .2s ease;
   pointer-events: none;
-}
-
-div {
-  height: 0px;
-  transition: height .2s ease;
 }
 
