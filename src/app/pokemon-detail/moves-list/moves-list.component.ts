@@ -29,27 +29,6 @@ export class MovesListComponent implements OnInit {
     this.activeMovelist = list;
   }
 
-  toggleMoveDetail(event: Event, moveUrl: string, index: number) {
-    const currentMove = this.moveMap[this.activeMovelist][index];
-    const currentMoveDetails = currentMove['app-move-details'];
-    const moveNameEl: HTMLSpanElement = <HTMLSpanElement> event.srcElement;
-
-    moveNameEl.classList.toggle('active');
-
-    // don't make api call if .active is not there
-    // or if we already have the move details
-    if (currentMoveDetails || !moveNameEl.classList.contains('active')) {
-      return;
-    }
-
-    this.api
-      .get(moveUrl)
-      .subscribe(res => {
-        currentMove['app-move-details'] = res;
-        console.log(res);
-      });
-  }
-
   private sortMoves(moves: any[]) {
     const moveMap = {};
 

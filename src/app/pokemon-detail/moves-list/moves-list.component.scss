@@ -40,12 +40,10 @@ h4 {
   }
 }
 
-span {
+div {
   padding: 20px;
-  display: block;
   text-align: left;
   cursor: pointer;
-  transition: height .2s ease;
 
   &:hover {
     background-color: $hover-color;

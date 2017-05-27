@@ -7,9 +7,11 @@
   <li (click)="setActiveMovelist('tutor')" [class.active]="activeMovelist === 'tutor'">Tutor Moves</li>
 </ul>
 
-<span *ngFor="let a of moveMap[activeMovelist]; let i = index" (click)="toggleMoveDetail($event, a.move.url, i)" class="move-name capitalize">
+<div *ngFor="let a of moveMap[activeMovelist]; let i = index" class="move-name capitalize">
   {{ a.move.name }}
-  {{ a['app-move-details']?.name }}
-
   <i class="dropdown-arrow"></i>
-</span>
+
+  <p class="hidden">
+    {{ a['app-move-details']?.flavor_text_entries[1].flavor_text }}
+  </p>
+</div>
