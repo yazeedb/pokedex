@@ -19,6 +19,28 @@ export class MovesListComponent implements OnInit {
 
   ngOnInit() {
     this.moveMap = this.sortMoves(this.moves);
+    console.log(this.moveMap);
+  }
+
+  getMoveDetail(event: Event, moveUrl: string, index: number) {
+    const target = <HTMLElement> event.target;
+    const moveDetail = <HTMLElement> target.querySelector('.move-details');
+
+    if (target.classList.contains('active')) {
+      target.classList.remove('active');
+      this.closeDropdown(moveDetail);
+    } else {
+      target.classList.add('active');
+      this.openDropdown(moveDetail);
+    }
+
+    this.api
+      .get(moveUrl)
+      .subscribe(res => {
+        const currentMove = this.moveMap[this.activeMovelist][index];
+        currentMove.moveDetails = res;
+        console.log(currentMove);
+      });
   }
 
   setActiveMovelist(list: string) {
@@ -27,6 +49,46 @@ export class MovesListComponent implements OnInit {
     }
 
     this.activeMovelist = list;
+  }
+
+  private openDropdown(moveDetail: HTMLElement) {
+    requestAnimationFrame(() => {
+      moveDetail.classList.remove('hidden');
+      (<any> moveDetail).style.willChange = 'opacity, transform';
+      moveDetail.style.opacity = '0';
+      moveDetail.style.transform = 'scaleY(0.01)';
+
+      requestAnimationFrame(() => {
+        moveDetail.style.opacity = '1';
+        moveDetail.classList.add('animating');
+        moveDetail.style.transform = '';
+      });
+
+      moveDetail.addEventListener('transitionend', function listener() {
+        moveDetail.classList.remove('animating');
+        (<any> moveDetail.style).willChange = 'transform';
+        moveDetail.removeEventListener('transitionend', listener);
+      });
+    });
+  }
+
+  private closeDropdown(moveDetail: HTMLElement) {
+    requestAnimationFrame(() => {
+      (<any> moveDetail.style).willChange = 'transform';
+      moveDetail.style.transform = '';
+
+      requestAnimationFrame(() => {
+        moveDetail.classList.add('animating');
+        moveDetail.style.transform = 'scaleY(0.01)';
+      });
+
+      moveDetail.addEventListener('transitionend', function listener() {
+        moveDetail.classList.remove('animating');
+        moveDetail.classList.add('hidden');
+        (<any> moveDetail.style).willChange = '';
+        moveDetail.removeEventListener('transitionend', listener);
+      });
+    });
   }
 
   private sortMoves(moves: any[]) {

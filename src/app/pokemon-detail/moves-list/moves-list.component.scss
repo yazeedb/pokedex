@@ -24,7 +24,6 @@ h4 {
   border-style: solid;
   border-width: 1px 1px 1px 0;
   cursor: pointer;
-  user-select: none;
 
   &:first-child {
     border-left-width: 1px;
@@ -40,7 +39,7 @@ h4 {
   }
 }
 
-div {
+.move-name {
   padding: 20px;
   text-align: left;
   cursor: pointer;
@@ -67,3 +66,26 @@ div {
   pointer-events: none;
 }
 
+.move-details {
+  padding: 10px 0;
+
+  &.animating {
+    transition: transform .2s ease;
+  }
+}
+
+.move-info-row {
+  display: flex;
+
+  span {
+    flex-basis: 33%;
+  }
+}
+
+.description {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
