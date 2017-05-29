@@ -11,6 +11,7 @@ import { PokemonStatPipe } from '../shared/pokemon-stats.pipe';
 import { StatMeterComponent } from './stat-meter.component';
 
 import { MovesListComponent } from './moves-list/moves-list.component';
+import { MovesListService } from './moves-list/moves-list.service';
 
 @NgModule({
   imports: [
@@ -32,7 +33,10 @@ import { MovesListComponent } from './moves-list/moves-list.component';
     PokemonStatPipe,
     StatMeterComponent
   ],
-  providers: [PokemonResolver]
+  providers: [
+    MovesListService,
+    PokemonResolver
+  ]
 })
 export class PokemonDetailModule {
 

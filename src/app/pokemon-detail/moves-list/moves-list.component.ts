@@ -1,6 +1,7 @@
 import { Component, Input, OnInit} from '@angular/core';
 
 import { ApiService } from '../../shared/api.service';
+import { MovesListService } from './moves-list.service';
 
 @Component({
   selector: 'app-moves-list',
@@ -15,7 +16,7 @@ export class MovesListComponent implements OnInit {
   moveMap: {};
   activeMovelist = 'level-up';
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService, private movesListService: MovesListService) {}
 
   ngOnInit() {
     this.moveMap = this.sortMoves(this.moves);
@@ -52,43 +53,11 @@ export class MovesListComponent implements OnInit {
   }
 
   private openDropdown(moveDetail: HTMLElement) {
-    requestAnimationFrame(() => {
-      moveDetail.classList.remove('hidden');
-      (<any> moveDetail).style.willChange = 'opacity, transform';
-      moveDetail.style.opacity = '0';
-      moveDetail.style.transform = 'scaleY(0.01)';
-
-      requestAnimationFrame(() => {
-        moveDetail.style.opacity = '1';
-        moveDetail.classList.add('animating');
-        moveDetail.style.transform = '';
-      });
-
-      moveDetail.addEventListener('transitionend', function listener() {
-        moveDetail.classList.remove('animating');
-        (<any> moveDetail.style).willChange = 'transform';
-        moveDetail.removeEventListener('transitionend', listener);
-      });
-    });
+    this.movesListService.openDropdown(moveDetail);
   }
 
   private closeDropdown(moveDetail: HTMLElement) {
-    requestAnimationFrame(() => {
-      (<any> moveDetail.style).willChange = 'transform';
-      moveDetail.style.transform = '';
-
-      requestAnimationFrame(() => {
-        moveDetail.classList.add('animating');
-        moveDetail.style.transform = 'scaleY(0.01)';
-      });
-
-      moveDetail.addEventListener('transitionend', function listener() {
-        moveDetail.classList.remove('animating');
-        moveDetail.classList.add('hidden');
-        (<any> moveDetail.style).willChange = '';
-        moveDetail.removeEventListener('transitionend', listener);
-      });
-    });
+    this.movesListService.closeDropdown(moveDetail);
   }
 
   private sortMoves(moves: any[]) {
