@@ -1,13 +1,8 @@
 @import './reset';
+@import './app/global.variables';
 
-html,
-body,
-app-root {
-  height: 100%;
-}
-
-app-root {
-  display: block;
+body {
+  background-color: $body-background;
   font-family: avenir;
 }
 
