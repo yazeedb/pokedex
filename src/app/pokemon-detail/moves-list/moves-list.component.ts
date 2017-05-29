@@ -29,10 +29,10 @@ export class MovesListComponent implements OnInit {
 
     if (target.classList.contains('active')) {
       target.classList.remove('active');
-      this.closeDropdown(moveDetail);
+      this.movesListService.closeDropdown(moveDetail);
     } else {
       target.classList.add('active');
-      this.openDropdown(moveDetail);
+      this.movesListService.openDropdown(moveDetail);
     }
 
     this.api
@@ -50,14 +50,6 @@ export class MovesListComponent implements OnInit {
     }
 
     this.activeMovelist = list;
-  }
-
-  private openDropdown(moveDetail: HTMLElement) {
-    this.movesListService.openDropdown(moveDetail);
-  }
-
-  private closeDropdown(moveDetail: HTMLElement) {
-    this.movesListService.closeDropdown(moveDetail);
   }
 
   private sortMoves(moves: any[]) {
