@@ -1,14 +1,17 @@
 import { Injectable } from '@angular/core';
 
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/fromPromise';
+
+import * as localForage from 'localforage';
+
 @Injectable()
 export class CacheService {
-  private store = window.localStorage;
-
   get(prop: string) {
-    return this.store.getItem(prop);
+    return Observable.fromPromise(localForage.getItem(prop));
   }
 
   set(prop: string, value: any) {
-    this.store.setItem(prop, value);
+    return Observable.fromPromise(localForage.setItem(prop, value));
   }
 }

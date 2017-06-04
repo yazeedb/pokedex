@@ -26,7 +26,7 @@ export class PokemonListComponent implements OnInit {
   ngOnInit() {
     this.api
       .get('http://pokeapi.co/api/v2/pokemon/?limit=100')
-      .subscribe(res => {
+      .subscribe((res: any) => {
         this.previousUrl = res.previous;
         this.nextUrl = res.next;
 

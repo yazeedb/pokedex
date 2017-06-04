@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 
-import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
-import { Observer } from 'rxjs/Observer';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/pluck';
 
 import { CacheService } from './cache.service';
 
@@ -12,30 +13,21 @@ export class ApiService {
   constructor(private http: Http, private cache: CacheService) {}
 
   get(uri: string) {
-    // use cached response, if found
-    const cachedResponse = this.cache.get(uri);
-
-    if (cachedResponse) {
-      return this
-        .getFromCache(cachedResponse)
-        .map(res => JSON.parse(res));
-    }
-
-    // otherwise, cache and return the new data
-    return this.http
+    return this.cache
       .get(uri)
       .map(res => {
-        const body = res['_body'];
+        if (!res) {
+          throw new Error('no cached data');
+        }
 
-        this.cache.set(uri, body);
-        return JSON.parse(body);
-      });
-  }
-
-  private getFromCache(res: any): Observable<any> {
-    return Observable.create((observer: Observer<number>) => {
-      observer.next(res);
-      observer.complete();
-    });
+        return res;
+      })
+      .catch((err, caught) => {
+        return this.http
+          .get(uri)
+          .pluck('_body')
+          .do(body => this.cache.set(uri, body));
+      })
+      .map((res: string) => JSON.parse(res));
   }
 }
