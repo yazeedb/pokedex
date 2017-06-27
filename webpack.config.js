@@ -40,18 +40,16 @@ module.exports = (options) => {
     module: {
       rules: [
         {
-          "enforce": "pre",
-          "test": /\.js$/,
-          "loader": "source-map-loader",
-          "exclude": [
-            /\/node_modules\//
-          ]
+          enforce: 'pre',
+          test: /\.js$/,
+          loader: 'source-map-loader',
+          exclude: [/\/node_modules\//]
         },
         { test: /\.html$/, use: 'raw-loader' },
         { test: /\.(eot|svg)$/, loader: 'file-loader?name=[name].[hash:20].[ext]' },
         {
-          "test": /\.(jpg|png|gif|otf|ttf|woff|woff2|cur|ani)$/,
-          "loader": "url-loader?name=[name].[hash:20].[ext]&limit=10000"
+          test: /\.(jpg|png|gif|otf|ttf|woff|woff2|cur|ani)$/,
+          loader: "url-loader?name=[name].[hash:20].[ext]&limit=10000"
         },
         {
           exclude: [path.join(process.cwd(), 'src/styles.scss')],
@@ -64,65 +62,57 @@ module.exports = (options) => {
           ]
         },
         {
-          "include": [path.join(process.cwd(), "src/styles.scss")],
-          "test": /\.scss$/,
-          "loaders": ExtractTextPlugin.extract({
-            "use": [
-              "css-loader?{\"sourceMap\":false,\"importLoaders\":1}",
-              "postcss-loader",
-              "sass-loader"
+          include: [path.join(process.cwd(), 'src/styles.scss')],
+          test: /\.scss$/,
+          loaders: ExtractTextPlugin.extract({
+            use: [
+              'css-loader?{\sourceMap\:false,\importLoaders\:1}',
+              'postcss-loader',
+              'sass-loader'
             ],
-            "fallback": "style-loader",
-            "publicPath": ""
+            fallback: 'style-loader',
+            publicPath: ''
           })
         },
-        {
-          "test": /\.ts$/,
-          "loader": "@ngtools/webpack"
-        }
+        { test: /\.ts$/, loader: '@ngtools/webpack' }
       ]
     },
     plugins: [
       new BaseHrefWebpackPlugin({}),
       new CommonsChunkPlugin({
-        "name": "inline",
-        "minChunks": null
+        name: 'inline',
+        minChunks: null
       }),
       new CommonsChunkPlugin({
-        "name": "vendor",
-        "minChunks": (module) => module.resource && module.resource.startsWith(nodeModules),
-        "chunks": [
-          "main"
-        ]
+        name: 'vendor',
+        minChunks: (module) => module.resource && module.resource.startsWith(nodeModules),
+        chunks: ['main']
       }),
       new NoEmitOnErrorsPlugin(),
       new GlobCopyWebpackPlugin({
-        "patterns": [
-          "assets",
-          "favicon.ico"
-        ],
-        "globOptions": {
-          "cwd": "/Users/yazeed/Desktop/projects/pokedex/src",
-          "dot": true,
-          "ignore": "**/.gitkeep"
+        patterns: ['assets', 'favicon.ico'],
+        globOptions: {
+          cwd: '/Users/yazeed/Desktop/projects/pokedex/src',
+          dot: true,
+          ignore: '**/.gitkeep'
         }
       }),
       new ProgressPlugin(),
       new HtmlWebpackPlugin({
-        "template": "./src/index.html",
-        "filename": "./index.html",
-        "hash": false,
-        "inject": true,
-        "compile": true,
-        "favicon": false,
-        "minify": false,
-        "cache": true,
-        "showErrors": true,
-        "chunks": "all",
-        "excludeChunks": [],
-        "title": "Webpack App",
-        "xhtml": true,
-        "chunksSortMode": function sort(left, right) {
+        template: './src/index.html',
+        filename: './index.html',
+        hash: false,
+        inject: true,
+        compile: true,
+        favicon: false,
+        minify: false,
+        cache: true,
+        showErrors: true,
+        chunks: 'all',
+        excludeChunks: [],
+        title: 'Webpack App',
+        xhtml: true,
+        chunksSortMode: function sort(left, right) {
           let leftIndex = entryPoints.indexOf(left.names[0]);
           let rightindex = entryPoints.indexOf(right.names[0]);
           if (leftIndex > rightindex) {
@@ -137,11 +127,11 @@ module.exports = (options) => {
         }
       }),
       new LoaderOptionsPlugin({
-        "sourceMap": false,
-        "options": {
-          "postcss": [
+        sourceMap: false,
+        options: {
+          postcss: [
             autoprefixer(),
-            postcssUrl({"url": (URL) => {
+            postcssUrl({ url: (URL) => {
               // Only convert root relative URLs, which CSS-Loader won't process into require().
               if (!URL.startsWith('/') || URL.startsWith('//')) {
                 return URL;
@@ -163,25 +153,25 @@ module.exports = (options) => {
             }}),
             cssnano({ safe: true, autoprefixer: false })
           ],
-          "sassLoader": {
-            "sourceMap": false,
-            "includePaths": []
+          sassLoader: {
+            sourceMap: false,
+            includePaths: []
           },
-          "lessLoader": {
-            "sourceMap": false
+          lessLoader: {
+            sourceMap: false
           },
-          "context": ""
+          context: ''
         }
       }),
       new AotPlugin({
-        "mainPath": "main.ts",
-        "hostReplacementPaths": {
+        mainPath: 'main.ts',
+        hostReplacementPaths: {
           'environments/environment.ts': options.prod ?
-            "environments/environment.prod.ts" :
+            'environments/environment.prod.ts' :
             'environments/environment.ts'
         },
-        "exclude": [],
-        "tsConfigPath": "src/tsconfig.app.json"
+        exclude: [],
+        tsConfigPath: "src/tsconfig.app.json"
       })
     ],
     node: {
