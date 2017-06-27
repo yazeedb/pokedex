@@ -5,8 +5,9 @@
   "scripts": {
     "server": "nodemon src/server.js",
     "watch": "webpack --watch",
-    "test": "karma start ./karma.conf.js",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "build:prod": "webpack --env.prod",
+    "test": "karma start ./karma.conf.js"
   },
   "private": true,
   "dependencies": {
@@ -60,6 +61,7 @@
     "ts-node": "~2.0.0",
     "tslint": "~4.5.0",
     "typescript": "~2.2.0",
-    "url-loader": "^0.5.7"
+    "url-loader": "^0.5.7",
+    "webpack-merge": "^4.1.0"
   }
 }
