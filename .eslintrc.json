@@ -1,0 +1,19 @@
+{
+    "extends": "airbnb",
+    "rules": {
+      "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+      "comma-dangle": ["error", "never"],
+      "react/require-default-props": 0,
+      "import/no-unresolved": 0,
+      "import/no-absolute-path": 0,
+      "import/extensions": 0
+    },
+    "globals": {
+    "__dirname": true,
+    "process": true,
+    "describe": true,
+    "it": true,
+    "expect": true,
+    "document": true
+  }
+}
