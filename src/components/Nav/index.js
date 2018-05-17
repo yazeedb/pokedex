@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Nav.scss';
 
-const Nav = ({ headerText = 'Default Title' }) => (
+const Nav = ({ children = 'Default Title' }) => (
   <nav className="nav">
-    <h2 data-test="header">{ headerText }</h2>
+    <h2 data-test="header">{ children }</h2>
   </nav>
 );
 
 Nav.propTypes = {
-  headerText: PropTypes.string
+  children: PropTypes.string
 };
 
 export default Nav;

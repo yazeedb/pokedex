@@ -4,7 +4,8 @@ import Nav from '/components/Nav';
 
 const App = ({ children }) => (
   <div className="app">
-    <Nav headerText="ALL POKEMON" />
+    <Nav>ALL POKEMON</Nav>
+
     { children }
   </div>
 );

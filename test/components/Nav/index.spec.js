@@ -12,9 +12,9 @@ describe('Nav', () => {
     expect(header.text()).toBe('Default Title');
   });
 
-  it('allows setting header text via headerText prop', () => {
+  it('allows setting header text via children prop', () => {
     const wrapper = getWrapper({
-      headerText: 'ALL POKEMON'
+      children: 'ALL POKEMON'
     });
     const header = wrapper.find(headerSelector);
 
