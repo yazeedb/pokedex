@@ -1,0 +1,13 @@
+@import '~/globals';
+
+.nav {
+  text-align: center;
+  background-color: $primary;
+  padding: 20px 0;
+
+  h2 {
+    color: white;
+    font-weight: 100;
+    margin: 0;
+  }
+}
