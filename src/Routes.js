@@ -6,7 +6,7 @@ import Home from '/features/Home';
 export default () => (
   <BrowserRouter>
     <App>
-      <Route exact path="/" component={Home} />
+      <Route exact path="/" component={ Home } />
     </App>
   </BrowserRouter>
 );

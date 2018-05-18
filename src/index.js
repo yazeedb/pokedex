@@ -6,7 +6,7 @@ import Routes from './Routes';
 import './app.scss';
 
 const App = () => (
-  <Provider store={store}>
+  <Provider store={ store }>
     <Routes />
   </Provider>
 );
