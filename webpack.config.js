@@ -6,14 +6,14 @@ const root = (...args) => resolve(process.cwd(), ...args);
 module.exports = {
   output: {
     path: root('dist'),
-    filename: 'bundle.js',
+    filename: 'bundle.js'
   },
   entry: root('src/index'),
   resolve: {
     extensions: ['.js'],
     alias: {
-      '': root('src'),
-    },
+      '': root('src')
+    }
   },
   module: {
     rules: [
@@ -21,24 +21,24 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
-        },
+          loader: 'babel-loader'
+        }
       },
       {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: ['css-loader', 'sass-loader'],
-        }),
+          use: ['css-loader', 'sass-loader']
+        })
       },
       {
         test: /\.png/,
         use: [
           'url-loader?limit=10000',
-          'img-loader',
-        ],
-      },
-    ],
+          'img-loader'
+        ]
+      }
+    ]
   },
-  plugins: [new ExtractTextPlugin({ filename: '[name].css' })],
+  plugins: [new ExtractTextPlugin({ filename: '[name].css' })]
 };
