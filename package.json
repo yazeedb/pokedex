@@ -16,7 +16,8 @@
       "test"
     ],
     "moduleNameMapper": {
-      "^/(.*)": "$1"
+      "^/(.*)": "$1",
+      "\\.scss$": "<rootDir>/__mocks__/styleMock.js"
     }
   },
   "keywords": [],
