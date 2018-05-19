@@ -6,7 +6,7 @@ export const {
   reducer,
   selectors
 } = autodux({
-  slice: 'pokemon',
+  slice: 'pokemonPreviewList',
   initial: {
     fetching: false,
     list: []

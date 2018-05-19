@@ -1,5 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { lifecycle } from 'recompose';
+import { fetchPokemon, selectors } from './duck';
 
 const Component = () => (
   <div className="pokemon-preview-list">
@@ -14,6 +16,8 @@ const enhanceComponent = lifecycle({
 });
 
 export const PokemonPreviewList = enhanceComponent(Component);
+export const mapStateToProps = selectors.getPokemonPreviewList;
 
-// TODO: Add Redux to default export
-export default PokemonPreviewList;
+const withConnect = connect(mapStateToProps, { fetchPokemon });
+
+export default withConnect(PokemonPreviewList);
