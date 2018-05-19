@@ -1,7 +1,7 @@
 import { of } from 'rxjs/observable/of';
 import { ActionsObservable } from 'redux-observable';
 import { pokedex } from '/endpoints';
-import { fetchPokemonEpic } from '/features/PokemonPreviewList/epic';
+import { fetchPokemonEpic } from '/features/PokemonPreviewList/epics';
 import { fetchPokemon, setPokemon } from '/features/PokemonPreviewList/duck';
 import pokedexJson from '/mockJson/pokedex.json';
 
