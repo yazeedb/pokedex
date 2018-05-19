@@ -10,13 +10,27 @@ describe('duck', () => {
     });
   });
 
-  it('allows setting the entire state', () => {
-    const action = actions.setPokemon(['Bulbasaur']);
-    const state = reducer(undefined, action);
+  describe('setPokemon action', () => {
+    it('allows setting the entire state', () => {
+      const action = actions.setPokemon(['Bulbasaur']);
+      const state = reducer(undefined, action);
 
-    expect(state).toEqual({
-      fetching: false,
-      list: ['Bulbasaur']
+      expect(state).toEqual({
+        fetching: false,
+        list: ['Bulbasaur']
+      });
+    });
+  });
+
+  describe('fetchPokemon action', () => {
+    it('sets the fetching to true', () => {
+      const action = actions.fetchPokemon();
+      const state = reducer(undefined, action);
+
+      expect(state).toEqual({
+        fetching: true,
+        list: []
+      });
     });
   });
 });

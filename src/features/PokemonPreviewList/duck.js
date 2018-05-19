@@ -1,4 +1,5 @@
 import autodux from 'autodux';
+import { assoc } from 'ramda';
 
 export const { actions, reducer, selectors } = autodux({
   slice: 'pokemon',
@@ -7,10 +8,8 @@ export const { actions, reducer, selectors } = autodux({
     list: []
   },
   actions: {
-    setPokemon: (state, list) => ({
-      ...state,
-      list
-    })
+    fetchPokemon: assoc('fetching', true),
+    setPokemon: (state, list) => assoc('list', list, state)
   }
 });
 
