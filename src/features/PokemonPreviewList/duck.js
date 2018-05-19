@@ -13,7 +13,11 @@ export const {
   },
   actions: {
     fetchPokemon: assoc('fetching', true),
-    setPokemon: (state, list) => assoc('list', list, state)
+    setPokemon: (state, list) => ({
+      ...state,
+      fetching: false,
+      list
+    })
   }
 });
 

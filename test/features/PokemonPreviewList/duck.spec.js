@@ -15,9 +15,12 @@ describe('duck', () => {
   });
 
   describe('setPokemon action', () => {
-    it('allows setting the entire state', () => {
+    it('sets the list and resets fetching', () => {
       const action = setPokemon(['Bulbasaur']);
-      const state = reducer(undefined, action);
+      const state = reducer({
+        fetching: true,
+        list: []
+      }, action);
 
       expect(state).toEqual({
         fetching: false,
