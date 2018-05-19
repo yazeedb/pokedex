@@ -1,0 +1,38 @@
+{
+   "name":"national",
+   "region":null,
+   "version_groups":[
+
+   ],
+   "is_main_series":true,
+   "descriptions":[
+      {
+         "description":"Pokédex National complet",
+         "language":{
+            "url":"https://pokeapi.co/api/v2/language/5/",
+            "name":"fr"
+         }
+      },
+      {
+         "description":"Komplette Nationale Dex",
+         "language":{
+            "url":"https://pokeapi.co/api/v2/language/6/",
+            "name":"de"
+         }
+      },
+      {
+         "description":"Entire National dex",
+         "language":{
+            "url":"https://pokeapi.co/api/v2/language/9/",
+            "name":"en"
+         }
+      }
+   ],
+   "pokemon_entries":{
+      "entry_number":1,
+      "pokemon_species":{
+         "url":"https://pokeapi.co/api/v2/pokemon-species/1/",
+         "name":"bulbasaur"
+      }
+   }
+}

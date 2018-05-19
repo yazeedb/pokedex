@@ -1,4 +1,8 @@
-import { actions, reducer } from 'features/PokemonPreviewList/duck';
+import {
+  setPokemon,
+  fetchPokemon,
+  reducer
+} from 'features/PokemonPreviewList/duck';
 
 describe('duck', () => {
   it('has the correct initial state', () => {
@@ -12,7 +16,7 @@ describe('duck', () => {
 
   describe('setPokemon action', () => {
     it('allows setting the entire state', () => {
-      const action = actions.setPokemon(['Bulbasaur']);
+      const action = setPokemon(['Bulbasaur']);
       const state = reducer(undefined, action);
 
       expect(state).toEqual({
@@ -24,7 +28,7 @@ describe('duck', () => {
 
   describe('fetchPokemon action', () => {
     it('sets the fetching to true', () => {
-      const action = actions.fetchPokemon();
+      const action = fetchPokemon();
       const state = reducer(undefined, action);
 
       expect(state).toEqual({

@@ -1,7 +1,11 @@
 import autodux from 'autodux';
 import { assoc } from 'ramda';
 
-export const { actions, reducer, selectors } = autodux({
+export const {
+  actions: { fetchPokemon, setPokemon },
+  reducer,
+  selectors
+} = autodux({
   slice: 'pokemon',
   initial: {
     fetching: false,
