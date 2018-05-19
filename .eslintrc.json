@@ -3,6 +3,7 @@
     "rules": {
       "max-len": ["error", 80],
       "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+      "function-paren-newline": ["error", "consistent"],
       "react/jsx-curly-spacing": [2, { "when": "always" }],
       "comma-dangle": ["error", "never"],
       "react/require-default-props": 0,
@@ -11,6 +12,7 @@
       "import/extensions": 0
     },
     "globals": {
+    "jest": true,
     "__dirname": true,
     "process": true,
     "describe": true,
