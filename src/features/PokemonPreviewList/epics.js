@@ -7,7 +7,7 @@ import { fetchPokemon, setPokemon } from './duck';
 export const fetchPokemonEpic = (action$, store, { fetch$ }) => action$.pipe(
   ofType(fetchPokemon.type),
   switchMap(() => fetch$(pokedex).pipe(
-    pluck('pokemon_entries'),
+    pluck('response', 'pokemon_entries'),
     switchMap(data => of(
       setPokemon(data)
     ))

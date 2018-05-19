@@ -11,7 +11,7 @@ describe('fetchPokemonEpic', () => {
     const action$ = ActionsObservable.of(fetchPokemon());
     const fetch$ = (url) => {
       urlSpy(url);
-      return of(pokedexJson);
+      return of({ response: pokedexJson });
     };
 
     fetchPokemonEpic(action$, null, { fetch$ })
