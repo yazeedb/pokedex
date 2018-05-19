@@ -1,13 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { lifecycle } from 'recompose';
 import { fetchPokemon, selectors } from './duck';
 
-const Component = () => (
+const Loading = () => <span data-test="loading">Loading...</span>;
+const Component = ({ fetching, list }) => (
   <div className="pokemon-preview-list">
-    PokemonPreviewList page
+    { fetching ? <Loading /> : list }
   </div>
 );
+
+Component.propTypes = {
+  fetching: PropTypes.bool,
+  list: PropTypes.arrayOf(PropTypes.object)
+};
 
 const enhanceComponent = lifecycle({
   componentDidMount() {

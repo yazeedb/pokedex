@@ -16,6 +16,16 @@ describe('PokemonPreviewList', () => {
     expect(fetchPokemon.mock.calls[0][0]).toBe(undefined);
   });
 
+  it('shows loading indicator if fetching', () => {
+    const loading = getWrapper({
+      fetching: true,
+      fetchPokemon: () => {}
+    })
+      .find('[data-test="loading"]');
+
+    expect(loading.length).toBe(1);
+  });
+
   describe('mapStateToProps', () => {
     it('returns the correct state', () => {
       const state = mapStateToProps({
