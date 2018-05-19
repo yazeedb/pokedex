@@ -2,9 +2,15 @@ import autodux from 'autodux';
 
 export const { actions, reducer, selectors } = autodux({
   slice: 'pokemon',
-  initial: [],
+  initial: {
+    fetching: false,
+    list: []
+  },
   actions: {
-    setPokemon: (state, payload) => payload
+    setPokemon: (state, list) => ({
+      ...state,
+      list
+    })
   }
 });
 
