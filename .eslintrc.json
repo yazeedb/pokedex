@@ -1,6 +1,7 @@
 {
     "extends": "airbnb",
     "rules": {
+      "max-len": ["error", 80],
       "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
       "react/jsx-curly-spacing": [2, { "when": "always" }],
       "comma-dangle": ["error", "never"],
