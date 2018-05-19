@@ -1,4 +1,4 @@
-import { actions, reducer } from 'features/Home/duck';
+import { actions, reducer } from 'features/PokemonPreviewList/duck';
 
 describe('duck', () => {
   it('has the correct initial state', () => {
