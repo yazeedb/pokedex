@@ -17,4 +17,11 @@ describe('TypeBadge', () => {
 
     expect(type.prop('className')).toBe('type-badge type-grass');
   });
+
+  it('makes className lowercase', () => {
+    const type = getWrapper({ type: 'GRaSs' })
+      .find('[data-test="type"]');
+
+    expect(type.prop('className')).toBe('type-badge type-grass');
+  });
 });
