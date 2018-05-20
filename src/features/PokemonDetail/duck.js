@@ -1,13 +1,23 @@
 import autodux from 'autodux';
+import { assoc } from 'ramda';
 
 export const {
-  actions,
+  actions: { fetchPokemonDetails, setPokemonDetails },
   reducer,
   selectors
 } = autodux({
   slice: 'pokemonDetail',
   initial: {
-    loading: false,
+    fetching: false,
     pokemon: null
+  },
+  actions: {
+    fetchPokemonDetails: assoc('fetching', true),
+    setPokemonDetails: (state, pokemon) => ({
+      fetching: false,
+      pokemon
+    })
   }
 });
+
+export default reducer;
