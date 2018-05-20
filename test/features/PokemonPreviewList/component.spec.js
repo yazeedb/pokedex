@@ -53,9 +53,11 @@ describe('PokemonPreviewList', () => {
       .find(PokemonPreview)
       .props();
 
-
-    expect(componentProps.name).toBe(name);
-    expect(componentProps.types).toBe(types);
-    expect(componentProps.spriteUrl).toBe(`pokemon/icons/${id}.png`);
+    expect(componentProps).toEqual({
+      id,
+      name,
+      types,
+      spriteUrl: `pokemon/icons/${id}.png`
+    });
   });
 });
