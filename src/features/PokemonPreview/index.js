@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import TypeBadge from '/components/TypeBadge';
 import upperFirst from '/helpers/upperFirst';
 
 const PokemonPreview = ({
@@ -18,7 +19,7 @@ const PokemonPreview = ({
       { upperFirst(name) }
     </span>
 
-    { JSON.stringify(types) }
+    { types.map(type => <TypeBadge type={ type } key={ type } />) }
   </div>
 );
 
