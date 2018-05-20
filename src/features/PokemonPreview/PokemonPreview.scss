@@ -1,0 +1,19 @@
+.pokemon-preview {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #D4D3D7;
+
+  img {
+    margin-right: 5px;
+  }
+
+  .name {
+    vertical-align: super;
+  }
+
+  .types {
+    font-size: 14px;
+    margin-top: 8px;
+  }
+}
