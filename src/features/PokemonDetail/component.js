@@ -7,7 +7,9 @@ const PokemonDetail = () => (
 
 const enhanceComponent = lifecycle({
   componentDidMount() {
-    this.props.fetchPokemonDetails();
+    const { fetchPokemonDetails, id } = this.props;
+
+    fetchPokemonDetails(id);
   }
 });
 

@@ -4,12 +4,15 @@ import { mountWithRouter } from '/wrapper';
 const getWrapper = mountWithRouter(Component);
 
 describe('PokemonDetail', () => {
-  it('calls fetchPokemonDetails on componentDidMount', () => {
+  it('calls fetchPokemonDetails with ID on didMount', () => {
     const fetchPokemonDetails = jest.fn();
 
-    getWrapper({ fetchPokemonDetails });
+    getWrapper({
+      id: 1,
+      fetchPokemonDetails
+    });
 
     expect(fetchPokemonDetails.mock.calls.length).toBe(1);
-    expect(fetchPokemonDetails.mock.calls[0][0]).toBe(undefined);
+    expect(fetchPokemonDetails.mock.calls[0][0]).toBe(1);
   });
 });
