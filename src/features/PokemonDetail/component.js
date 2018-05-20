@@ -1,10 +1,8 @@
 import React from 'react';
 import { lifecycle } from 'recompose';
 
-const PokemonDetail = (props) => (
-  <div>
-    { console.log('props:', props) }
-  </div>
+const Component = () => (
+  <div />
 );
 
 const enhanceComponent = lifecycle({
@@ -15,4 +13,4 @@ const enhanceComponent = lifecycle({
   }
 });
 
-export default enhanceComponent(PokemonDetail);
+export default enhanceComponent(Component);
