@@ -1,6 +1,7 @@
 {
     "extends": "airbnb",
     "rules": {
+      "camelcase": 0,
       "max-len": ["error", 80],
       "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
       "function-paren-newline": ["error", "consistent"],

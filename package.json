@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watch",
+    "test": "jest --watchAll",
     "server": "nodemon server.js",
     "start": "webpack",
     "watch": "webpack --watch"
