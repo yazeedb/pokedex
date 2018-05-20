@@ -10,6 +10,7 @@ const Component = ({ fetching, list }) => (
       fetching ? <Loading /> :
         list.map(({ id, name, types }) => (
           <PokemonPreview
+            id={ id }
             name={ name }
             types={ types }
             spriteUrl={ `pokemon/icons/${id}.png` }

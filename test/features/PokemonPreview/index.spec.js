@@ -1,12 +1,27 @@
 import PokemonPreview from '/features/PokemonPreview';
 import TypeBadge from '/components/TypeBadge';
-import { mountWrapper } from '/wrapper';
+import { mountWithRouter } from '/wrapper';
 
-const getWrapper = mountWrapper(PokemonPreview);
+const getWrapper = mountWithRouter(PokemonPreview);
 
 describe('PokemonPreview', () => {
+  it('renders a wrapper linking to Pokemon\'s detail page', () => {
+    const href = getWrapper({
+      id: 1,
+      spriteUrl: 'pokemon/icons/1.png',
+      name: 'bulbasaur',
+      types: []
+    })
+      .find('[data-test="detail-link"]')
+      .last()
+      .prop('href');
+
+    expect(href).toBe('/1');
+  });
+
   it('renders a Pokemon\'s sprite', () => {
     const img = getWrapper({
+      id: 1,
       spriteUrl: 'pokemon/icons/1.png',
       name: 'bulbasaur',
       types: []
@@ -18,7 +33,11 @@ describe('PokemonPreview', () => {
   });
 
   it('renders a pokemon\'s capitalized name', () => {
-    const name = getWrapper({ name: 'bulbasaur', types: [] })
+    const name = getWrapper({
+      id: 1,
+      name: 'bulbasaur',
+      types: []
+    })
       .find('[data-test="name"]');
 
     expect(name.text()).toBe('Bulbasaur');
@@ -26,6 +45,7 @@ describe('PokemonPreview', () => {
 
   it('renders a TypeBadge for each type', () => {
     const elementCount = getWrapper({
+      id: 1,
       spriteUrl: 'pokemon/icons/1.png',
       name: 'bulbasaur',
       types: ['Grass', 'Poison']

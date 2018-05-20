@@ -1,9 +1,9 @@
 import Component from '/features/PokemonPreviewList/component';
 import PokemonPreview from '/features/PokemonPreview';
-import { mountWrapper } from '/wrapper';
+import { mountWithRouter } from '/wrapper';
 import pokemonJson from '/api/data/pokemon.json';
 
-const getWrapper = mountWrapper(Component);
+const getWrapper = mountWithRouter(Component);
 
 describe('PokemonPreviewList', () => {
   it('calls fetchPokemon on componentDidMount', () => {
@@ -53,9 +53,11 @@ describe('PokemonPreviewList', () => {
       .find(PokemonPreview)
       .props();
 
-
-    expect(componentProps.name).toBe(name);
-    expect(componentProps.types).toBe(types);
-    expect(componentProps.spriteUrl).toBe(`pokemon/icons/${id}.png`);
+    expect(componentProps).toEqual({
+      id,
+      name,
+      types,
+      spriteUrl: `pokemon/icons/${id}.png`
+    });
   });
 });
