@@ -1,9 +1,9 @@
 import Component from '/features/PokemonPreviewList/component';
 import PokemonPreview from '/features/PokemonPreview';
-import { mountWrapper } from '/wrapper';
+import { mountWithRouter } from '/wrapper';
 import pokemonJson from '/api/data/pokemon.json';
 
-const getWrapper = mountWrapper(Component);
+const getWrapper = mountWithRouter(Component);
 
 describe('PokemonPreviewList', () => {
   it('calls fetchPokemon on componentDidMount', () => {
