@@ -3,6 +3,12 @@
   justify-content: space-between;
   padding: 12px 5px;
   border-bottom: 1px solid #D4D3D7;
+  text-decoration: none;
+  color: initial;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.10);
+  }
 
   img {
     margin-right: 5px;
