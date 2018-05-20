@@ -16,7 +16,7 @@ describe('PokemonPreview', () => {
       .last()
       .prop('href');
 
-    expect(href).toBe('/detail/1');
+    expect(href).toBe('/1');
   });
 
   it('renders a Pokemon\'s sprite', () => {

@@ -12,7 +12,7 @@ const PokemonPreview = ({
   types
 }) => (
   <Link
-    to={ `/detail/${id}` }
+    to={ `/${id}` }
     className="pokemon-preview"
     data-test="detail-link"
   >
