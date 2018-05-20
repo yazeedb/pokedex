@@ -8,8 +8,12 @@ describe('PokemonDetail', () => {
     const fetchPokemonDetails = jest.fn();
 
     getWrapper({
-      id: 1,
-      fetchPokemonDetails
+      fetchPokemonDetails,
+      match: {
+        params: {
+          id: 1
+        }
+      }
     });
 
     expect(fetchPokemonDetails.mock.calls.length).toBe(1);

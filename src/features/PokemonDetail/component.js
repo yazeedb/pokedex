@@ -1,15 +1,17 @@
 import React from 'react';
 import { lifecycle } from 'recompose';
 
-const PokemonDetail = () => (
-  <div />
+const PokemonDetail = (props) => (
+  <div>
+    { console.log('props:', props) }
+  </div>
 );
 
 const enhanceComponent = lifecycle({
   componentDidMount() {
-    const { fetchPokemonDetails, id } = this.props;
+    const { fetchPokemonDetails, match: { params } } = this.props;
 
-    fetchPokemonDetails(id);
+    fetchPokemonDetails(params.id);
   }
 });
 
