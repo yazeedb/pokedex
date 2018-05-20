@@ -1,18 +1,19 @@
 import { of } from 'rxjs/observable/of';
 import { switchMap } from 'rxjs/operators';
 import { ofType } from 'redux-observable';
-import { fetchData, setData } from './';
 
-export const fetchDataEpic = endpoint => (
-  action$,
-  store,
-  { fetch$ }
-) => action$.pipe(
-  ofType(fetchData.type),
+export const fetchDataEpic = ({
+  type,
+  endpoint,
+  successActions = []
+}) => (action$, store, { fetch$ }) => action$.pipe(
+  ofType(type),
   switchMap(() => fetch$(endpoint).pipe(
-    switchMap(({ response }) => of(
-      setData(response)
-    ))
+    switchMap(({ response }) => {
+      const actions = successActions.map(action => action(response));
+
+      return of(...actions);
+    })
   ))
 );
 

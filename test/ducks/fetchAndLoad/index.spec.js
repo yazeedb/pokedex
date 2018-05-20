@@ -21,7 +21,7 @@ describe('fetchAndLoad', () => {
 
   it('has an action to fetch data', () => {
     const { actions, reducer } = createDuck('test');
-    const state = reducer(undefined, actions.setFetching(true));
+    const state = reducer(undefined, actions.fetchData());
 
     expect(state).toEqual({
       fetching: true,
