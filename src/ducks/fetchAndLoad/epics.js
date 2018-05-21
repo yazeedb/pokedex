@@ -2,7 +2,7 @@ import { of } from 'rxjs/observable/of';
 import { switchMap } from 'rxjs/operators';
 import { ofType } from 'redux-observable';
 
-export const fetchDataEpic = ({
+export const makeFetchDataEpic = ({
   type,
   endpoint,
   successActions = []
@@ -18,5 +18,5 @@ export const fetchDataEpic = ({
 );
 
 export default [
-  fetchDataEpic
+  makeFetchDataEpic
 ];
