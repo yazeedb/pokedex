@@ -11,7 +11,7 @@ describe('PokemonPreviewList', () => {
 
     getWrapper({
       fetchPokemon,
-      list: []
+      data: []
     });
 
     expect(fetchPokemon.mock.calls.length).toBe(1);
@@ -22,7 +22,7 @@ describe('PokemonPreviewList', () => {
     const loading = getWrapper({
       fetching: true,
       fetchPokemon: () => {},
-      list: []
+      data: []
     })
       .find('[data-test="loading"]');
 
@@ -30,11 +30,11 @@ describe('PokemonPreviewList', () => {
   });
 
   it('renders a PokemonPreview for each list item', () => {
-    const list = pokemonJson.slice(0, 3);
+    const data = pokemonJson.slice(0, 3);
     const elementCount = getWrapper({
       fetchPokemon: () => {},
       fetching: false,
-      list
+      data
     })
       .find(PokemonPreview)
       .length;
@@ -43,12 +43,12 @@ describe('PokemonPreviewList', () => {
   });
 
   it('passes the correct props to each PokemonPreview', () => {
-    const list = pokemonJson.slice(0, 1);
-    const { id, name, types } = list[0];
+    const data = pokemonJson.slice(0, 1);
+    const { id, name, types } = data[0];
     const componentProps = getWrapper({
       fetchPokemon: () => {},
       fetching: false,
-      list
+      data
     })
       .find(PokemonPreview)
       .props();
