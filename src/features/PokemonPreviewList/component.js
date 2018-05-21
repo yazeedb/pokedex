@@ -4,11 +4,11 @@ import { lifecycle } from 'recompose';
 import PokemonPreview from '/features/PokemonPreview';
 
 const Loading = () => <span data-test="loading">Loading...</span>;
-const Component = ({ fetching, list }) => (
+const Component = ({ fetching, data }) => (
   <div className="pokemon-preview-list">
     {
       fetching ? <Loading /> :
-        list.map(({ id, name, types }) => (
+        data.map(({ id, name, types }) => (
           <PokemonPreview
             id={ id }
             name={ name }
@@ -23,7 +23,7 @@ const Component = ({ fetching, list }) => (
 
 Component.propTypes = {
   fetching: PropTypes.bool,
-  list: PropTypes.arrayOf(PropTypes.object)
+  data: PropTypes.arrayOf(PropTypes.object)
 };
 
 const enhanceComponent = lifecycle({

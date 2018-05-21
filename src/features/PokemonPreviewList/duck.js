@@ -1,13 +1,12 @@
 import createDuck from '/ducks/fetchAndLoad';
 import { pokedex } from '/endpoints';
 
-const duck = createDuck('pokemonPreviewList', { list: [] });
+const duck = createDuck('pokemonPreviewList', { data: [] });
 
 export const {
   actions: {
     fetchData: fetchPokemon,
-    setList: setPokemon,
-    setFetching
+    setData: setPokemon
   },
   selectors,
   slice,
@@ -17,7 +16,7 @@ export const {
 export const fetchDataEpic = duck.makeFetchDataEpic({
   type: fetchPokemon.type,
   endpoint: pokedex,
-  successActions: [setPokemon, setFetching.bind(null, false)]
+  successActions: [setPokemon]
 });
 
 export default reducer;

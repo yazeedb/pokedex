@@ -11,7 +11,12 @@ export default (sliceName, initial = {}) => {
       ...initial
     },
     actions: {
-      fetchData: assoc('fetching', true)
+      fetchData: assoc('fetching', true),
+      setData: (state, data) => ({
+        ...state,
+        fetching: false,
+        data
+      })
     },
     selectors: {
       getState: identity
