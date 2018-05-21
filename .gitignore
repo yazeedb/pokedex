@@ -4,3 +4,4 @@ package-lock.json
 yarn.lock
 designs
 assets/pokemon
+src/api/data/pokemonDetail.json
