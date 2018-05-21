@@ -20,7 +20,7 @@ const fetchIt = url => fromPromise(
   fetch(url).then(res => res.json())
 );
 
-from(pokemon.slice(12, 13)).pipe(
+from(pokemon).pipe(
   map(({ id }) => ({
     detailsUrl: getPokemonDetails(id),
     speciesUrl: getPokemonSpecies(id)
