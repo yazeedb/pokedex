@@ -1,9 +1,9 @@
 import { createEpicMiddleware, combineEpics } from 'redux-observable';
 import { ajax } from 'rxjs/observable/dom/ajax';
-import pokemonPreviewListEpics from '/features/PokemonPreviewList/epics';
+import { fetchDataEpic } from '/features/PokemonPreviewList/duck';
 
 const rootEpic = combineEpics(
-  ...pokemonPreviewListEpics
+  fetchDataEpic
 );
 
 export default createEpicMiddleware(rootEpic, {

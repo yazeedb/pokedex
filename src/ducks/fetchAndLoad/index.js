@@ -1,6 +1,6 @@
 import autodux from 'autodux';
-import { assoc } from 'ramda';
-import { fetchDataEpic } from './epics';
+import { assoc, identity } from 'ramda';
+import { makeFetchDataEpic } from './epics';
 
 export default (sliceName, initial = {}) => {
   const duck = autodux({
@@ -12,11 +12,14 @@ export default (sliceName, initial = {}) => {
     },
     actions: {
       fetchData: assoc('fetching', true)
+    },
+    selectors: {
+      getState: identity
     }
   });
 
   return {
     ...duck,
-    epics: { fetchDataEpic }
+    makeFetchDataEpic
   };
 };

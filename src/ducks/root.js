@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import pokemonPreviewList from '/features/PokemonPreviewList/duck';
+import pokemonPreviewList, { slice } from '/features/PokemonPreviewList/duck';
 
 export default combineReducers({
-  pokemonPreviewList
+  [slice]: pokemonPreviewList
 });
