@@ -12,4 +12,10 @@ describe('upperFirst', () => {
 
     expect(result).toBe('Hello');
   });
+
+  it('defaults to an empty string', () => {
+    const result = upperFirst();
+
+    expect(result).toBe('');
+  });
 });
