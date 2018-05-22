@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { lifecycle } from 'recompose';
+import upperFirst from '/helpers/upperFirst';
 import './PokemonDetail.scss';
 
 const Component = ({
@@ -13,6 +14,10 @@ const Component = ({
       className="sugimori-img"
       data-test="sugimori-img"
     />
+
+    <h1 data-test="name">
+      { upperFirst(details.name) }
+    </h1>
   </div>
 );
 

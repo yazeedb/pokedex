@@ -1,6 +1,7 @@
 import Component from '/features/PokemonDetail/component';
 import { mountWithRouter } from '/wrapper';
 import pokemonJson from '/api/data/pokemonDetails.json';
+import upperFirst from '/helpers/upperFirst';
 
 const getWrapper = mountWithRouter(Component);
 
@@ -39,5 +40,22 @@ describe('PokemonDetail', () => {
     expect(img.length).toBe(1);
     expect(img.prop('alt')).toBe(details.name);
     expect(img.prop('src')).toBe(`pokemon/sugimori/${details.id}.png`);
+  });
+
+  it('renders the pokemon\'s name', () => {
+    const { details, species } = pokemonJson[0];
+    const name = getWrapper({
+      data: { details, species },
+      fetchPokemonDetails: () => {},
+      match: {
+        params: {
+          id: 1
+        }
+      }
+    })
+      .find('[data-test="name"]')
+      .text();
+
+    expect(name).toBe(upperFirst(details.name));
   });
 });
