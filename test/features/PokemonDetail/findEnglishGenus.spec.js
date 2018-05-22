@@ -30,18 +30,12 @@ describe('findEnglishGenus', () => {
   it('returns the english genus', () => {
     const result = findEnglishGenus(species);
 
-    expect(result).toEqual({
-      genus: 'Seed Pokémon',
-      language: {
-        url: 'https://pokeapi.co/api/v2/language/9/',
-        name: 'en'
-      }
-    });
+    expect(result).toBe('Seed Pokémon');
   });
 
-  it('does not break if genera does not exist', () => {
+  it('returns empty string if genera does not exist', () => {
     const result = findEnglishGenus({});
 
-    expect(result).toBe(undefined);
+    expect(result).toBe('');
   });
 });

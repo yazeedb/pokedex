@@ -58,4 +58,21 @@ describe('PokemonDetail', () => {
 
     expect(name).toBe(upperFirst(details.name));
   });
+
+  it('renders the pokemon\'s ID and English genus', () => {
+    const { details, species } = pokemonJson[0];
+    const text = getWrapper({
+      data: { details, species },
+      fetchPokemonDetails: () => {},
+      match: {
+        params: {
+          id: 1
+        }
+      }
+    })
+      .find('[data-test="id-genus"]')
+      .text();
+
+    expect(text).toBe('#1 Seed Pokémon');
+  });
 });
