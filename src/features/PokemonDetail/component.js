@@ -1,9 +1,27 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { lifecycle } from 'recompose';
+import './PokemonDetail.scss';
 
-const Component = () => (
-  <div />
+const Component = ({
+  data: { details, species }
+}) => (
+  <div className="pokemon-detail">
+    <img
+      src={ `pokemon/sugimori/${details.id}.png` }
+      alt={ details.name }
+      className="sugimori-img"
+      data-test="sugimori-img"
+    />
+  </div>
 );
+
+Component.propTypes = {
+  data: PropTypes.shape({
+    details: PropTypes.object,
+    species: PropTypes.object
+  })
+};
 
 const enhanceComponent = lifecycle({
   componentDidMount() {
