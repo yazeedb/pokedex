@@ -1,4 +1,5 @@
 import Component from '/features/PokemonDetail/component';
+import TypeBadge from '/components/TypeBadge';
 import { mountWithRouter } from '/wrapper';
 import pokemonJson from '/api/data/pokemonDetails.json';
 import upperFirst from '/helpers/upperFirst';
@@ -74,5 +75,22 @@ describe('PokemonDetail', () => {
       .text();
 
     expect(text).toBe('#1 Seed Pokémon');
+  });
+
+  it('renders a TypeBadge for each type', () => {
+    const { details, species } = pokemonJson[0];
+    const count = getWrapper({
+      data: { details, species },
+      fetchPokemonDetails: () => {},
+      match: {
+        params: {
+          id: 1
+        }
+      }
+    })
+      .find(TypeBadge)
+      .length;
+
+    expect(count).toBe(details.types.length);
   });
 });

@@ -1,5 +1,17 @@
-.sugimori-img {
-  width: 200px;
-  margin: 0 auto;
-  display: block;
+.pokemon-detail {
+  text-align: center;
+
+  .sugimori-img {
+    width: 200px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .name {
+    margin-bottom: 0;
+  }
+
+  .id-genus {
+    margin-top: 0;
+  }
 }
