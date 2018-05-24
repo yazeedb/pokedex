@@ -5,7 +5,8 @@ import createDuck from '/ducks/fetchAndLoad';
 import { getPokemonDetails } from '/endpoints';
 
 const duck = createDuck('pokemonDetails', {
-  data: { details: {}, species: {} }
+  data: { details: {}, species: {} },
+  fetching: true
 });
 
 export const {

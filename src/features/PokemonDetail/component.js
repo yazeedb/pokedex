@@ -28,7 +28,7 @@ const Component = ({
     </p>
 
     {
-      details.types && details.types.map(({ type }) => (
+      details.types.map(({ type }) => (
         <TypeBadge type={ type.name } key={ type.name } />
       ))
     }
