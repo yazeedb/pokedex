@@ -6,9 +6,11 @@ import upperFirst from '/helpers/upperFirst';
 import findEnglishGenus from './findEnglishGenus';
 import './PokemonDetail.scss';
 
+const Loading = () => <span data-test="loading">Loading...</span>;
 const Component = ({
-  data: { details, species }
-}) => (
+  data: { details, species },
+  fetching
+}) => (fetching ? <Loading /> : (
   <div className="pokemon-detail">
     <img
       src={ `pokemon/sugimori/${details.id}.png` }
@@ -31,13 +33,14 @@ const Component = ({
       ))
     }
   </div>
-);
+));
 
 Component.propTypes = {
   data: PropTypes.shape({
     details: PropTypes.object,
     species: PropTypes.object
-  })
+  }),
+  fetching: PropTypes.bool
 };
 
 const enhanceComponent = lifecycle({

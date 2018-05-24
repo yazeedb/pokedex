@@ -24,6 +24,22 @@ describe('PokemonDetail', () => {
     expect(fetchPokemonDetails.mock.calls[0][0]).toBe(1);
   });
 
+  it('shows loading indicator if fetching', () => {
+    const loading = getWrapper({
+      fetching: true,
+      data: { details: {}, species: {} },
+      fetchPokemonDetails: () => {},
+      match: {
+        params: {
+          id: 1
+        }
+      }
+    })
+      .find('[data-test="loading"]');
+
+    expect(loading.length).toBe(1);
+  });
+
   it('renders the pokemon\'s sugimori image', () => {
     const { details, species } = pokemonJson[0];
 
