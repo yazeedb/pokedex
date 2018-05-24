@@ -1,6 +1,5 @@
 const pokemon = require('./data/pokemon.json');
 const pokemonDetails = require('./data/pokemonDetails');
-const formatSpecies = require('./helpers/formatSpecies');
 
 module.exports = (app, express) => {
   const router = express.Router();
@@ -10,12 +9,9 @@ module.exports = (app, express) => {
   });
 
   router.get('/pokemon/:id', (req, res) => {
-    const { details, species } = pokemonDetails[req.params.id - 1];
+    const { id } = req.params;
 
-    res.json({
-      details,
-      species: formatSpecies(species)
-    });
+    res.json(pokemonDetails[id - 1]);
   });
 
   return router;
