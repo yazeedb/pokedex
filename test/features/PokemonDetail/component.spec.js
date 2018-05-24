@@ -1,7 +1,7 @@
 import Component from '/features/PokemonDetail/component';
 import TypeBadge from '/components/TypeBadge';
 import { mountWithRouter } from '/wrapper';
-import pokemonJson from '/api/data/pokemonDetails.json';
+import pokemonJson from '/api/data/test-pokemon.json';
 import upperFirst from '/helpers/upperFirst';
 
 const getWrapper = mountWithRouter(Component);
@@ -109,4 +109,21 @@ describe('PokemonDetail', () => {
 
     expect(count).toBe(details.types.length);
   });
+
+  // it('renders the correct flavor text entry', () => {
+  //   const { details, species } = pokemonJson[0];
+  //   const flavorTextEntry = getWrapper({
+  //     data: { details, species },
+  //     fetchPokemonDetails: () => {},
+  //     match: {
+  //       params: {
+  //         id: 1
+  //       }
+  //     }
+  //   })
+  //     .find('[data-test="flavor-text-entry"]')
+  //     .text();
+  //
+  //   expect(flavorTextEntry).toBe()
+  // });
 });
