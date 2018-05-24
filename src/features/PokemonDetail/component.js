@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { lifecycle } from 'recompose';
+import { head, pipe, prop } from 'ramda';
 import TypeBadge from '/components/TypeBadge';
+import getFlavorTextEntries from '/helpers/getFlavorTextEntries';
 import upperFirst from '/helpers/upperFirst';
 import findEnglishGenus from './findEnglishGenus';
 import './PokemonDetail.scss';
@@ -32,6 +34,16 @@ const Component = ({
         <TypeBadge type={ type.name } key={ type.name } />
       ))
     }
+
+    <p data-test="flavor-text-entry">
+      {
+        pipe(
+          getFlavorTextEntries,
+          head,
+          prop('flavor_text')
+        )(species.flavor_text_entries)
+      }
+    </p>
   </div>
 ));
 
