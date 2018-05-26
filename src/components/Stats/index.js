@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { add, pipe, pluck, reduce } from 'ramda';
+import { pipe, pluck, sum } from 'ramda';
 import { statNameMap } from './constants';
 
-const getTotal = pipe(pluck('base_stat'), reduce(add, 0));
+const getTotal = pipe(pluck('base_stat'), sum);
 
 const Stats = ({ stats }) => (
   <div className="stats">
