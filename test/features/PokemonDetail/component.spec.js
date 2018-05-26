@@ -154,4 +154,39 @@ describe('PokemonDetail', () => {
     expect(title).toBe('EGG GROUPS');
     expect(eggGroupText).toBe('Plant, Monster');
   });
+
+  it('renders the normal/shiny sprites', () => {
+    const { details, species } = pokemonJson;
+    const wrapper = getWrapper({
+      data: { details, species },
+      fetchPokemonDetails: () => {},
+      match: {
+        params: {
+          id: 1
+        }
+      }
+    })
+      .find('[data-test="sprites"]');
+
+    const title = wrapper
+      .find('[data-test="title"]')
+      .text();
+
+    const [normal, shiny] = wrapper
+      .children('div')
+      .map(node => ({
+        imgSrc: node.find('[data-test="sprite"]').prop('src'),
+        label: node.find('[data-test="label"]').text()
+      }));
+
+    expect(title).toBe('SPRITES');
+    expect(normal).toEqual({
+      imgSrc: 'pokemon/normalGifs/bulbasaur.gif',
+      label: 'Normal'
+    });
+    expect(shiny).toEqual({
+      imgSrc: 'pokemon/shinyGifs/bulbasaur.gif',
+      label: 'Shiny'
+    });
+  });
 });

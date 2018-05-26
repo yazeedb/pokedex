@@ -56,6 +56,29 @@ const Component = ({
       }
       </span>
     </div>
+
+    <div className="sprites" data-test="sprites">
+      <h3 data-test="title">SPRITES</h3>
+      <div className="normal-sprite" data-test="normal-sprite">
+        <img
+          src={ `pokemon/normalGifs/${details.name}.gif` }
+          alt={ `${details.name} sprite` }
+          data-test="sprite"
+        />
+
+        <p data-test="label">Normal</p>
+      </div>
+
+      <div className="shiny-sprite" data-test="shiny-sprite">
+        <img
+          src={ `pokemon/shinyGifs/${details.name}.gif` }
+          alt={ `${details.name} shiny sprite` }
+          data-test="sprite"
+        />
+
+        <p data-test="label">Shiny</p>
+      </div>
+    </div>
   </div>
 ));
 

@@ -15,7 +15,18 @@
     margin-top: 0;
   }
 
-  .egg-groups h3 {
-    text-decoration: underline;
+  .egg-groups,
+  .sprites {
+    margin-top: 30px;
+
+    h3 {
+      text-decoration: underline;
+    }
+  }
+
+  .normal-sprite,
+  .shiny-sprite {
+    display: inline-block;
+    margin: 0 25px;
   }
 }
