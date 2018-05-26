@@ -8,7 +8,7 @@ const getTotal = pipe(pluck('base_stat'), sum);
 const Stats = ({ stats }) => (
   <div className="stats">
     {
-      [...stats].map(({ base_stat, stat }) => (
+      stats.map(({ base_stat, stat }) => (
         <div key={ stat.name }>
           <span data-test="stat-name">
             { statNameMap[stat.name.toUpperCase()] }
