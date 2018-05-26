@@ -44,6 +44,18 @@ const Component = ({
         )(species.flavor_text_entries)
       }
     </p>
+
+    <div className="egg-groups" data-test="egg-groups">
+      <h3 data-test="title">EGG GROUPS</h3>
+      <span data-test="egg-group-text">
+        {
+          species.egg_groups
+            .map(prop('name'))
+            .map(upperFirst)
+            .join(', ')
+      }
+      </span>
+    </div>
   </div>
 ));
 

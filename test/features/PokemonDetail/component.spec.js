@@ -129,4 +129,29 @@ describe('PokemonDetail', () => {
 
     expect(flavorTextEntry).toBe(first.flavor_text);
   });
+
+  it('renders the egg groups', () => {
+    const { details, species } = pokemonJson;
+    const wrapper = getWrapper({
+      data: { details, species },
+      fetchPokemonDetails: () => {},
+      match: {
+        params: {
+          id: 1
+        }
+      }
+    })
+      .find('[data-test="egg-groups"]');
+
+    const title = wrapper
+      .find('[data-test="title"]')
+      .text();
+
+    const eggGroupText = wrapper
+      .find('[data-test="egg-group-text"]')
+      .text();
+
+    expect(title).toBe('EGG GROUPS');
+    expect(eggGroupText).toBe('Plant, Monster');
+  });
 });
