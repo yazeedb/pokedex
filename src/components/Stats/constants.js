@@ -1,10 +1,10 @@
-export const statNameMap = {
-  HP: 'HP',
-  ATTACK: 'ATK',
-  DEFENSE: 'DEF',
-  'SPECIAL-ATTACK': 'SPA',
-  'SPECIAL-DEFENSE': 'SPD',
-  SPEED: 'SPE'
+export const statNamesMap = {
+  hp: 'HP',
+  attack: 'ATK',
+  defense: 'DEF',
+  'special-attack': 'SPA',
+  'special-defense': 'SPD',
+  speed: 'SPE'
 };
 
-export default statNameMap;
+export default statNamesMap;
