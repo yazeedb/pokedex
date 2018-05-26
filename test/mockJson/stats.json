@@ -1,0 +1,50 @@
+[
+  {
+    "stat": {
+      "url": "https://pokeapi.co/api/v2/stat/6/",
+      "name": "speed"
+    },
+    "effort": 0,
+    "base_stat": 45
+  },
+  {
+    "stat": {
+      "url": "https://pokeapi.co/api/v2/stat/5/",
+      "name": "special-defense"
+    },
+    "effort": 0,
+    "base_stat": 65
+  },
+  {
+    "stat": {
+      "url": "https://pokeapi.co/api/v2/stat/4/",
+      "name": "special-attack"
+    },
+    "effort": 1,
+    "base_stat": 65
+  },
+  {
+    "stat": {
+      "url": "https://pokeapi.co/api/v2/stat/3/",
+      "name": "defense"
+    },
+    "effort": 0,
+    "base_stat": 49
+  },
+  {
+    "stat": {
+      "url": "https://pokeapi.co/api/v2/stat/2/",
+      "name": "attack"
+    },
+    "effort": 0,
+    "base_stat": 49
+  },
+  {
+    "stat": {
+      "url": "https://pokeapi.co/api/v2/stat/1/",
+      "name": "hp"
+    },
+    "effort": 0,
+    "base_stat": 45
+  }
+]
