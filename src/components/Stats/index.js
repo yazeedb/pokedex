@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { pipe, pluck, sum } from 'ramda';
 import { statNamesMap } from './constants';
 
-const getTotal = pipe(pluck('base_stat'), sum);
+const sumBaseStats = pipe(pluck('base_stat'), sum);
 
 const Stats = ({ stats }) => (
   <div className="stats">
@@ -22,7 +22,7 @@ const Stats = ({ stats }) => (
     }
 
     <span data-test="total">
-      TOTAL { getTotal(stats) }
+      TOTAL { sumBaseStats(stats) }
     </span>
   </div>
 );
