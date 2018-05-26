@@ -12,7 +12,7 @@ describe('PokemonDetail', () => {
     const fetchPokemonDetails = jest.fn();
 
     getWrapper({
-      data: pokemonJson[0],
+      data: pokemonJson,
       fetchPokemonDetails,
       match: {
         params: {
@@ -42,7 +42,7 @@ describe('PokemonDetail', () => {
   });
 
   it('renders the pokemon\'s sugimori image', () => {
-    const { details, species } = pokemonJson[0];
+    const { details, species } = pokemonJson;
 
     const img = getWrapper({
       data: { details, species },
@@ -61,7 +61,7 @@ describe('PokemonDetail', () => {
   });
 
   it('renders the pokemon\'s name', () => {
-    const { details, species } = pokemonJson[0];
+    const { details, species } = pokemonJson;
     const name = getWrapper({
       data: { details, species },
       fetchPokemonDetails: () => {},
@@ -78,7 +78,7 @@ describe('PokemonDetail', () => {
   });
 
   it('renders the pokemon\'s ID and English genus', () => {
-    const { details, species } = pokemonJson[0];
+    const { details, species } = pokemonJson;
     const text = getWrapper({
       data: { details, species },
       fetchPokemonDetails: () => {},
@@ -95,7 +95,7 @@ describe('PokemonDetail', () => {
   });
 
   it('renders a TypeBadge for each type', () => {
-    const { details, species } = pokemonJson[0];
+    const { details, species } = pokemonJson;
     const count = getWrapper({
       data: { details, species },
       fetchPokemonDetails: () => {},
@@ -112,7 +112,7 @@ describe('PokemonDetail', () => {
   });
 
   it('renders the correct flavor text entry', () => {
-    const { details, species } = pokemonJson[0];
+    const { details, species } = pokemonJson;
     const flavorTextEntry = getWrapper({
       data: { details, species },
       fetchPokemonDetails: () => {},
