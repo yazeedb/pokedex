@@ -21,4 +21,10 @@
   .total {
     text-align: left;
   }
+
+  @media (max-width: 400px) {
+    .stat-meter {
+      width: 65%;
+    }
+  }
 }
