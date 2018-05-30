@@ -1,3 +1,4 @@
+export const maxStat = 255;
 export const ratingColors = [
   {
     min: 1,
@@ -30,5 +31,3 @@ export const ratingColors = [
     name: 'great'
   }
 ];
-
-export default ratingColors;
