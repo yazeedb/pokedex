@@ -1,3 +1,5 @@
+@import '~/globals';
+
 .pokemon-detail {
   text-align: center;
 
@@ -29,5 +31,9 @@
   .shiny-sprite {
     display: inline-block;
     margin: 0 25px;
+  }
+
+  .shiny-sprite {
+    color: $primary;
   }
 }
