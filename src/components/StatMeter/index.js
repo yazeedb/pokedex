@@ -1,10 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './StatMeter.scss';
 
-const StatMeter = () => (
-  <div />
+const StatMeter = ({ rating }) => (
+  <span className="stat-meter" />
 );
 
-StatMeter.propTypes = {};
+StatMeter.propTypes = {
+  rating: PropTypes.number
+};
 
 export default StatMeter;

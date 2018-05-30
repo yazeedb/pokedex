@@ -1,5 +1,15 @@
 .stats {
   .stat-name {
-    margin-right: 5px;
+    width: 31px;
+    display: inline-block;
+    text-align: left;
+  }
+
+  .stat-point {
+    margin: 0 5px;
+  }
+
+  .stat-meter {
+    width: 80%;
   }
 }

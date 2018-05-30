@@ -1,4 +1,5 @@
 import Stats from '/components/Stats';
+import StatMeter from '/components/StatMeter';
 import { mountWrapper } from '/wrapper';
 import statsJson from '/mockJson/stats.json';
 
@@ -34,6 +35,14 @@ describe('stats', () => {
       '65',
       '45'
     ]);
+  });
+
+  it('renders a StatMeter for each stat', () => {
+    const count = getWrapper({ stats })
+      .find(StatMeter)
+      .length;
+
+    expect(count).toBe(stats.length);
   });
 
   it('renders the total points', () => {

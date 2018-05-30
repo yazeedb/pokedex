@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { pipe, pluck, sum } from 'ramda';
+import StatMeter from '/components/StatMeter';
 import { statNamesMap } from './constants';
 import './Stats.scss';
 
@@ -18,6 +19,8 @@ const Stats = ({ stats }) => (
           <b className="stat-point" data-test="stat-point">
             { base_stat }
           </b>
+
+          <StatMeter rating={ base_stat } />
         </div>
       ))
     }
