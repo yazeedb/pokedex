@@ -1,8 +1,18 @@
 @import '~/globals';
 
-.stat-meter {
+.stat-meter,
+.meter-fill {
   display: inline-block;
-  background-color: $meter-background;
   min-width: 8px;
   height: 8px;
+}
+
+.stat-meter {
+  background-color: $meter-background;
+  position: relative;
+
+  .meter-fill {
+    position: absolute;
+    left: 0;
+  }
 }

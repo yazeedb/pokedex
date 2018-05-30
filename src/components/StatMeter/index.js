@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import './StatMeter.scss';
 
 const StatMeter = ({ rating }) => (
-  <span className="stat-meter" />
+  <span className="stat-meter">
+    <span className="meter-fill" />
+  </span>
 );
 
 StatMeter.propTypes = {
