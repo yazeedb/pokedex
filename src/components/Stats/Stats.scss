@@ -5,16 +5,12 @@
 
   .stat-name,
   .stat-point {
+    width: 31px;
     display: inline-block;
     text-align: left;
   }
 
-  .stat-name {
-    width: 31px;
-  }
-
   .stat-point {
-    width: 27px;
     margin: 0 5px;
   }
 
