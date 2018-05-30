@@ -53,7 +53,7 @@ const Component = ({
             .map(prop('name'))
             .map(upperFirst)
             .join(', ')
-      }
+        }
       </span>
     </div>
 
