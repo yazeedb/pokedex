@@ -1,4 +1,8 @@
 .stats {
+  .stat-container {
+    margin: 10px 0;
+  }
+
   .stat-name {
     width: 31px;
     display: inline-block;
@@ -11,5 +15,9 @@
 
   .stat-meter {
     width: 80%;
+  }
+
+  .total {
+    text-align: left;
   }
 }

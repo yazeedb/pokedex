@@ -11,7 +11,7 @@ const Stats = ({ stats }) => (
   <div className="stats">
     {
       stats.map(({ base_stat, stat }) => (
-        <div key={ stat.name }>
+        <div className="stat-container" key={ stat.name }>
           <span className="stat-name" data-test="stat-name">
             { statNamesMap[stat.name] }
           </span>
@@ -25,9 +25,9 @@ const Stats = ({ stats }) => (
       ))
     }
 
-    <span data-test="total">
+    <p className="total" data-test="total">
       TOTAL <b>{ sumBaseStats(stats) }</b>
-    </span>
+    </p>
   </div>
 );
 
