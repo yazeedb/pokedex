@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { pipe, pluck, sum } from 'ramda';
 import { statNamesMap } from './constants';
+import './Stats.scss';
 
 const sumBaseStats = pipe(pluck('base_stat'), sum);
 
@@ -10,19 +11,19 @@ const Stats = ({ stats }) => (
     {
       stats.map(({ base_stat, stat }) => (
         <div key={ stat.name }>
-          <span data-test="stat-name">
+          <span className="stat-name" data-test="stat-name">
             { statNamesMap[stat.name] }
           </span>
 
-          <span data-test="stat-point">
+          <b className="stat-point" data-test="stat-point">
             { base_stat }
-          </span>
+          </b>
         </div>
       ))
     }
 
     <span data-test="total">
-      TOTAL { sumBaseStats(stats) }
+      TOTAL <b>{ sumBaseStats(stats) }</b>
     </span>
   </div>
 );

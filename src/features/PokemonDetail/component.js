@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { lifecycle } from 'recompose';
 import { head, pipe, prop } from 'ramda';
 import TypeBadge from '/components/TypeBadge';
+import Stats from '/components/Stats';
 import getFlavorTextEntries from '/helpers/getFlavorTextEntries';
 import upperFirst from '/helpers/upperFirst';
 import findEnglishGenus from './findEnglishGenus';
@@ -78,6 +79,12 @@ const Component = ({
 
         <p data-test="label">Shiny</p>
       </div>
+    </div>
+
+    <div className="base-stats" data-test="base-stats">
+      <h3 data-test="title">BASE STATS</h3>
+
+      <Stats stats={ details.stats } />
     </div>
   </div>
 ));

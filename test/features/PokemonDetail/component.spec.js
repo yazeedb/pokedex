@@ -1,5 +1,6 @@
 import Component from '/features/PokemonDetail/component';
 import TypeBadge from '/components/TypeBadge';
+import Stats from '/components/Stats';
 import { mountWithRouter } from '/wrapper';
 import pokemonJson from '/api/data/test-pokemon.json';
 import getFlavorTextEntries from '/helpers/getFlavorTextEntries';
@@ -188,5 +189,28 @@ describe('PokemonDetail', () => {
       imgSrc: 'pokemon/shinyGifs/bulbasaur.gif',
       label: 'Shiny'
     });
+  });
+
+  it('renders the base stats', () => {
+    const { details, species } = pokemonJson;
+    const wrapper = getWrapper({
+      data: { details, species },
+      fetchPokemonDetails: () => {},
+      match: {
+        params: {
+          id: 1
+        }
+      }
+    })
+      .find('[data-test="base-stats"]');
+
+    const title = wrapper
+      .find('[data-test="title"]')
+      .text();
+
+    const StatsComponent = wrapper.find(Stats);
+
+    expect(title).toBe('BASE STATS');
+    expect(StatsComponent.length).toBe(1);
   });
 });
