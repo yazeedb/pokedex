@@ -106,7 +106,7 @@ const enhanceComponent = lifecycle({
     } = this.props;
 
     fetchPokemonDetails(params.id);
-    setTitle('POKEMON DETAIL');
+    // setTitle('POKEMON DETAIL');
   }
 });
 

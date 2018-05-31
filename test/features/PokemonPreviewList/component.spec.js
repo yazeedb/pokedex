@@ -11,6 +11,7 @@ describe('PokemonPreviewList', () => {
 
     getWrapper({
       fetchPokemon,
+      setTitle: () => {},
       data: []
     });
 
@@ -18,10 +19,24 @@ describe('PokemonPreviewList', () => {
     expect(fetchPokemon.mock.calls[0][0]).toBe(undefined);
   });
 
+  it('calls setTitle on componentDidMount', () => {
+    const setTitle = jest.fn();
+
+    getWrapper({
+      setTitle,
+      fetchPokemon: () => {},
+      data: []
+    });
+
+    expect(setTitle.mock.calls.length).toBe(1);
+    expect(setTitle.mock.calls[0][0]).toBe('ALL POKEMON');
+  });
+
   it('shows loading indicator if fetching', () => {
     const loading = getWrapper({
       fetching: true,
       fetchPokemon: () => {},
+      setTitle: () => {},
       data: []
     })
       .find('[data-test="loading"]');
@@ -33,6 +48,7 @@ describe('PokemonPreviewList', () => {
     const data = pokemonJson.slice(0, 3);
     const elementCount = getWrapper({
       fetchPokemon: () => {},
+      setTitle: () => {},
       fetching: false,
       data
     })
@@ -47,6 +63,7 @@ describe('PokemonPreviewList', () => {
     const { id, name, types } = data[0];
     const componentProps = getWrapper({
       fetchPokemon: () => {},
+      setTitle: () => {},
       fetching: false,
       data
     })

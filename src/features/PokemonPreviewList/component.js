@@ -28,7 +28,10 @@ Component.propTypes = {
 
 const enhanceComponent = lifecycle({
   componentDidMount() {
-    this.props.fetchPokemon();
+    const { fetchPokemon, setTitle } = this.props;
+
+    fetchPokemon();
+    setTitle('ALL POKEMON');
   }
 });
 

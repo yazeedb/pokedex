@@ -13,7 +13,7 @@ const App = ({ children, title }) => (
 );
 
 App.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.arrayOf(PropTypes.element),
   title: PropTypes.string
 };
 
