@@ -1,9 +1,11 @@
 import autodux from 'autodux';
 
-export const { actions, reducer } = autodux({
+export const {
+  actions,
+  reducer,
+  selectors,
+  slice
+} = autodux({
   slice: 'title',
-  initial: 'Pokemon',
-  actions: {
-    setTitle: (state, payload) => payload
-  }
+  initial: { title: 'Pokemon' }
 });

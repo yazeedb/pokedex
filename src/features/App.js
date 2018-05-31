@@ -1,17 +1,22 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Nav from '/components/Nav';
+import { selectors } from '/ducks/title';
 
-const App = ({ children }) => (
+const App = ({ children, title }) => (
   <div className="app">
-    <Nav>ALL POKEMON</Nav>
+    <Nav>{ title }</Nav>
 
     { children }
   </div>
 );
 
 App.propTypes = {
-  children: PropTypes.element
+  children: PropTypes.element,
+  title: PropTypes.string
 };
 
-export default App;
+const withConnect = connect(selectors.getTitle);
+
+export default withConnect(App);
