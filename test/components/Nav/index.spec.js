@@ -5,11 +5,11 @@ const getWrapper = mountWrapper(Nav);
 const headerSelector = '[data-test="header"]';
 
 describe('Nav', () => {
-  it('has a header with default text', () => {
+  it('has a header', () => {
     const wrapper = getWrapper();
     const header = wrapper.find(headerSelector);
 
-    expect(header.text()).toBe('Default Title');
+    expect(header.text()).toBe('');
   });
 
   it('allows setting header text via children prop', () => {
