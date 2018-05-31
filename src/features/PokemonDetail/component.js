@@ -99,9 +99,14 @@ Component.propTypes = {
 
 const enhanceComponent = lifecycle({
   componentDidMount() {
-    const { fetchPokemonDetails, match: { params } } = this.props;
+    const {
+      fetchPokemonDetails,
+      setTitle,
+      match: { params }
+    } = this.props;
 
     fetchPokemonDetails(params.id);
+    setTitle('POKEMON DETAIL');
   }
 });
 

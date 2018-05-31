@@ -9,12 +9,13 @@ import upperFirst from '/helpers/upperFirst';
 const getWrapper = mountWithRouter(Component);
 
 describe('PokemonDetail', () => {
-  it('calls fetchPokemonDetails with ID on didMount', () => {
+  it('calls fetchPokemonDetails with ID on componentDidMount', () => {
     const fetchPokemonDetails = jest.fn();
 
     getWrapper({
       data: pokemonJson,
       fetchPokemonDetails,
+      setTitle: () => {},
       match: {
         params: {
           id: 1
@@ -26,11 +27,30 @@ describe('PokemonDetail', () => {
     expect(fetchPokemonDetails.mock.calls[0][0]).toBe(1);
   });
 
+  it('calls setTitle on componentDidMount', () => {
+    const setTitle = jest.fn();
+
+    getWrapper({
+      setTitle,
+      data: pokemonJson,
+      fetchPokemonDetails: () => {},
+      match: {
+        params: {
+          id: 1
+        }
+      }
+    });
+
+    expect(setTitle.mock.calls.length).toBe(1);
+    expect(setTitle.mock.calls[0][0]).toBe('POKEMON DETAIL');
+  });
+
   it('shows loading indicator if fetching', () => {
     const loading = getWrapper({
       fetching: true,
       data: { details: {}, species: {} },
       fetchPokemonDetails: () => {},
+      setTitle: () => {},
       match: {
         params: {
           id: 1
@@ -48,6 +68,7 @@ describe('PokemonDetail', () => {
     const img = getWrapper({
       data: { details, species },
       fetchPokemonDetails: () => {},
+      setTitle: () => {},
       match: {
         params: {
           id: 1
@@ -66,6 +87,7 @@ describe('PokemonDetail', () => {
     const name = getWrapper({
       data: { details, species },
       fetchPokemonDetails: () => {},
+      setTitle: () => {},
       match: {
         params: {
           id: 1
@@ -83,6 +105,7 @@ describe('PokemonDetail', () => {
     const text = getWrapper({
       data: { details, species },
       fetchPokemonDetails: () => {},
+      setTitle: () => {},
       match: {
         params: {
           id: 1
@@ -100,6 +123,7 @@ describe('PokemonDetail', () => {
     const count = getWrapper({
       data: { details, species },
       fetchPokemonDetails: () => {},
+      setTitle: () => {},
       match: {
         params: {
           id: 1
@@ -117,6 +141,7 @@ describe('PokemonDetail', () => {
     const flavorTextEntry = getWrapper({
       data: { details, species },
       fetchPokemonDetails: () => {},
+      setTitle: () => {},
       match: {
         params: {
           id: 1
@@ -136,6 +161,7 @@ describe('PokemonDetail', () => {
     const wrapper = getWrapper({
       data: { details, species },
       fetchPokemonDetails: () => {},
+      setTitle: () => {},
       match: {
         params: {
           id: 1
@@ -161,6 +187,7 @@ describe('PokemonDetail', () => {
     const wrapper = getWrapper({
       data: { details, species },
       fetchPokemonDetails: () => {},
+      setTitle: () => {},
       match: {
         params: {
           id: 1
@@ -196,6 +223,7 @@ describe('PokemonDetail', () => {
     const wrapper = getWrapper({
       data: { details, species },
       fetchPokemonDetails: () => {},
+      setTitle: () => {},
       match: {
         params: {
           id: 1
