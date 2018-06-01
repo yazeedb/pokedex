@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 import Nav from '/components/Nav';
 import { selectors } from '/ducks/title';
@@ -19,4 +20,4 @@ App.propTypes = {
 
 const withConnect = connect(selectors.getTitle);
 
-export default withConnect(App);
+export default withRouter(withConnect(App));
