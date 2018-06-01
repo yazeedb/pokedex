@@ -7,7 +7,8 @@
     "test": "jest --watchAll",
     "server": "nodemon server.js",
     "start": "webpack",
-    "watch": "webpack --watch"
+    "watch": "webpack --watch",
+    "build:prod": "webpack -p"
   },
   "jest": {
     "moduleDirectories": [
