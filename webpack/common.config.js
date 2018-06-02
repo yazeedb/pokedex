@@ -1,4 +1,5 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const { root } = require('./helpers');
 
 module.exports = {
   output: { filename: 'bundle.js' },
