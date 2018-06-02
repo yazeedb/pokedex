@@ -1,7 +1,7 @@
 const { root } = require('./helpers');
 
 module.exports = {
-  entry: root('src/index'),
+  entry: '/index',
   output: {
     path: root('dist/client')
   }
