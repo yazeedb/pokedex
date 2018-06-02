@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --watchAll",
-    "server": "nodemon server.js",
+    "server": "nodemon dist/server/bundle.js",
     "start": "webpack",
     "start:debug": "webpack --display-error-details",
     "watch": "webpack --watch",
