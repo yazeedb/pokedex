@@ -7,6 +7,7 @@
     "test": "jest --watchAll",
     "server": "nodemon server.js",
     "start": "webpack",
+    "start:debug": "webpack --display-error-details",
     "watch": "webpack --watch",
     "build:prod": "webpack -p"
   },
