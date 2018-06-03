@@ -18,9 +18,13 @@ const App = (Router, props = {}) => () => (
 const BrowserApp = App(BrowserRouter);
 
 if (isBrowser()) {
+  const clientContent = document.getElementById('client-content');
+  const serverContent = document.getElementById('server-content');
+
   render(
     <BrowserApp />,
-    document.getElementById('root'),
+    clientContent,
+    () => document.body.removeChild(serverContent)
   );
 }
 
