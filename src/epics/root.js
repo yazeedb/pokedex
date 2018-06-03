@@ -4,7 +4,6 @@ import fetch from 'isomorphic-fetch';
 import { fetchDataEpic } from '/features/PokemonPreviewList/duck';
 import { fetchPokemonDetailsEpic } from '/features/PokemonDetail/duck';
 
-
 const fetch$ = (...args) => {
   const getJson = fetch(...args)
     .then(res => res.json());
