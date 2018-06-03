@@ -6,7 +6,23 @@ module.exports = (app, express) => {
 
   router.get('/pokemon', (req, res) => {
     // res.json(pokemon);
-    res.json({ success: true });
+    res.json([
+      {
+        "id": 1,
+        "name": "Bulbasaur",
+        "types": [
+          "Grass",
+          "Poison"
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Ivysaur",
+        "types": [
+          "Grass",
+          "Poison"
+        ]
+      }])
   });
 
   router.get('/pokemon/:id', (req, res) => {
