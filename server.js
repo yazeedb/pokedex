@@ -1,11 +1,12 @@
-const express = require('express');
-const { __express } = require('ejs');
-const api = require('./src/api');
-const { root } = require('./webpack/helpers');
+import React from 'react';
+import { renderToString } from 'react-dom/server';
+import { StaticRouter } from 'react-router';
+import express from 'express';
+import { __express } from 'ejs';
+import api from './src/api';
+import { root } from './webpack/helpers';
 
-const React = require('react');
-const ReactDOMServer = require('react-dom/server');
-const Routes = require('./src/Routes');
+import App from './src';
 
 const app = express();
 const PORT = 3000;
@@ -19,10 +20,18 @@ app.use(express.static('assets'));
 app.use('/api', api(app, express));
 
 app.get('*', (req, res) => {
-  const markup = ReactDOMServer.renderToStaticMarkup(<Routes />);
+  console.log(App);
+  const ServerApp = App(StaticRouter, {
+    context: {},
+    location: req.url
+  });
 
+  const markup = renderToString(<ServerApp />);
   console.log(markup);
-  res.sendFile(root('src/index.html'));
+
+  res.send(markup);
+
+  // res.sendFile(root('src/index.html'));
 });
 
 app.listen(PORT, () => console.log('listening on port', PORT));

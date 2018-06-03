@@ -1,17 +1,24 @@
 import React from 'react';
 import { render } from 'react-dom';
+import { BrowserRouter } from 'react-router';
 import { Provider } from 'react-redux';
 import store from './store';
 import Routes from './Routes';
 import './app.scss';
 
-const App = () => (
+const App = (Router, props = {}) => () => (
   <Provider store={ store }>
-    <Routes />
+    <Router { ...props }>
+      <Routes />
+    </Router>
   </Provider>
 );
 
-render(
-  <App />,
-  document.getElementById('root'),
-);
+const BrowserApp = App(BrowserRouter);
+
+// render(
+//   <BrowserApp />,
+//   document.getElementById('root'),
+// );
+
+export default App;
