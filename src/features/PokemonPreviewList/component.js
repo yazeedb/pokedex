@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { lifecycle } from 'recompose';
 import PokemonPreview from '/features/PokemonPreview';
+import doOnServer from '/components/doOnServer';
 
 const Loading = () => <span data-test="loading">Loading...</span>;
 const Component = ({ fetching, data }) => (
@@ -26,13 +26,9 @@ Component.propTypes = {
   data: PropTypes.arrayOf(PropTypes.object)
 };
 
-const enhanceComponent = lifecycle({
-  componentDidMount() {
-    const { fetchPokemon, setTitle } = this.props;
-
-    fetchPokemon();
-    setTitle('ALL POKEMON');
-  }
+const enhanceComponent = doOnServer(({ fetchPokemon, setTitle }) => {
+  fetchPokemon();
+  setTitle('ALL POKEMON');
 });
 
 export default enhanceComponent(Component);

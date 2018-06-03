@@ -1,7 +1,8 @@
 import createDuck from '/ducks/fetchAndLoad';
-import { pokedex } from '/endpoints';
+import endpoints from '/endpoints';
 
 const duck = createDuck('pokemonPreviewList', { data: [] });
+const { pokedex } = endpoints();
 
 export const {
   actions: {

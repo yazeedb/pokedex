@@ -9,7 +9,7 @@ export const makeFetchDataEpic = ({
 }) => (action$, store, { fetch$ }) => action$.pipe(
   ofType(type),
   switchMap(() => fetch$(endpoint).pipe(
-    switchMap(({ response }) => {
+    switchMap((response) => {
       const actions = successActions.map(action => action(response));
 
       return of(...actions);

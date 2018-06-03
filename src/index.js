@@ -28,5 +28,4 @@ if (isBrowser()) {
   );
 }
 
-
 export default App;
