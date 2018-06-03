@@ -21,6 +21,8 @@ if (isBrowser()) {
   const clientContent = document.getElementById('client-content');
   const serverContent = document.getElementById('server-content');
 
+  debugger;
+
   render(
     <BrowserApp />,
     clientContent,
