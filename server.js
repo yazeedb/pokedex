@@ -20,18 +20,14 @@ app.use(express.static('assets'));
 app.use('/api', api(app, express));
 
 app.get('*', (req, res) => {
-  console.log(App);
   const ServerApp = App(StaticRouter, {
     context: {},
     location: req.url
   });
 
-  const markup = renderToString(<ServerApp />);
-  console.log(markup);
+  const content = renderToString(<ServerApp />);
 
-  res.send(markup);
-
-  // res.sendFile(root('src/index.html'));
+  res.render('index', { content });
 });
 
 app.listen(PORT, () => console.log('listening on port', PORT));
