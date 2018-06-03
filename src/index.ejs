@@ -8,10 +8,13 @@
 	<title>Title</title>
 </head>
 <body>
-	<div id="server-content"><%- content -%></div>
+	<div id="server-content"><%- markup %></div>
 
 	<div id="client-content"></div>
 
-	<script src="client/bundle.js"></script>
+  <script>
+		window.PRELOADED_STATE = <%- JSON.stringify(preloadedState).replace(/</g, '\\u003c') %>
+  </script>
+	<!-- <script src="client/bundle.js"></script> -->
 </body>
 </html>

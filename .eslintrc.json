@@ -17,6 +17,7 @@
       }]
     },
     "globals": {
+    "window": true,
     "jest": true,
     "__dirname": true,
     "process": true,

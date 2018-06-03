@@ -3,8 +3,9 @@ import logger from 'redux-logger';
 import rootEpic from '/epics/root';
 import rootReducer from '/ducks/root';
 
-export default createStore(
+export default initialState => createStore(
   rootReducer,
+  initialState,
   applyMiddleware(
     rootEpic,
     logger

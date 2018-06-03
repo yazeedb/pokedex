@@ -5,6 +5,7 @@ import express from 'express';
 import { __express } from 'ejs';
 import api from './src/api';
 import App from './src';
+import getStore from './src/store';
 
 const app = express();
 const PORT = 3000;
@@ -18,14 +19,19 @@ app.use(express.static('assets'));
 app.use('/api', api(app, express));
 
 app.get('*', (req, res) => {
-  const ServerApp = App(StaticRouter, {
-    context: {},
-    location: req.url
+  const store = getStore();
+  const ServerApp = App({
+    store,
+    Router: StaticRouter,
+    props: { context: {}, location: req.url }
   });
 
-  const content = renderToString(<ServerApp />);
+  const markup = renderToString(<ServerApp />);
 
-  res.render('index', { content });
+  res.render('index', {
+    markup,
+    preloadedState: store.getState()
+  });
 });
 
 app.listen(PORT, () => console.log('listening on port', PORT));

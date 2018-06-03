@@ -6,6 +6,7 @@ import doOnServer from '/components/doOnServer';
 const Loading = () => <span data-test="loading">Loading...</span>;
 const Component = ({ fetching, data }) => (
   <div className="pokemon-preview-list">
+    { console.log('my data:', data) }
     {
       fetching ? <Loading /> :
         data.map(({ id, name, types }) => (
