@@ -1,5 +1,5 @@
 import React from 'react';
-import { hydrate } from 'react-dom';
+import { render } from 'react-dom';
 import { BrowserRouter } from 'react-router';
 import { Provider } from 'react-redux';
 import isBrowser from '/helpers/isBrowser';
@@ -21,7 +21,7 @@ if (isBrowser()) {
   const clientContent = document.getElementById('client-content');
   const serverContent = document.getElementById('server-content');
 
-  hydrate(
+  render(
     <BrowserApp />,
     clientContent,
     () => document.body.removeChild(serverContent)

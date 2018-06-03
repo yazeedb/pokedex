@@ -4,7 +4,6 @@ import { StaticRouter } from 'react-router';
 import express from 'express';
 import { __express } from 'ejs';
 import api from './src/api';
-import { root } from './webpack/helpers';
 import App from './src';
 
 const app = express();
@@ -12,7 +11,7 @@ const PORT = 3000;
 
 app.engine('.ejs', __express);
 app.set('view engine', 'ejs');
-app.set('views', root('src'));
+app.set('views', 'src');
 
 app.use(express.static('dist'));
 app.use(express.static('assets'));
