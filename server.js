@@ -5,7 +5,6 @@ import express from 'express';
 import { __express } from 'ejs';
 import api from './src/api';
 import { root } from './webpack/helpers';
-
 import App from './src';
 
 const app = express();
