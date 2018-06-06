@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { lifecycle } from 'recompose';
 import { head, pipe, prop } from 'ramda';
 import TypeBadge from '/components/TypeBadge';
@@ -15,12 +16,32 @@ const Component = ({
   fetching
 }) => (fetching ? <Loading /> : (
   <div className="pokemon-detail">
+    {
+      details.id > 1 && (
+        <Link
+          to={ `/${details.id - 1}` }
+          className="arrow arrow-previous"
+          data-test="previous-link"
+        >
+          &#8592;
+        </Link>
+      )
+    }
+
     <img
       src={ `pokemon/sugimori/${details.id}.png` }
       alt={ details.name }
       className="sugimori-img"
       data-test="sugimori-img"
     />
+
+    <Link
+      to={ `/${details.id + 1}` }
+      className="arrow arrow-next"
+      data-test="next-link"
+    >
+      &#8594;
+    </Link>
 
     <h1 className="name" data-test="name">
       { upperFirst(details.name) }
