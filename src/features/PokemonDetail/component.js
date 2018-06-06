@@ -18,13 +18,13 @@ const Component = ({
   <div className="pokemon-detail">
     {
       details.id > 1 && (
-        <Link
-          to={ `/${details.id - 1}` }
+        <a
+          href={ `/${details.id - 1}` }
           className="arrow arrow-previous"
           data-test="previous-link"
         >
           &#8592;
-        </Link>
+        </a>
       )
     }
 
@@ -35,13 +35,13 @@ const Component = ({
       data-test="sugimori-img"
     />
 
-    <Link
-      to={ `/${details.id + 1}` }
+    <a
+      href={ `/${details.id + 1}` }
       className="arrow arrow-next"
       data-test="next-link"
     >
       &#8594;
-    </Link>
+    </a>
 
     <h1 className="name" data-test="name">
       { upperFirst(details.name) }
