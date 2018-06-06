@@ -62,6 +62,68 @@ describe('PokemonDetail', () => {
     expect(loading.length).toBe(1);
   });
 
+  it('renders a previous arrow if not first pokemon', () => {
+    const { details, species } = pokemonJson;
+    const id = 2;
+
+    const previousLink = getWrapper({
+      data: {
+        details: { ...details, id },
+        species
+      },
+      fetchPokemonDetails: () => {},
+      setTitle: () => {},
+      match: {
+        params: {
+          id: 1
+        }
+      }
+    })
+      .find('[data-test="previous-link"]')
+      .last();
+
+    expect(previousLink.length).toBe(1);
+    expect(previousLink.prop('href')).toBe(`/${id - 1}`);
+  });
+
+  it('does not render a previous arrow if first pokemon', () => {
+    const { details, species } = pokemonJson;
+
+    const previousLink = getWrapper({
+      data: { details, species },
+      fetchPokemonDetails: () => {},
+      setTitle: () => {},
+      match: {
+        params: {
+          id: 1
+        }
+      }
+    })
+      .find('[data-test="previous-link"]');
+
+    expect(previousLink.length).toBe(0);
+  });
+
+  it('renders a next arrow', () => {
+    const { details, species } = pokemonJson;
+
+    const nextLink = getWrapper({
+      data: { details, species },
+      fetchPokemonDetails: () => {},
+      setTitle: () => {},
+      match: {
+        params: {
+          id: 1
+        }
+      }
+    })
+      .find('[data-test="next-link"]')
+      .last();
+
+    expect(nextLink.length).toBe(1);
+    expect(nextLink.prop('href')).toBe(`/${details.id + 1}`);
+  });
+
   it('renders the pokemon\'s sugimori image', () => {
     const { details, species } = pokemonJson;
 

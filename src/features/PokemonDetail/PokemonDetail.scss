@@ -3,6 +3,24 @@
 .pokemon-detail {
   text-align: center;
   margin: 0 15px;
+  position: relative;
+
+  .arrow {
+    font-size: 32px;
+    font-weight: bold;
+    color: black;
+    position: absolute;
+    top: 10%;
+    text-decoration-line: none;
+  }
+
+  .arrow-previous {
+    left: 0;
+  }
+
+  .arrow-next {
+    right: 0;
+  }
 
   .sugimori-img {
     width: 200px;
