@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { lifecycle } from 'recompose';
 import { head, pipe, prop } from 'ramda';
 import TypeBadge from '/components/TypeBadge';
