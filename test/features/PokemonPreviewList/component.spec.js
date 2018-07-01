@@ -32,18 +32,6 @@ describe('PokemonPreviewList', () => {
     expect(setTitle.mock.calls[0][0]).toBe('ALL POKEMON');
   });
 
-  it('shows loading indicator if fetching', () => {
-    const loading = getWrapper({
-      fetching: true,
-      fetchPokemon: () => {},
-      setTitle: () => {},
-      data: []
-    })
-      .find('[data-test="loading"]');
-
-    expect(loading.length).toBe(1);
-  });
-
   it('renders a PokemonPreview for each list item', () => {
     const data = pokemonJson.slice(0, 3);
     const elementCount = getWrapper({
