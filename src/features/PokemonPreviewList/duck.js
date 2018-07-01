@@ -1,7 +1,8 @@
 import createDuck from '/ducks/fetchAndLoad';
 import { pokedex } from '/endpoints';
+import skeletonData from './skeletonData';
 
-const duck = createDuck('pokemonPreviewList', { data: [] });
+const duck = createDuck('pokemonPreviewList', { data: skeletonData });
 
 export const {
   actions: {

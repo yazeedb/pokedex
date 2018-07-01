@@ -3,11 +3,9 @@ import PropTypes from 'prop-types';
 import { lifecycle } from 'recompose';
 import PokemonPreview from '/features/PokemonPreview';
 
-const Loading = () => <span data-test="loading">Loading...</span>;
-const Component = ({ fetching, data }) => (
+const Component = ({ data }) => (
   <div className="pokemon-preview-list">
     {
-      fetching ? <Loading /> :
         data.map(({ id, name, types }) => (
           <PokemonPreview
             id={ id }
@@ -22,7 +20,6 @@ const Component = ({ fetching, data }) => (
 );
 
 Component.propTypes = {
-  fetching: PropTypes.bool,
   data: PropTypes.arrayOf(PropTypes.object)
 };
 
