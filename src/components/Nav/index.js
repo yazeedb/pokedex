@@ -1,15 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import './Nav.scss';
 
-const Nav = ({ children }) => (
+const Nav = () => (
   <nav className="nav">
-    <h2 data-test="header">{ children }</h2>
+    <Link to="/" data-test="all-pokemon-link">
+      All Pokemon
+    </Link>
   </nav>
 );
-
-Nav.propTypes = {
-  children: PropTypes.string
-};
 
 export default Nav;

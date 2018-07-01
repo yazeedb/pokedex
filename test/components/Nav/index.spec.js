@@ -1,23 +1,15 @@
 import Nav from '/components/Nav';
-import { mountWrapper } from '/wrapper';
+import { mountWithRouter } from '/wrapper';
 
-const getWrapper = mountWrapper(Nav);
-const headerSelector = '[data-test="header"]';
+const getWrapper = mountWithRouter(Nav);
 
 describe('Nav', () => {
-  it('has a header', () => {
-    const wrapper = getWrapper();
-    const header = wrapper.find(headerSelector);
+  it('has a link to view all pokemon', () => {
+    const link = getWrapper()
+      .find('[data-test="all-pokemon-link"]')
+      .last();
 
-    expect(header.text()).toBe('');
-  });
-
-  it('allows setting header text via children prop', () => {
-    const wrapper = getWrapper({
-      children: 'ALL POKEMON'
-    });
-    const header = wrapper.find(headerSelector);
-
-    expect(header.text()).toBe('ALL POKEMON');
+    expect(link.length).toBe(1);
+    expect(link.text()).toBe('All Pokemon');
   });
 });
