@@ -13,3 +13,17 @@ body {
   margin: 0 auto;
   background-color: white;
 }
+
+.skeleton {
+  animation: loading 1.5s ease-in-out infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-color: rgba(gray, 0.7);
+  }
+
+  100% {
+    background-color: rgba(gray, 0.2);
+  }
+}
