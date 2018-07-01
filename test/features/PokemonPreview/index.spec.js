@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import PokemonPreview from '/features/PokemonPreview';
 import TypeBadge from '/components/TypeBadge';
 import { mountWithRouter } from '/wrapper';
@@ -54,5 +55,19 @@ describe('PokemonPreview', () => {
       .length;
 
     expect(elementCount).toBe(2);
+  });
+
+  it('has a skeleton className if skeleton prop is true', () => {
+    const className = getWrapper({
+      skeleton: true,
+      id: 1,
+      spriteUrl: '',
+      name: '',
+      types: []
+    })
+      .find(Link)
+      .prop('className');
+
+    expect(className.includes('skeleton')).toBe(true);
   });
 });

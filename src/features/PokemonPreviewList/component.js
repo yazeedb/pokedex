@@ -6,12 +6,18 @@ import PokemonPreview from '/features/PokemonPreview';
 const Component = ({ data }) => (
   <div className="pokemon-preview-list">
     {
-        data.map(({ id, name, types }) => (
+        data.map(({
+          id,
+          name,
+          types,
+          skeleton
+        }) => (
           <PokemonPreview
             id={ id }
             name={ name }
             types={ types }
             spriteUrl={ `pokemon/icons/${id}.png` }
+            skeleton={ skeleton }
             key={ id }
           />
         ))

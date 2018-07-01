@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import classnames from 'classnames';
 import TypeBadge from '/components/TypeBadge';
 import upperFirst from '/helpers/upperFirst';
 import './PokemonPreview.scss';
@@ -9,11 +10,12 @@ const PokemonPreview = ({
   id,
   name,
   spriteUrl,
-  types
+  types,
+  skeleton
 }) => (
   <Link
     to={ `/${id}` }
-    className="pokemon-preview"
+    className={ classnames('pokemon-preview', { skeleton }) }
     data-test="detail-link"
   >
     <div className="sprite-name-wrapper">
@@ -38,7 +40,8 @@ PokemonPreview.propTypes = {
   id: PropTypes.number,
   name: PropTypes.string,
   spriteUrl: PropTypes.string,
-  types: PropTypes.arrayOf(PropTypes.string)
+  types: PropTypes.arrayOf(PropTypes.string),
+  skeleton: PropTypes.bool
 };
 
 export default PokemonPreview;
