@@ -4,6 +4,5 @@ export default Array(200)
     id: index + 1,
     name: '',
     spriteUrl: '',
-    types: [],
-    skeleton: true
+    types: []
   }));
