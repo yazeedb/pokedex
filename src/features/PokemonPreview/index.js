@@ -11,11 +11,11 @@ const PokemonPreview = ({
   name,
   spriteUrl,
   types,
-  skeleton
+  fetching
 }) => (
   <Link
     to={ `/${id}` }
-    className={ classnames('pokemon-preview', { skeleton }) }
+    className={ classnames('pokemon-preview', { skeleton: fetching }) }
     data-test="detail-link"
   >
     <div className="sprite-name-wrapper">
@@ -41,7 +41,7 @@ PokemonPreview.propTypes = {
   name: PropTypes.string,
   spriteUrl: PropTypes.string,
   types: PropTypes.arrayOf(PropTypes.string),
-  skeleton: PropTypes.bool
+  fetching: PropTypes.bool
 };
 
 export default PokemonPreview;

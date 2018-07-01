@@ -3,21 +3,16 @@ import PropTypes from 'prop-types';
 import { lifecycle } from 'recompose';
 import PokemonPreview from '/features/PokemonPreview';
 
-const Component = ({ data }) => (
+const Component = ({ fetching, data }) => (
   <div className="pokemon-preview-list">
     {
-        data.map(({
-          id,
-          name,
-          types,
-          skeleton
-        }) => (
+        data.map(({ id, name, types }) => (
           <PokemonPreview
             id={ id }
             name={ name }
             types={ types }
             spriteUrl={ `pokemon/icons/${id}.png` }
-            skeleton={ skeleton }
+            fetching={ fetching }
             key={ id }
           />
         ))
@@ -26,7 +21,8 @@ const Component = ({ data }) => (
 );
 
 Component.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.object)
+  data: PropTypes.arrayOf(PropTypes.object),
+  fetching: PropTypes.bool
 };
 
 const enhanceComponent = lifecycle({

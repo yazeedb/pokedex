@@ -57,9 +57,9 @@ describe('PokemonPreview', () => {
     expect(elementCount).toBe(2);
   });
 
-  it('has a skeleton className if skeleton prop is true', () => {
+  it('has a skeleton className if fetching', () => {
     const className = getWrapper({
-      skeleton: true,
+      fetching: true,
       id: 1,
       spriteUrl: '',
       name: '',

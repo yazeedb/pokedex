@@ -62,7 +62,8 @@ describe('PokemonPreviewList', () => {
       id,
       name,
       types,
-      spriteUrl: `pokemon/icons/${id}.png`
+      spriteUrl: `pokemon/icons/${id}.png`,
+      fetching: false
     });
   });
 });
