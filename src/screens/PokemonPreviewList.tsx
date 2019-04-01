@@ -14,7 +14,7 @@ import {
 import * as appTitle from '../store/AppTitle';
 import { RootState } from '../store/rootReducer';
 import * as pokemonPreviewList from '../store/PokemonPreviewList';
-import { typesToColors, colors } from './shared/colors';
+import { typesToColors } from './shared/colors';
 
 type PokemonPreviewListProps = {
   state: pokemonPreviewList.PokemonListState;
@@ -34,76 +34,53 @@ const Component: React.FunctionComponent<PokemonPreviewListProps> = ({
   }, []);
 
   return (
-    <div>
-      <Grid container spacing={24} style={{ padding: 24 }}>
-        <Grid item xs={12}>
-          <Grid container spacing={24} direction="row">
-            {state.pokemonPreviewList.slice(0, 50).map((pokemon) => (
-              <Grid item={true} xs={8} sm={3} lg={2} xl={1}>
-                <Card
-                  key={pokemon.name}
-                  style={{
-                    backgroundColor: '#F2F2F2'
-                  }}
-                >
-                  <CardActionArea>
-                    <CardMedia
-                      image={`pokemon-icons/${pokemon.id}.png`}
-                      title={pokemon.name}
-                      component="img"
-                      style={{
-                        padding: '10px 20px'
-                      }}
-                    />
-                    <CardContent>
-                      <Typography gutterBottom={true} variant="headline">
-                        {pokemon.name}
-                      </Typography>
-                    </CardContent>
-                    <CardActions>
-                      {pokemon.types.map((type) => (
-                        <Button
-                          size="small"
-                          key={type}
-                          style={{
-                            backgroundColor: typesToColors[type],
-                            fontWeight: 'bold',
-                            color: 'white'
-                          }}
-                        >
-                          {type}
-                        </Button>
-                      ))}
-                    </CardActions>
-                  </CardActionArea>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
+    <Grid container spacing={24} style={{ padding: 24 }}>
+      <Grid item xs={12}>
+        <Grid container spacing={24} direction="row">
+          {state.pokemonPreviewList.slice(0, 50).map((pokemon) => (
+            <Grid item={true} xs={8} sm={3} lg={2} xl={1}>
+              <Card
+                key={pokemon.name}
+                style={{
+                  backgroundColor: '#F2F2F2'
+                }}
+              >
+                <CardActionArea>
+                  <CardMedia
+                    image={`pokemon-icons/${pokemon.id}.png`}
+                    title={pokemon.name}
+                    component="img"
+                    style={{
+                      padding: '10px 20px'
+                    }}
+                  />
+                  <CardContent>
+                    <Typography gutterBottom={true} variant="headline">
+                      {pokemon.name}
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    {pokemon.types.map((type) => (
+                      <Button
+                        size="small"
+                        key={type}
+                        style={{
+                          backgroundColor: typesToColors[type],
+                          fontWeight: 'bold',
+                          color: 'white'
+                        }}
+                      >
+                        {type}
+                      </Button>
+                    ))}
+                  </CardActions>
+                </CardActionArea>
+              </Card>
+            </Grid>
+          ))}
         </Grid>
       </Grid>
-    </div>
-    // <Link
-    //   to={ `/${id}` }
-    //   className={ classnames('pokemon-preview', { skeleton: fetching }) }
-    //   data-test="detail-link"
-    // >
-    //   <div className="sprite-name-wrapper">
-    //     <img
-    //       src={ spriteUrl }
-    //       alt={ name }
-    //       data-test="sprite"
-    //     />
-
-    //     <span className="name" data-test="name">
-    //       { upperFirst(name) }
-    //     </span>
-    //   </div>
-
-    //   <span className="types">
-    //     { types.map(type => <TypeBadge type={ type } key={ type } />) }
-    //   </span>
-    // </Link>
+    </Grid>
   );
 };
 
