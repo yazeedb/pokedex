@@ -1,6 +1,7 @@
 import React from 'react';
-import { TitleState } from '../../store/AppTitle';
 import { connect } from 'react-redux';
+import { AppBar as MUIAppBar } from '@material-ui/core/';
+import { TitleState } from '../../store/AppTitle';
 import { RootState } from '../../store/rootReducer';
 import { colors } from './colors';
 
@@ -9,17 +10,16 @@ type AppBarProps = {
 };
 
 const Component: React.FunctionComponent<AppBarProps> = ({ state }) => (
-  <header
+  <MUIAppBar
+    position="static"
     style={{
       textAlign: 'center',
       backgroundColor: colors.primary,
-      color: 'white',
-      padding: '20px 0',
-      textTransform: 'uppercase'
+      padding: '20px 0'
     }}
   >
     {state.title}
-  </header>
+  </MUIAppBar>
 );
 
 const withRedux = connect((state: RootState) => ({

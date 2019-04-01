@@ -4,7 +4,7 @@ export const colors = {
   previewListItemBorderColor: '#D4D3D7'
 };
 
-export const typesToColors = {
+export const typesToColors: { [x: string]: string } = {
   grass: '#78C850',
   poison: '#A040A0',
   fire: '#F08030',

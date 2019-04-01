@@ -1,5 +1,5 @@
 import { combineEpics, Epic } from 'redux-observable';
-import { fetchPokemonListEpic } from './PokemonPreviewList/epics';
+import { fetchPokemonListEpic } from './PokemonPreviewList';
 import { AnyAction } from 'redux';
 import { AjaxCreationMethod } from 'rxjs/internal/observable/dom/AjaxObservable';
 

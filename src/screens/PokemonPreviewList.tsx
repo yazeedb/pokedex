@@ -1,16 +1,25 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as actions from '../store/PokemonPreviewList/actions';
-import * as types from '../store/PokemonPreviewList/types';
+import {
+  Card,
+  CardMedia,
+  CardContent,
+  Typography,
+  Grid,
+  CardActions,
+  Button,
+  CardActionArea
+} from '@material-ui/core';
 import * as appTitle from '../store/AppTitle';
 import { RootState } from '../store/rootReducer';
+import * as pokemonPreviewList from '../store/PokemonPreviewList';
 import { typesToColors, colors } from './shared/colors';
 
 type PokemonPreviewListProps = {
-  state: types.PokemonListState;
+  state: pokemonPreviewList.PokemonListState;
   actions: {
-    pokemonPreviewList: typeof actions;
+    pokemonPreviewList: typeof pokemonPreviewList.actions;
     setTitle: typeof appTitle.setTitle;
   };
 };
@@ -20,46 +29,59 @@ const Component: React.FunctionComponent<PokemonPreviewListProps> = ({
   actions
 }) => {
   React.useEffect(() => {
-    actions.pokemonPreviewList.fetchPokemonList();
+    actions.pokemonPreviewList.fetchPokemonList(null);
     actions.setTitle('All Pokemon');
   }, []);
 
-  console.log(actions);
-
   return (
     <div>
-      <ul style={{ textDecoration: 'none' }}>
-        {state.pokemonPreviewList.slice(0, 10).map((pokemon) => (
-          <li
-            key={pokemon.name}
-            style={{
-              borderBottom: `1px solid ${colors.previewListItemBorderColor}`,
-              padding: '12px 5px'
-              // justifyContent: 'space-between',
-              // display: 'flex'
-            }}
-          >
-            <img
-              src={`pokemon-icons/${pokemon.id}.png`}
-              style={{ marginRight: '5px' }}
-            />
-            <span>{pokemon.name}</span>
-
-            {pokemon.types.map((type) => (
-              <span
-                key={type}
-                style={{
-                  color: 'white',
-                  // @ts-ignore
-                  backgroundColor: typesToColors[type]
-                }}
-              >
-                {type}
-              </span>
+      <Grid container spacing={24} style={{ padding: 24 }}>
+        <Grid item xs={12}>
+          <Grid container spacing={24} direction="row">
+            {state.pokemonPreviewList.slice(0, 50).map((pokemon) => (
+              <Grid item={true} xs={8} sm={3} lg={2} xl={1}>
+                <Card
+                  key={pokemon.name}
+                  style={{
+                    backgroundColor: '#F2F2F2'
+                  }}
+                >
+                  <CardActionArea>
+                    <CardMedia
+                      image={`pokemon-icons/${pokemon.id}.png`}
+                      title={pokemon.name}
+                      component="img"
+                      style={{
+                        padding: '10px 20px'
+                      }}
+                    />
+                    <CardContent>
+                      <Typography gutterBottom={true} variant="headline">
+                        {pokemon.name}
+                      </Typography>
+                    </CardContent>
+                    <CardActions>
+                      {pokemon.types.map((type) => (
+                        <Button
+                          size="small"
+                          key={type}
+                          style={{
+                            backgroundColor: typesToColors[type],
+                            fontWeight: 'bold',
+                            color: 'white'
+                          }}
+                        >
+                          {type}
+                        </Button>
+                      ))}
+                    </CardActions>
+                  </CardActionArea>
+                </Card>
+              </Grid>
             ))}
-          </li>
-        ))}
-      </ul>
+          </Grid>
+        </Grid>
+      </Grid>
     </div>
     // <Link
     //   to={ `/${id}` }
@@ -91,7 +113,10 @@ const withRedux = connect(
   }),
   (dispatch) => ({
     actions: {
-      pokemonPreviewList: bindActionCreators(actions, dispatch),
+      pokemonPreviewList: bindActionCreators(
+        pokemonPreviewList.actions,
+        dispatch
+      ),
       setTitle: bindActionCreators(appTitle.setTitle, dispatch)
     }
   })
