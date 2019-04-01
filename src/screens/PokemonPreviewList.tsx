@@ -9,12 +9,14 @@ import {
   Grid,
   CardActions,
   Button,
-  CardActionArea
+  CardActionArea,
+  Chip
 } from '@material-ui/core';
 import * as appTitle from '../store/AppTitle';
 import { RootState } from '../store/rootReducer';
 import * as pokemonPreviewList from '../store/PokemonPreviewList';
 import { typesToColors } from './shared/colors';
+import { Link } from 'react-router-dom';
 
 type PokemonPreviewListProps = {
   state: pokemonPreviewList.PokemonListState;
@@ -38,44 +40,46 @@ const Component: React.FunctionComponent<PokemonPreviewListProps> = ({
       <Grid item xs={12}>
         <Grid container spacing={24} direction="row">
           {state.pokemonPreviewList.slice(0, 50).map((pokemon) => (
-            <Grid item={true} xs={8} sm={3} lg={2} xl={1}>
-              <Card
-                key={pokemon.name}
-                style={{
-                  backgroundColor: '#F2F2F2'
-                }}
+            <Grid item={true} xs={8} sm={3} lg={2} xl={1} key={pokemon.name}>
+              <Link
+                to={`/pokemon/${pokemon.id}`}
+                style={{ textDecoration: 'none' }}
               >
-                <CardActionArea>
-                  <CardMedia
-                    image={`pokemon-icons/${pokemon.id}.png`}
-                    title={pokemon.name}
-                    component="img"
-                    style={{
-                      padding: '10px 20px'
-                    }}
-                  />
-                  <CardContent>
-                    <Typography gutterBottom={true} variant="headline">
-                      {pokemon.name}
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    {pokemon.types.map((type) => (
-                      <Button
-                        size="small"
-                        key={type}
-                        style={{
-                          backgroundColor: typesToColors[type],
-                          fontWeight: 'bold',
-                          color: 'white'
-                        }}
-                      >
-                        {type}
-                      </Button>
-                    ))}
-                  </CardActions>
-                </CardActionArea>
-              </Card>
+                <Card
+                  style={{
+                    backgroundColor: '#F2F2F2'
+                  }}
+                >
+                  <CardActionArea>
+                    <CardMedia
+                      image={`pokemon-icons/${pokemon.id}.png`}
+                      title={pokemon.name}
+                      component="img"
+                      style={{
+                        padding: '10px 20px'
+                      }}
+                    />
+                    <CardContent>
+                      <Typography gutterBottom={true} variant="headline">
+                        {pokemon.name}
+                      </Typography>
+                    </CardContent>
+                    <CardActions>
+                      {pokemon.types.map((type) => (
+                        <Chip
+                          label={type}
+                          key={type}
+                          style={{
+                            backgroundColor: typesToColors[type],
+                            fontWeight: 'bold',
+                            color: 'white'
+                          }}
+                        />
+                      ))}
+                    </CardActions>
+                  </CardActionArea>
+                </Card>
+              </Link>
             </Grid>
           ))}
         </Grid>
