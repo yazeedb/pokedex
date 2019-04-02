@@ -16,7 +16,8 @@ export const Component: React.FunctionComponent<Page404Props> = ({
 }) => {
   React.useEffect(() => {
     actions.setTitle('404 Page not found!');
-  });
+  }, []);
+
   return (
     <div
       style={{
