@@ -87,7 +87,6 @@ const Component: React.FunctionComponent<PokemonPreviewListProps> = ({
                           key={type}
                           style={{
                             backgroundColor: typesToColors[type],
-                            fontWeight: 'bold',
                             color: 'white'
                           }}
                         />
