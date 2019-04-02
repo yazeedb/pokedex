@@ -32,7 +32,15 @@ export const Component: React.FunctionComponent<Page404Props> = ({
       >
         We can't find that page!
       </Typography>
-      <Link to="/">Go back home?</Link>
+      <Link
+        to="/"
+        style={{
+          marginBottom: '30px',
+          display: 'inline-block'
+        }}
+      >
+        Go back home?
+      </Link>
       <img src="pokemon-icons/54.png" alt="Psyduck" />
     </div>
   );
