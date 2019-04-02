@@ -35,10 +35,26 @@ const Component: React.FunctionComponent<PokemonPreviewListProps> = ({
     actions.setTitle('All Pokemon');
   }, []);
 
-  return (
+  return state.fetchStatus === pokemonPreviewList.FetchStatuses.fetching ? (
+    <div
+      style={{
+        display: 'block',
+        margin: '30px auto',
+        width: '40%',
+        textAlign: 'center'
+      }}
+    >
+      <Typography variant="h4">Gotta fetch 'em all!</Typography>
+      <img
+        src="pikachu-running.gif"
+        alt="Loading!"
+        style={{ marginTop: '30px', width: '100%' }}
+      />
+    </div>
+  ) : (
     <Grid container spacing={24} style={{ padding: 24 }}>
       <Grid item xs={12}>
-        <Grid container spacing={24} direction="row">
+        <Grid container spacing={24} direction="row" justify="center">
           {state.pokemonPreviewList.slice(0, 50).map((pokemon) => (
             <Grid item={true} xs={8} sm={3} lg={2} xl={1} key={pokemon.name}>
               <Link
