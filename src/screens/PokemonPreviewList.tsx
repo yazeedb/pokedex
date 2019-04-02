@@ -8,7 +8,6 @@ import {
   Typography,
   Grid,
   CardActions,
-  Button,
   CardActionArea,
   Chip
 } from '@material-ui/core';
