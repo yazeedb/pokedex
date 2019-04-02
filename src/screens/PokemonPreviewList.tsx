@@ -54,8 +54,8 @@ const Component: React.FunctionComponent<PokemonPreviewListProps> = ({
     <Grid container spacing={24} style={{ padding: 24 }}>
       <Grid item xs={12}>
         <Grid container spacing={24} direction="row" justify="center">
-          {state.pokemonPreviewList.slice(0, 50).map((pokemon) => (
-            <Grid item={true} xs={8} sm={3} lg={2} xl={1} key={pokemon.name}>
+          {state.pokemonPreviewList.map((pokemon) => (
+            <Grid item={true} xs={8} sm={4} md={3} lg={2} key={pokemon.name}>
               <Link
                 to={`/pokemon/${pokemon.id}`}
                 style={{ textDecoration: 'none' }}
@@ -66,6 +66,14 @@ const Component: React.FunctionComponent<PokemonPreviewListProps> = ({
                   }}
                 >
                   <CardActionArea>
+                    <Typography
+                      variant="display1"
+                      style={{
+                        padding: '10px'
+                      }}
+                    >
+                      {pokemon.id}
+                    </Typography>
                     <CardMedia
                       image={`pokemon-icons/${pokemon.id}.png`}
                       title={pokemon.name}
@@ -75,7 +83,7 @@ const Component: React.FunctionComponent<PokemonPreviewListProps> = ({
                       }}
                     />
                     <CardContent>
-                      <Typography gutterBottom={true} variant="headline">
+                      <Typography variant="headline" noWrap>
                         {pokemon.name}
                       </Typography>
                     </CardContent>
