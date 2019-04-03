@@ -49,7 +49,8 @@ export const { slice, actions, reducer } = createSlice<PokemonListState>({
       ...state,
       searchValue: initialState.searchValue
     }),
-    fetchPokemonList: (state) => state
+    fetchPokemonList: (state) => state,
+    reset: () => initialState
   }
 });
 

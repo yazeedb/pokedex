@@ -37,6 +37,10 @@ const Component: React.FunctionComponent<PokemonPreviewListProps> = ({
   React.useEffect(() => {
     actions.pokemonPreviewList.fetchPokemonList(null);
     actions.setTitle('All Pokemon');
+
+    return () => {
+      actions.pokemonPreviewList.reset(null);
+    };
   }, []);
 
   const fetching = state.fetchStatus === FetchStatuses.fetching;
@@ -45,7 +49,7 @@ const Component: React.FunctionComponent<PokemonPreviewListProps> = ({
     <Loading show={fetching} message={state.message}>
       <TextField
         id="search-all-pokemon"
-        style={{ margin: 20 }}
+        style={{ margin: '20px 0', padding: '0 20px' }}
         placeholder="Search"
         fullWidth
         margin="normal"
