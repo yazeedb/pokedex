@@ -4,12 +4,7 @@ import { ofType } from 'redux-observable';
 import { switchMap, map, catchError } from 'rxjs/operators';
 import { pokemonListUrl } from '../constants';
 import { of } from 'rxjs';
-
-export enum FetchStatuses {
-  fetching = 'fetching',
-  error = 'error',
-  success = 'success'
-}
+import { FetchStatuses } from './interfaces/FetchStatuses';
 
 export type PokemonPreview = {
   id: number;
