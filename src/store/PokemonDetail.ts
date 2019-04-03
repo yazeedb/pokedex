@@ -37,13 +37,11 @@ export const { slice, actions, reducer } = createSlice<PokemonDetailState>({
   }
 });
 
-export const fetchPokemonDetailEpic: AppEpic = (action$, _, { ajax }) =>
+export const fetchPokemonDetailEpic: AppEpic = (action$) =>
   action$.pipe(
     ofType(actions.fetchPokemonDetail.toString()),
     switchMap((action) =>
-      getPokemonDetails(action.payload).pipe(
-        map(actions.reportSuccess),
-        catchError((error: Error) => of(actions.reportError(error.message)))
-      )
-    )
+      getPokemonDetails(action.payload).pipe(map(actions.reportSuccess))
+    ),
+    catchError((error: Error) => of(actions.reportError(error.message)))
   );

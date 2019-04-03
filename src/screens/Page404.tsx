@@ -42,7 +42,7 @@ export const Component: React.FunctionComponent<Page404Props> = ({
       >
         Go back home?
       </Link>
-      <img src="pokemon-icons/54.png" alt="Psyduck" />
+      <img src="/pokemon-icons/54.png" alt="Psyduck" />
     </div>
   );
 };
