@@ -21,7 +21,18 @@ export type PokemonDetail = {
     base_experience: number;
     forms: [{ name: string; url: string }];
     height: number;
-    held_items: [];
+    held_items: {
+      item: { name: string; url: string };
+      version_details: [
+        {
+          rarity: number;
+          version: {
+            name: string;
+            url: string;
+          };
+        }
+      ];
+    }[];
     id: number;
     is_default: boolean;
     location_area_encounters: string;
@@ -1192,7 +1203,7 @@ export type PokemonDetail = {
     egg_groups: [{ name: string; url: string }, { name: string; url: string }];
     evolution_chain: { url: string };
     evolves_from_species: null;
-    form_descriptions: [];
+    form_descriptions: any[];
     forms_switchable: boolean;
     gender_rate: number;
     generation: {
