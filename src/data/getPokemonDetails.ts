@@ -12,5 +12,5 @@ export const getPokemonDetails = (id: number) => {
     throw new Error('Pokemon not found!');
   }
 
-  return of(result).pipe(delay(1200));
+  return of(result).pipe(delay(400));
 };
