@@ -34,7 +34,7 @@ const Component: React.FunctionComponent<PokemonDetailProps> = ({
   const fetching = state.fetchStatus === FetchStatuses.fetching;
 
   return (
-    <Loading show={fetching}>
+    <Loading show={fetching} message={state.message}>
       <div>Hello World</div>
     </Loading>
   );

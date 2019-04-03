@@ -24,7 +24,7 @@ export type PokemonListState = {
 const initialState: PokemonListState = {
   pokemonPreviewList: [],
   fetchStatus: FetchStatuses.fetching,
-  message: "Gotta fetch 'em all!",
+  message: `Gotta fetch 'em all!`,
   searchValue: ''
 };
 

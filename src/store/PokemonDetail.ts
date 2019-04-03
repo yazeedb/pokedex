@@ -15,7 +15,7 @@ export type PokemonDetailState = {
 
 const initialState: PokemonDetailState = {
   fetchStatus: FetchStatuses.fetching,
-  message: '',
+  message: 'Fetching latest entry!',
   pokemonDetail: null
 };
 

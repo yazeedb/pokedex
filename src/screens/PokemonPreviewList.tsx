@@ -39,7 +39,7 @@ const Component: React.FunctionComponent<PokemonPreviewListProps> = ({
   const fetching = state.fetchStatus === FetchStatuses.fetching;
 
   return (
-    <Loading show={fetching}>
+    <Loading show={fetching} message={state.message}>
       <Grid container spacing={24} style={{ padding: 24 }}>
         <Grid item xs={12}>
           <Grid container spacing={24} direction="row" justify="center">

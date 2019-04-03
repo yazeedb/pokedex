@@ -4,11 +4,13 @@ import './Loading.css';
 
 type LoadingProps = {
   show: boolean;
+  message: string;
 };
 
 export const Loading: React.FunctionComponent<LoadingProps> = ({
   show,
-  children
+  children,
+  message
 }) =>
   show ? (
     <div
@@ -22,7 +24,7 @@ export const Loading: React.FunctionComponent<LoadingProps> = ({
           margin: '50px 0'
         }}
       >
-        Gotta fetch 'em all!
+        {message}
       </Typography>
       <div className="pokeball" />
     </div>
