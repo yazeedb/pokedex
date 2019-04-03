@@ -9,7 +9,9 @@ import {
   Grid,
   CardActions,
   CardActionArea,
-  Chip
+  Chip,
+  Input,
+  TextField
 } from '@material-ui/core';
 import * as appTitle from '../store/AppTitle';
 import { RootState } from '../store/rootReducer';
@@ -40,6 +42,13 @@ const Component: React.FunctionComponent<PokemonPreviewListProps> = ({
 
   return (
     <Loading show={fetching} message={state.message}>
+      <TextField
+        id="search-all-pokemon"
+        style={{ margin: 8 }}
+        placeholder="Search"
+        fullWidth
+        margin="normal"
+      />
       <Grid container spacing={24} style={{ padding: 24 }}>
         <Grid item xs={12}>
           <Grid container spacing={24} direction="row" justify="center">
