@@ -10,9 +10,10 @@ import {
   CardActions,
   CardActionArea,
   Chip,
-  Input,
   TextField
 } from '@material-ui/core';
+import LazyLoad from 'react-lazyload';
+
 import * as appTitle from '../store/AppTitle';
 import { RootState } from '../store/rootReducer';
 import * as pokemonPreviewList from '../store/PokemonPreviewList';
@@ -44,64 +45,88 @@ const Component: React.FunctionComponent<PokemonPreviewListProps> = ({
     <Loading show={fetching} message={state.message}>
       <TextField
         id="search-all-pokemon"
-        style={{ margin: 8 }}
+        style={{ margin: 20 }}
         placeholder="Search"
         fullWidth
         margin="normal"
+        value={state.searchValue}
+        onChange={(event) => {
+          actions.pokemonPreviewList.changeSearchValue(event.target.value);
+        }}
+        onKeyDown={(event) => {
+          if (event.key === 'Escape') {
+            actions.pokemonPreviewList.resetSearchValue(null);
+          }
+        }}
       />
       <Grid container spacing={24} style={{ padding: 24 }}>
         <Grid item xs={12}>
           <Grid container spacing={24} direction="row" justify="center">
-            {state.pokemonPreviewList.map((pokemon) => (
-              <Grid item={true} xs={8} sm={4} md={3} lg={2} key={pokemon.name}>
-                <Link
-                  to={`/pokemon/${pokemon.id}`}
-                  style={{ textDecoration: 'none' }}
+            {state.pokemonPreviewList
+              .filter((pokemon) =>
+                pokemon.name
+                  .toLowerCase()
+                  .includes(state.searchValue.toLowerCase().trim())
+              )
+              .map((pokemon) => (
+                <Grid
+                  item={true}
+                  xs={8}
+                  sm={4}
+                  md={3}
+                  lg={2}
+                  key={pokemon.name}
                 >
-                  <Card
-                    style={{
-                      backgroundColor: '#F2F2F2'
-                    }}
+                  <Link
+                    to={`/pokemon/${pokemon.id}`}
+                    style={{ textDecoration: 'none' }}
                   >
-                    <CardActionArea>
-                      <Typography
-                        variant="display1"
-                        style={{
-                          padding: '10px'
-                        }}
-                      >
-                        {pokemon.id}
-                      </Typography>
-                      <CardMedia
-                        image={`pokemon-icons/${pokemon.id}.png`}
-                        title={pokemon.name}
-                        component="img"
-                        style={{
-                          padding: '10px 20px'
-                        }}
-                      />
-                      <CardContent>
-                        <Typography variant="headline" noWrap>
-                          {pokemon.name}
+                    <Card
+                      style={{
+                        backgroundColor: '#F2F2F2'
+                      }}
+                    >
+                      <CardActionArea>
+                        <Typography
+                          variant="display1"
+                          style={{
+                            padding: '10px'
+                          }}
+                        >
+                          {pokemon.id}
                         </Typography>
-                      </CardContent>
-                      <CardActions>
-                        {pokemon.types.map((type) => (
-                          <Chip
-                            label={type}
-                            key={type}
+                        <LazyLoad>
+                          <CardMedia
+                            image={`pokemon-icons/${pokemon.id}.png`}
+                            title={pokemon.name}
+                            component="img"
                             style={{
-                              backgroundColor: typesToColors[type],
-                              color: 'white'
+                              padding: '10px 20px'
                             }}
                           />
-                        ))}
-                      </CardActions>
-                    </CardActionArea>
-                  </Card>
-                </Link>
-              </Grid>
-            ))}
+                        </LazyLoad>
+                        <CardContent>
+                          <Typography variant="headline" noWrap>
+                            {pokemon.name}
+                          </Typography>
+                        </CardContent>
+                        <CardActions>
+                          {pokemon.types.map((type) => (
+                            <Chip
+                              label={type}
+                              key={type}
+                              style={{
+                                backgroundColor: typesToColors[type],
+                                color: 'white'
+                              }}
+                            />
+                          ))}
+                        </CardActions>
+                      </CardActionArea>
+                    </Card>
+                  </Link>
+                </Grid>
+              ))}
           </Grid>
         </Grid>
       </Grid>

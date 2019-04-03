@@ -45,6 +45,10 @@ export const { slice, actions, reducer } = createSlice<PokemonListState>({
       ...state,
       searchValue: action.payload
     }),
+    resetSearchValue: (state) => ({
+      ...state,
+      searchValue: initialState.searchValue
+    }),
     fetchPokemonList: (state) => state
   }
 });
