@@ -3,11 +3,12 @@ import * as pokemonDetail from '../store/PokemonDetail';
 import * as appTitle from '../store/AppTitle';
 import { PokemonDetailState } from '../store/PokemonDetail';
 import { connect } from 'react-redux';
+import { partition } from 'ramda';
 import { RootState } from '../store/rootReducer';
 import { bindActionCreators } from 'redux';
 import { FetchStatuses } from '../store/interfaces/FetchStatuses';
 import { Loading } from './shared/Loading';
-import { Chip, Typography } from '@material-ui/core';
+import { Chip, Typography, Grid } from '@material-ui/core';
 import { typesToColors } from './shared/colors';
 
 type PokemonDetailProps = {
@@ -29,28 +30,12 @@ const commonWrapperStyles = {
 
 const oddWrapperBackgroundColor = '#F2F2F2';
 
-const calculateGenderRatio = (genderRate: number) => {
-  if (genderRate === 1) {
-    return {
-      maleRatio: 100
-    };
-  }
-
-  const femaleRatio = 1 - genderRate * 100;
-
-  return {
-    maleRatio: genderRate * 100,
-    femaleRatio
-  };
-};
-
 const renderWhenReady = (state: PokemonDetailState) => {
   if (!state.pokemonDetail) {
     return null;
   }
 
   const { details, species } = state.pokemonDetail;
-  const genderRatio = calculateGenderRatio(species.gender_rate);
 
   return (
     <div
@@ -87,42 +72,10 @@ const renderWhenReady = (state: PokemonDetailState) => {
         >
           {details.name}
         </Typography>
-        <Typography variant="h6">
+        <Typography variant="h6" style={{ marginBottom: '15px' }}>
           #{details.id} {species.genus}
         </Typography>
-      </div>
-      <div
-        style={{
-          backgroundColor: oddWrapperBackgroundColor,
-          ...commonWrapperStyles
-        }}
-      >
-        <Typography variant="h6" style={{ textTransform: 'capitalize' }}>
-          Generation : {species.generation.name}
-        </Typography>
-        <Typography variant="h6" style={{ textTransform: 'capitalize' }}>
-          Egg Groups : {species.egg_groups.map((e) => e.name).join(', ')}
-        </Typography>
-        <Typography variant="h6">
-          Capture Rate : {species.capture_rate}
-        </Typography>
 
-        {/* 
-        
-        TODO: properly calculate gender ratio.
-        Will need a map { number: gender } or something
-        <Typography variant="h6">
-          Gender Rate : {genderRatio.maleRatio}% Male
-          {genderRatio.femaleRatio && ` / ${genderRatio.femaleRatio}% Female`}
-        </Typography> */}
-      </div>
-      <div style={commonWrapperStyles}>
-        <Typography
-          variant="h5"
-          style={{ textDecoration: 'underline', marginBottom: '10px' }}
-        >
-          POKEDEX ENTRY
-        </Typography>
         <Typography
           variant="h6"
           style={{ maxWidth: '900px', margin: '0 auto' }}
@@ -130,6 +83,50 @@ const renderWhenReady = (state: PokemonDetailState) => {
           {species.flavor_text}
         </Typography>
       </div>
+      <Grid
+        container
+        spacing={0}
+        xs={12}
+        style={{
+          backgroundColor: oddWrapperBackgroundColor,
+          ...commonWrapperStyles
+        }}
+      >
+        <Grid item xs={12} sm={6}>
+          <Typography variant="h6">Height : {details.height / 10} m</Typography>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <Typography variant="h6">
+            Weight : {details.weight / 10} kg
+          </Typography>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <Typography variant="h6" style={{ textTransform: 'capitalize' }}>
+            Generation : {species.generation.name}
+          </Typography>
+        </Grid>
+
+        <Grid item xs={12} sm={6}>
+          <Typography variant="h6" style={{ textTransform: 'capitalize' }}>
+            Egg Groups : {species.egg_groups.map((e) => e.name).join(', ')}
+          </Typography>
+        </Grid>
+
+        <Grid item xs={12} sm={6}>
+          <Typography variant="h6">
+            Capture Rate : {species.capture_rate}
+          </Typography>
+        </Grid>
+
+        <Grid item xs={12} sm={6}>
+          <Typography variant="h6" style={{ textTransform: 'capitalize' }}>
+            Abilities :{' '}
+            {details.abilities
+              .map((ability) => ability.ability.name)
+              .join(', ')}
+          </Typography>
+        </Grid>
+      </Grid>
     </div>
   );
 };
