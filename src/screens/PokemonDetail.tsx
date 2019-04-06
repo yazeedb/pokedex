@@ -7,8 +7,15 @@ import { RootState } from '../store/rootReducer';
 import { bindActionCreators } from 'redux';
 import { FetchStatuses } from '../store/interfaces/FetchStatuses';
 import { Loading } from './shared/Loading';
-import { Chip, Typography, Grid } from '@material-ui/core';
+import {
+  Chip,
+  Typography,
+  Grid,
+  ExpansionPanelSummary,
+  ExpansionPanel
+} from '@material-ui/core';
 import { unstable_useMediaQuery as useMediaQuery } from '@material-ui/core/useMediaQuery';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { typesToColors } from './shared/colors';
 
 type PokemonDetailProps = {
@@ -97,12 +104,24 @@ const renderWhenReady = (state: PokemonDetailState) => {
         <Grid
           container
           style={{
-            ...commonWrapperStyles,
             maxWidth: '960px',
             margin: '0 auto',
             textAlign: isSmBreakpoint ? 'center' : 'initial'
           }}
         >
+          <Grid item xs={12}>
+            <Typography
+              variant="h5"
+              style={{
+                textAlign: 'center',
+                paddingTop: '10px',
+                paddingBottom: '20px',
+                textDecoration: 'underline'
+              }}
+            >
+              Profile
+            </Typography>
+          </Grid>
           <Grid item xs={12} sm={6}>
             <Typography variant="h6">
               <b>Height</b> : {details.height / 10} m
@@ -165,6 +184,32 @@ const renderWhenReady = (state: PokemonDetailState) => {
             </Typography>
           </Grid>
         </Grid>
+      </div>
+
+      <div style={commonWrapperStyles}>
+        <Typography
+          variant="h5"
+          style={{
+            textAlign: 'center',
+            paddingTop: '10px',
+            paddingBottom: '20px',
+            textDecoration: 'underline'
+          }}
+        >
+          Moves
+        </Typography>
+        {details.moves.map((move) => (
+          <ExpansionPanel key={move.move}>
+            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+              <Typography
+                variant="subtitle1"
+                style={{ textTransform: 'capitalize' }}
+              >
+                {move.move}
+              </Typography>
+            </ExpansionPanelSummary>
+          </ExpansionPanel>
+        ))}
       </div>
     </div>
   );
