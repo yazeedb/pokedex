@@ -1,3 +1,18 @@
+export type PokemonMove = {
+  move: string;
+  version_group_details: {
+    level_learned_at: number;
+    move_learn_method: {
+      name: string;
+      url: string;
+    };
+    version_group: {
+      name: string;
+      url: string;
+    };
+  };
+};
+
 export type PokemonDetail = {
   details: {
     abilities: {
@@ -24,20 +39,7 @@ export type PokemonDetail = {
     id: number;
     is_default: boolean;
     location_area_encounters: string;
-    moves: {
-      move: string;
-      version_group_details: {
-        level_learned_at: number;
-        move_learn_method: {
-          name: string;
-          url: string;
-        };
-        version_group: {
-          name: string;
-          url: string;
-        };
-      };
-    }[];
+    moves: PokemonMove[];
     name: string;
     order: number;
     species: {

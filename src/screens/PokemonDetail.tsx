@@ -5,6 +5,7 @@ import { PokemonDetailState } from '../store/PokemonDetail';
 import { connect } from 'react-redux';
 import { RootState } from '../store/rootReducer';
 import { bindActionCreators } from 'redux';
+import { partition } from 'ramda';
 import { FetchStatuses } from '../store/interfaces/FetchStatuses';
 import { Loading } from './shared/Loading';
 import {
@@ -12,11 +13,13 @@ import {
   Typography,
   Grid,
   ExpansionPanelSummary,
-  ExpansionPanel
+  ExpansionPanel,
+  ExpansionPanelDetails
 } from '@material-ui/core';
 import { unstable_useMediaQuery as useMediaQuery } from '@material-ui/core/useMediaQuery';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { typesToColors } from './shared/colors';
+import { PokemonMove } from '../store/interfaces/PokemonDetail';
 
 type PokemonDetailProps = {
   state: PokemonDetailState;
@@ -36,6 +39,67 @@ const commonWrapperStyles = {
 };
 
 const oddWrapperBackgroundColor = '#F2F2F2';
+
+type Mapping = { learnMethod: string; moves: PokemonMove[] };
+const categorizeAndRenderMoves = (moves: PokemonMove[]) => {
+  const movesByLearnMethod = moves.reduce(
+    (acc, move) => {
+      const key = move.version_group_details.move_learn_method.name;
+      const existingMapping = acc.find(
+        (mapping) => mapping.learnMethod === key
+      );
+
+      if (existingMapping) {
+        existingMapping.moves.push(move);
+      } else {
+        acc.push({
+          learnMethod: key,
+          moves: [move]
+        });
+      }
+
+      return acc;
+    },
+    [] as Mapping[]
+  );
+
+  const [isLevelUp, isNotLevelUp] = partition(
+    (m: Mapping) => m.learnMethod === 'level-up',
+    movesByLearnMethod
+  );
+
+  return [...isLevelUp, ...isNotLevelUp].map((mapping) => (
+    <ExpansionPanel
+      key={mapping.learnMethod}
+      style={{
+        textTransform: 'capitalize'
+      }}
+    >
+      <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+        {mapping.learnMethod} Moves
+      </ExpansionPanelSummary>
+      {mapping.moves
+        .sort((a, b) =>
+          a.version_group_details.level_learned_at <
+          b.version_group_details.level_learned_at
+            ? -1
+            : 1
+        )
+        .map((move) => (
+          <ExpansionPanelDetails key={move.move}>
+            <Typography
+              variant="subtitle1"
+              style={{ textTransform: 'capitalize' }}
+            >
+              {mapping.learnMethod === 'level-up' &&
+                move.version_group_details.level_learned_at + ' '}
+              {move.move}
+            </Typography>
+          </ExpansionPanelDetails>
+        ))}
+    </ExpansionPanel>
+  ));
+};
 
 const renderWhenReady = (state: PokemonDetailState) => {
   const isSmBreakpoint = useMediaQuery('(max-width:600px)');
@@ -124,60 +188,60 @@ const renderWhenReady = (state: PokemonDetailState) => {
           </Grid>
           <Grid item xs={12} sm={6}>
             <Typography variant="h6">
-              <b>Height</b> : {details.height / 10} m
+              <b>Height</b>: {details.height / 10} m
             </Typography>
           </Grid>
           <Grid item xs={12} sm={6}>
             <Typography variant="h6">
-              <b>Weight</b> : {details.weight / 10} kg
+              <b>Weight</b>: {details.weight / 10} kg
             </Typography>
           </Grid>
           <Grid item xs={12} sm={6}>
             <Typography variant="h6" style={{ textTransform: 'capitalize' }}>
-              <b>Generation</b> : {species.generation.name}
+              <b>Generation</b>: {species.generation.name}
             </Typography>
           </Grid>
 
           <Grid item xs={12} sm={6}>
             <Typography variant="h6" style={{ textTransform: 'capitalize' }}>
-              <b>Egg Groups</b> :{' '}
+              <b>Egg Groups</b>:{' '}
               {species.egg_groups.map((e) => e.name).join(', ')}
             </Typography>
           </Grid>
 
           <Grid item xs={12} sm={6}>
             <Typography variant="h6">
-              <b>Capture Rate</b> : {species.capture_rate}%
+              <b>Capture Rate</b>: {species.capture_rate}%
             </Typography>
           </Grid>
 
           <Grid item xs={12} sm={6}>
             <Typography variant="h6">
-              <b>Base Experience</b> : {details.base_experience}
+              <b>Base Experience</b>: {details.base_experience}
             </Typography>
           </Grid>
 
           <Grid item xs={12} sm={6}>
             <Typography variant="h6">
-              <b>Base Happiness</b> : {species.base_happiness}
+              <b>Base Happiness</b>: {species.base_happiness}
             </Typography>
           </Grid>
 
           <Grid item xs={12} sm={6} style={{ textTransform: 'capitalize' }}>
             <Typography variant="h6">
-              <b>Shape</b> : {species.shape.name}
+              <b>Shape</b>: {species.shape.name}
             </Typography>
           </Grid>
 
           <Grid item xs={12} sm={6} style={{ textTransform: 'capitalize' }}>
             <Typography variant="h6">
-              <b>Color</b> : {species.color.name}
+              <b>Color</b>: {species.color.name}
             </Typography>
           </Grid>
 
           <Grid item xs={12} sm={6}>
             <Typography variant="h6" style={{ textTransform: 'capitalize' }}>
-              <b>Abilities</b> :{' '}
+              <b>Abilities</b>:{' '}
               {details.abilities
                 .map((ability) => ability.ability.name)
                 .join(', ')}
@@ -198,18 +262,7 @@ const renderWhenReady = (state: PokemonDetailState) => {
         >
           Moves
         </Typography>
-        {details.moves.map((move) => (
-          <ExpansionPanel key={move.move}>
-            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-              <Typography
-                variant="subtitle1"
-                style={{ textTransform: 'capitalize' }}
-              >
-                {move.move}
-              </Typography>
-            </ExpansionPanelSummary>
-          </ExpansionPanel>
-        ))}
+        {categorizeAndRenderMoves(details.moves)}
       </div>
     </div>
   );
