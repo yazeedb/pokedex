@@ -69,7 +69,7 @@ const Component: React.FunctionComponent<PokemonPreviewListProps> = React.memo(
                   )
               )
               .map((pokemon) => (
-                <PokemonCard pokemon={pokemon} />
+                <PokemonCard pokemon={pokemon} key={pokemon.name} />
               ))}
           </Grid>
         </Loading>

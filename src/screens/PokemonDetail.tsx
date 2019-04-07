@@ -254,10 +254,7 @@ const renderWhenReady = (state: PokemonDetailState) => {
         >
           Stats
         </Typography>
-        <StatMeter
-          stats={details.stats}
-          pokemonPrimaryType={details.types[0].type.name}
-        />
+        <StatMeter stats={details.stats} />
       </div>
 
       <div style={{ padding, maxWidth, margin: '0 auto' }}>

@@ -1,19 +1,17 @@
 import React from 'react';
 import { Typography } from '@material-ui/core';
 import { PokemonStat } from '../../store/interfaces/PokemonDetail';
-import { typesToColors, colors } from '../shared/colors';
+import { colors } from '../shared/colors';
 
 type StatMeterProps = {
   stats: PokemonStat[];
-  pokemonPrimaryType: string;
 };
 
 const calculateMeterWidth = (width: number, stat: number) =>
   (stat / 255) * width;
 
 export const StatMeter: React.FunctionComponent<StatMeterProps> = ({
-  stats,
-  pokemonPrimaryType
+  stats
 }) => {
   const meterRef = React.useRef<HTMLDivElement>(null);
   const [meterWidth, setMeterWidth] = React.useState(0);
@@ -29,7 +27,6 @@ export const StatMeter: React.FunctionComponent<StatMeterProps> = ({
   return (
     <>
       {stats.map((stat) => {
-        const pokemonTypeColor = typesToColors[pokemonPrimaryType];
         const borderRadius = '20px';
 
         return (
@@ -48,13 +45,16 @@ export const StatMeter: React.FunctionComponent<StatMeterProps> = ({
               <div
                 style={{
                   width: calculateMeterWidth(meterWidth, stat.base_stat),
-                  backgroundColor: pokemonTypeColor,
+                  backgroundColor: colors.primary,
                   marginTop: '10px',
                   marginBottom: '25px',
                   borderRadius
                 }}
               >
-                <Typography variant="h6" style={{ marginLeft: '10px' }}>
+                <Typography
+                  variant="h6"
+                  style={{ marginLeft: '10px', color: 'white' }}
+                >
                   {stat.base_stat}
                 </Typography>
               </div>
