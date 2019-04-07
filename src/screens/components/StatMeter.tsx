@@ -26,7 +26,7 @@ export const StatMeter: React.FunctionComponent<StatMeterProps> = ({
     }
 
     setMeterWidth(meterRef.current.offsetWidth);
-  }, [windowSize.outerWidth]);
+  });
 
   return (
     <>
