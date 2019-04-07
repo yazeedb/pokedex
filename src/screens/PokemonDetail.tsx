@@ -20,6 +20,7 @@ import { unstable_useMediaQuery as useMediaQuery } from '@material-ui/core/useMe
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { typesToColors } from './shared/colors';
 import { PokemonMove } from '../store/interfaces/PokemonDetail';
+import { TypeBadge } from './shared/TypeBadge';
 
 type PokemonDetailProps = {
   state: PokemonDetailState;
@@ -140,20 +141,12 @@ const renderWhenReady = (state: PokemonDetailState) => {
           #{details.id} {species.genus}
         </Typography>
 
-        {details.types
-          .map((type) => type.type.name)
-          .map((typeName) => (
-            <Chip
-              label={typeName.toUpperCase()}
-              key={typeName}
-              style={{
-                backgroundColor: typesToColors[typeName],
-                color: 'white',
-                marginRight: '10px',
-                fontWeight: 'bold'
-              }}
-            />
-          ))}
+        <TypeBadge
+          types={details.types.map((type) => type.type.name)}
+          style={{
+            marginRight: '10px'
+          }}
+        />
 
         <Typography variant="h6" style={{ marginTop: '15px' }}>
           {species.flavor_text}

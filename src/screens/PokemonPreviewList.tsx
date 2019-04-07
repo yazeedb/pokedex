@@ -9,7 +9,6 @@ import {
   Grid,
   CardActions,
   CardActionArea,
-  Chip,
   TextField
 } from '@material-ui/core';
 import LazyLoad from 'react-lazyload';
@@ -17,10 +16,10 @@ import LazyLoad from 'react-lazyload';
 import * as appTitle from '../store/AppTitle';
 import { RootState } from '../store/rootReducer';
 import * as pokemonPreviewList from '../store/PokemonPreviewList';
-import { typesToColors } from './shared/colors';
 import { Link } from 'react-router-dom';
 import { FetchStatuses } from '../store/interfaces/FetchStatuses';
 import { Loading } from './shared/Loading';
+import { TypeBadge } from './shared/TypeBadge';
 
 type PokemonPreviewListProps = {
   state: pokemonPreviewList.PokemonListState;
@@ -115,16 +114,7 @@ const Component: React.FunctionComponent<PokemonPreviewListProps> = ({
                           </Typography>
                         </CardContent>
                         <CardActions>
-                          {pokemon.types.map((type) => (
-                            <Chip
-                              label={type}
-                              key={type}
-                              style={{
-                                backgroundColor: typesToColors[type],
-                                color: 'white'
-                              }}
-                            />
-                          ))}
+                          <TypeBadge types={pokemon.types} />
                         </CardActions>
                       </CardActionArea>
                     </Card>
