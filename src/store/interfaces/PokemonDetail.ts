@@ -1,3 +1,9 @@
+export type PokemonStat = {
+  base_stat: number;
+  effort: number;
+  stat: { name: string; url: string };
+};
+
 export type PokemonMove = {
   move: {
     name: string;
@@ -59,11 +65,7 @@ export type PokemonDetail = {
       front_shiny: string;
       front_shiny_female: null;
     };
-    stats: {
-      base_stat: number;
-      effort: number;
-      stat: { name: string; url: string };
-    }[];
+    stats: PokemonStat[];
     types: {
       slot: number;
       type: { name: string; url: string };
