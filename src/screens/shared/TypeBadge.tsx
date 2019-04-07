@@ -4,7 +4,7 @@ import { typesToColors } from './colors';
 
 type TypeBadgeProps = {
   types: string[];
-  style?: React.StyleHTMLAttributes<any>;
+  style?: React.CSSProperties;
 };
 
 export const TypeBadge: React.FunctionComponent<TypeBadgeProps> = ({
