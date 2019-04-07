@@ -15,9 +15,10 @@ import { PokemonMove } from '../store/interfaces/PokemonDetail';
 import { TypeBadge } from './shared/TypeBadge';
 import { AppBar } from './shared/AppBar';
 import { Link } from 'react-router-dom';
-import { colors } from './shared/colors';
+import { colors, typesToColors } from './shared/colors';
 import { MoveDetails } from './components/MoveDetails';
 import { LazyExpansionPanel } from './shared/LazyExpansionPanel';
+import { StatMeter } from './components/StatMeter';
 
 type PokemonDetailProps = {
   state: {
@@ -240,6 +241,23 @@ const renderWhenReady = (state: PokemonDetailState) => {
             </Typography>
           </Grid>
         </Grid>
+      </div>
+
+      <div style={{ padding, maxWidth, margin: '0 auto' }}>
+        <Typography
+          variant="h5"
+          style={{
+            textAlign: 'center',
+            paddingTop: '10px',
+            textDecoration: 'underline'
+          }}
+        >
+          Stats
+        </Typography>
+        <StatMeter
+          stats={details.stats}
+          pokemonPrimaryType={details.types[0].type.name}
+        />
       </div>
 
       <div style={{ padding, maxWidth, margin: '0 auto' }}>
