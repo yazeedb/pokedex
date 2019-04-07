@@ -75,10 +75,12 @@ const categorizeAndRenderMoves = (moves: PokemonMove[]) => {
   );
 
   return [...isLevelUp, ...isNotLevelUp].map((mapping) => (
-    <div style={{ marginTop: '30px', marginBottom: '10px' }}>
+    <div
+      style={{ marginTop: '30px', marginBottom: '10px' }}
+      key={mapping.learnMethod}
+    >
       <Typography
         variant="h5"
-        key={mapping.learnMethod}
         style={{
           textTransform: 'capitalize',
           marginBottom: '10px'
