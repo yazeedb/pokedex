@@ -12,17 +12,19 @@ export const TypeBadge: React.FunctionComponent<TypeBadgeProps> = ({
   style = {}
 }) => (
   <>
-    {types.map((type) => (
-      <Chip
-        label={type.toUpperCase()}
-        key={type}
-        style={{
-          backgroundColor: typesToColors[type],
-          color: 'white',
-          fontWeight: 'bold',
-          ...style
-        }}
-      />
-    ))}
+    {types
+      .sort((a, b) => (a < b ? -1 : 1))
+      .map((type) => (
+        <Chip
+          label={type.toUpperCase()}
+          key={type}
+          style={{
+            backgroundColor: typesToColors[type],
+            color: 'white',
+            fontWeight: 'bold',
+            ...style
+          }}
+        />
+      ))}
   </>
 );
