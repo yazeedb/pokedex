@@ -21,63 +21,62 @@ type PokemonPreviewListProps = {
   };
 };
 
-const Component: React.FunctionComponent<PokemonPreviewListProps> = ({
-  state,
-  actions
-}) => {
-  React.useEffect(() => {
-    actions.pokemonPreviewList.fetchPokemonList(null);
-    actions.setTitle('All Pokemon');
-  }, []);
+const Component: React.FunctionComponent<PokemonPreviewListProps> = React.memo(
+  ({ state, actions }) => {
+    React.useEffect(() => {
+      actions.pokemonPreviewList.fetchPokemonList(null);
+      actions.setTitle('All Pokemon');
+    }, []);
 
-  const fetching =
-    state.pokemonPreviewList.fetchStatus === FetchStatuses.fetching;
+    const fetching =
+      state.pokemonPreviewList.fetchStatus === FetchStatuses.fetching;
 
-  return (
-    <>
-      <AppBar style={{ textAlign: 'center', padding: '20px 0' }}>
-        {state.title.title}
-      </AppBar>
-      <Loading show={fetching} message={state.pokemonPreviewList.message}>
-        <TextField
-          id="search-all-pokemon"
-          style={{ margin: '20px 0', padding: '0 20px' }}
-          placeholder="Search"
-          fullWidth
-          margin="normal"
-          value={state.pokemonPreviewList.searchValue}
-          onChange={(event) => {
-            actions.pokemonPreviewList.changeSearchValue(event.target.value);
-          }}
-          onKeyDown={(event) => {
-            if (event.key === 'Escape') {
-              actions.pokemonPreviewList.resetSearchValue(null);
-            }
-          }}
-        />
-        <Grid
-          container
-          spacing={24}
-          style={{ padding: 24 }}
-          direction="row"
-          justify="center"
-        >
-          {state.pokemonPreviewList.pokemonPreviewList
-            .filter((pokemon) =>
-              pokemon.name
-                .toLowerCase()
-                .includes(
-                  state.pokemonPreviewList.searchValue.toLowerCase().trim()
-                )
-            )
-            .map((pokemon) => (
-              <PokemonCard pokemon={pokemon} />
-            ))}
-        </Grid>
-      </Loading>
-    </>
-  );
-};
+    return (
+      <>
+        <AppBar style={{ textAlign: 'center', padding: '20px 0' }}>
+          {state.title.title}
+        </AppBar>
+        <Loading show={fetching} message={state.pokemonPreviewList.message}>
+          <TextField
+            id="search-all-pokemon"
+            style={{ margin: '20px 0', padding: '0 20px' }}
+            placeholder="Search"
+            fullWidth
+            margin="normal"
+            value={state.pokemonPreviewList.searchValue}
+            onChange={(event) => {
+              actions.pokemonPreviewList.changeSearchValue(event.target.value);
+            }}
+            onKeyDown={(event) => {
+              if (event.key === 'Escape') {
+                actions.pokemonPreviewList.resetSearchValue(null);
+              }
+            }}
+          />
+          <Grid
+            container
+            spacing={24}
+            style={{ padding: 24 }}
+            direction="row"
+            justify="center"
+          >
+            {state.pokemonPreviewList.pokemonPreviewList
+              .filter((pokemon) =>
+                pokemon.name
+                  .toLowerCase()
+                  .includes(
+                    state.pokemonPreviewList.searchValue.toLowerCase().trim()
+                  )
+              )
+              .map((pokemon) => (
+                <PokemonCard pokemon={pokemon} />
+              ))}
+          </Grid>
+        </Loading>
+      </>
+    );
+  }
+);
 
 const withRedux = connect(
   (state: RootState) => ({

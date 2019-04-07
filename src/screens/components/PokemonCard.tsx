@@ -15,10 +15,10 @@ import { TypeBadge } from '../shared/TypeBadge';
 type PokemonCardProps = {
   pokemon: PokemonPreview;
 };
-export const PokemonCard: React.FunctionComponent<
-  PokemonCardProps
-> = React.memo(({ pokemon }) => (
-  <Grid item={true} xs={8} sm={4} md={3} lg={2} key={pokemon.name}>
+export const PokemonCard: React.FunctionComponent<PokemonCardProps> = ({
+  pokemon
+}) => (
+  <Grid item={true} xs={8} sm={4} md={3} lg={2}>
     <Link to={`/pokemon/${pokemon.id}`} style={{ textDecoration: 'none' }}>
       <Card
         style={{
@@ -34,7 +34,6 @@ export const PokemonCard: React.FunctionComponent<
           >
             {pokemon.id}
           </Typography>
-          {/* <LazyLoad> */}
           <CardMedia
             image={`pokemon-icons/${pokemon.id}.png`}
             title={pokemon.name}
@@ -43,7 +42,6 @@ export const PokemonCard: React.FunctionComponent<
               padding: '10px 20px'
             }}
           />
-          {/* </LazyLoad> */}
           <CardContent>
             <Typography variant="headline" noWrap>
               {pokemon.name}
@@ -56,4 +54,4 @@ export const PokemonCard: React.FunctionComponent<
       </Card>
     </Link>
   </Grid>
-));
+);
