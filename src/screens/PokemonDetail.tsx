@@ -15,7 +15,7 @@ import { PokemonMove } from '../store/interfaces/PokemonDetail';
 import { TypeBadge } from './shared/TypeBadge';
 import { AppBar } from './shared/AppBar';
 import { Link } from 'react-router-dom';
-import { colors, typesToColors } from './shared/colors';
+import { colors } from './shared/colors';
 import { MoveDetails } from './components/MoveDetails';
 import { LazyExpansionPanel } from './shared/LazyExpansionPanel';
 import { StatMeter } from './components/StatMeter';
