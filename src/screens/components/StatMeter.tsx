@@ -2,7 +2,6 @@ import React from 'react';
 import { Typography } from '@material-ui/core';
 import { PokemonStat } from '../../store/interfaces/PokemonDetail';
 import { typesToColors, colors } from '../shared/colors';
-import { useWindowSize } from '../shared/useWindowSize';
 
 type StatMeterProps = {
   stats: PokemonStat[];
@@ -18,7 +17,6 @@ export const StatMeter: React.FunctionComponent<StatMeterProps> = ({
 }) => {
   const meterRef = React.useRef<HTMLDivElement>(null);
   const [meterWidth, setMeterWidth] = React.useState(0);
-  const windowSize = useWindowSize();
 
   React.useEffect(() => {
     if (!meterRef.current) {
