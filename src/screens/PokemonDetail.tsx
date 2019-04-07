@@ -10,6 +10,7 @@ import { FetchStatuses } from '../store/interfaces/FetchStatuses';
 import { Loading } from './shared/Loading';
 import { Typography, Grid, Toolbar, IconButton } from '@material-ui/core';
 import BackIcon from '@material-ui/icons/ArrowBackIos';
+import ForwardIcon from '@material-ui/icons/ArrowForwardIos';
 import { unstable_useMediaQuery as useMediaQuery } from '@material-ui/core/useMediaQuery';
 import { PokemonMove } from '../store/interfaces/PokemonDetail';
 import { TypeBadge } from './shared/TypeBadge';
@@ -114,15 +115,37 @@ const renderWhenReady = (state: PokemonDetailState) => {
 
   return (
     <div>
-      <div
+      <Grid
+        container
         style={{
           backgroundColor: oddWrapperBackgroundColor,
-          textAlign: 'center',
           padding
         }}
+        justify="space-between"
+        alignItems="center"
       >
-        <img src={`/pokemon-icons/${details.id}.png`} width="200px" />
-      </div>
+        <Grid item>
+          <IconButton
+            aria-label="Previous"
+            style={{ float: 'left', color: colors.primary }}
+          >
+            <BackIcon fontSize="large" />
+          </IconButton>
+        </Grid>
+
+        <Grid item>
+          <img src={`/pokemon-icons/${details.id}.png`} width="200px" />
+        </Grid>
+
+        <Grid item>
+          <IconButton
+            aria-label="Next"
+            style={{ float: 'right', color: colors.primary }}
+          >
+            <ForwardIcon fontSize="large" />
+          </IconButton>
+        </Grid>
+      </Grid>
       <div
         style={{
           maxWidth,

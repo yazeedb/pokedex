@@ -38,6 +38,9 @@ export const MoveDetails: React.FunctionComponent<MoveDetailsProps> = ({
       });
   }, []);
 
+  const isLevelUpMove =
+    move.version_group_details.move_learn_method.name === 'level-up';
+
   return (
     <Grid
       container
@@ -60,7 +63,10 @@ export const MoveDetails: React.FunctionComponent<MoveDetailsProps> = ({
               <TypeBadge types={[data.type.name]} />
             </Grid>
             <Grid item>
-              Learned at level {move.version_group_details.level_learned_at}
+              {isLevelUpMove &&
+                `Learned at level ${
+                  move.version_group_details.level_learned_at
+                }`}
             </Grid>
           </Grid>
 
