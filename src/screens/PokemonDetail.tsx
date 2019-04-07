@@ -41,10 +41,8 @@ type PokemonDetailProps = {
   };
 };
 
-const commonWrapperStyles = {
-  padding: '20px'
-};
-
+const padding = '20px';
+const maxWidth = '960px';
 const oddWrapperBackgroundColor = '#F2F2F2';
 
 type Mapping = { learnMethod: string; moves: PokemonMove[] };
@@ -123,15 +121,14 @@ const renderWhenReady = (state: PokemonDetailState) => {
         style={{
           backgroundColor: oddWrapperBackgroundColor,
           textAlign: 'center',
-          ...commonWrapperStyles
+          padding
         }}
       >
         <img src={`/pokemon-icons/${details.id}.png`} width="200px" />
       </div>
       <div
         style={{
-          ...commonWrapperStyles,
-          maxWidth: '960px',
+          maxWidth,
           margin: '0 auto',
           padding: '30px 10px',
           textAlign: 'center'
@@ -160,14 +157,14 @@ const renderWhenReady = (state: PokemonDetailState) => {
       </div>
       <div
         style={{
-          ...commonWrapperStyles,
+          padding,
           backgroundColor: oddWrapperBackgroundColor
         }}
       >
         <Grid
           container
           style={{
-            maxWidth: '960px',
+            maxWidth,
             margin: '0 auto',
             textAlign: isSmBreakpoint ? 'center' : 'initial'
           }}
@@ -249,7 +246,7 @@ const renderWhenReady = (state: PokemonDetailState) => {
         </Grid>
       </div>
 
-      <div style={commonWrapperStyles}>
+      <div style={{ padding, maxWidth, margin: '0 auto' }}>
         <Typography
           variant="h5"
           style={{
