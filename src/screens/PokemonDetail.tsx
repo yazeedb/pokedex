@@ -75,15 +75,18 @@ const categorizeAndRenderMoves = (moves: PokemonMove[]) => {
   );
 
   return [...isLevelUp, ...isNotLevelUp].map((mapping) => (
-    <ExpansionPanel
-      key={mapping.learnMethod}
-      style={{
-        textTransform: 'capitalize'
-      }}
-    >
-      <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+    <div style={{ marginTop: '30px', marginBottom: '10px' }}>
+      <Typography
+        variant="h5"
+        key={mapping.learnMethod}
+        style={{
+          textTransform: 'capitalize',
+          marginBottom: '10px'
+        }}
+      >
         {mapping.learnMethod} Moves
-      </ExpansionPanelSummary>
+      </Typography>
+
       {mapping.moves
         .sort((a, b) =>
           a.version_group_details.level_learned_at <
@@ -92,18 +95,17 @@ const categorizeAndRenderMoves = (moves: PokemonMove[]) => {
             : 1
         )
         .map((move) => (
-          <ExpansionPanelDetails key={move.move}>
-            <Typography
-              variant="subtitle1"
+          <ExpansionPanel key={move.move}>
+            <ExpansionPanelSummary
+              expandIcon={<ExpandMoreIcon />}
               style={{ textTransform: 'capitalize' }}
             >
-              {mapping.learnMethod === 'level-up' &&
-                move.version_group_details.level_learned_at + ' '}
               {move.move}
-            </Typography>
-          </ExpansionPanelDetails>
+            </ExpansionPanelSummary>
+            <ExpansionPanelDetails>hello world</ExpansionPanelDetails>
+          </ExpansionPanel>
         ))}
-    </ExpansionPanel>
+    </div>
   ));
 };
 
@@ -253,7 +255,6 @@ const renderWhenReady = (state: PokemonDetailState) => {
           style={{
             textAlign: 'center',
             paddingTop: '10px',
-            paddingBottom: '20px',
             textDecoration: 'underline'
           }}
         >
