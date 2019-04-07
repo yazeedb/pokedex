@@ -33,79 +33,79 @@ type PokemonPreviewListProps = {
   };
 };
 
-const Component: React.FunctionComponent<PokemonPreviewListProps> = ({
-  state,
-  actions
-}) => {
-  React.useEffect(() => {
-    actions.pokemonPreviewList.fetchPokemonList(null);
-    actions.setTitle('All Pokemon');
-  }, []);
+const Component: React.FunctionComponent<PokemonPreviewListProps> = React.memo(
+  ({ state, actions }) => {
+    React.useEffect(() => {
+      actions.pokemonPreviewList.fetchPokemonList(null);
+      actions.setTitle('All Pokemon');
+    }, []);
 
-  const fetching =
-    state.pokemonPreviewList.fetchStatus === FetchStatuses.fetching;
+    const fetching =
+      state.pokemonPreviewList.fetchStatus === FetchStatuses.fetching;
 
-  return (
-    <>
-      <AppBar style={{ textAlign: 'center', padding: '20px 0' }}>
-        {state.title.title}
-      </AppBar>
-      <Loading show={fetching} message={state.pokemonPreviewList.message}>
-        <TextField
-          id="search-all-pokemon"
-          style={{ margin: '20px 0', padding: '0 20px' }}
-          placeholder="Search"
-          fullWidth
-          margin="normal"
-          value={state.pokemonPreviewList.searchValue}
-          onChange={(event) => {
-            actions.pokemonPreviewList.changeSearchValue(event.target.value);
-          }}
-          onKeyDown={(event) => {
-            if (event.key === 'Escape') {
-              actions.pokemonPreviewList.resetSearchValue(null);
-            }
-          }}
-        />
-        <Grid container spacing={24} style={{ padding: 24 }}>
-          <Grid item xs={12}>
-            <Grid container spacing={24} direction="row" justify="center">
-              {state.pokemonPreviewList.pokemonPreviewList
-                .filter((pokemon) =>
-                  pokemon.name
-                    .toLowerCase()
-                    .includes(
-                      state.pokemonPreviewList.searchValue.toLowerCase().trim()
-                    )
-                )
-                .map((pokemon) => (
-                  <Grid
-                    item={true}
-                    xs={8}
-                    sm={4}
-                    md={3}
-                    lg={2}
-                    key={pokemon.name}
-                  >
-                    <Link
-                      to={`/pokemon/${pokemon.id}`}
-                      style={{ textDecoration: 'none' }}
+    return (
+      <>
+        <AppBar style={{ textAlign: 'center', padding: '20px 0' }}>
+          {state.title.title}
+        </AppBar>
+        <Loading show={fetching} message={state.pokemonPreviewList.message}>
+          <TextField
+            id="search-all-pokemon"
+            style={{ margin: '20px 0', padding: '0 20px' }}
+            placeholder="Search"
+            fullWidth
+            margin="normal"
+            value={state.pokemonPreviewList.searchValue}
+            onChange={(event) => {
+              actions.pokemonPreviewList.changeSearchValue(event.target.value);
+            }}
+            onKeyDown={(event) => {
+              if (event.key === 'Escape') {
+                actions.pokemonPreviewList.resetSearchValue(null);
+              }
+            }}
+          />
+          <Grid container spacing={24} style={{ padding: 24 }}>
+            <Grid item xs={12}>
+              <Grid container spacing={24} direction="row" justify="center">
+                {state.pokemonPreviewList.pokemonPreviewList
+                  .filter((pokemon) =>
+                    pokemon.name
+                      .toLowerCase()
+                      .includes(
+                        state.pokemonPreviewList.searchValue
+                          .toLowerCase()
+                          .trim()
+                      )
+                  )
+                  .map((pokemon) => (
+                    <Grid
+                      item={true}
+                      xs={8}
+                      sm={4}
+                      md={3}
+                      lg={2}
+                      key={pokemon.name}
                     >
-                      <Card
-                        style={{
-                          backgroundColor: '#F2F2F2'
-                        }}
+                      <Link
+                        to={`/pokemon/${pokemon.id}`}
+                        style={{ textDecoration: 'none' }}
                       >
-                        <CardActionArea>
-                          <Typography
-                            variant="display1"
-                            style={{
-                              padding: '10px'
-                            }}
-                          >
-                            {pokemon.id}
-                          </Typography>
-                          <LazyLoad>
+                        <Card
+                          style={{
+                            backgroundColor: '#F2F2F2'
+                          }}
+                        >
+                          <CardActionArea>
+                            <Typography
+                              variant="display1"
+                              style={{
+                                padding: '10px'
+                              }}
+                            >
+                              {pokemon.id}
+                            </Typography>
+                            {/* <LazyLoad> */}
                             <CardMedia
                               image={`pokemon-icons/${pokemon.id}.png`}
                               title={pokemon.name}
@@ -114,30 +114,31 @@ const Component: React.FunctionComponent<PokemonPreviewListProps> = ({
                                 padding: '10px 20px'
                               }}
                             />
-                          </LazyLoad>
-                          <CardContent>
-                            <Typography variant="headline" noWrap>
-                              {pokemon.name}
-                            </Typography>
-                          </CardContent>
-                          <CardActions>
-                            <TypeBadge
-                              types={pokemon.types}
-                              style={{ marginRight: '5px' }}
-                            />
-                          </CardActions>
-                        </CardActionArea>
-                      </Card>
-                    </Link>
-                  </Grid>
-                ))}
+                            {/* </LazyLoad> */}
+                            <CardContent>
+                              <Typography variant="headline" noWrap>
+                                {pokemon.name}
+                              </Typography>
+                            </CardContent>
+                            <CardActions>
+                              <TypeBadge
+                                types={pokemon.types}
+                                style={{ marginRight: '5px' }}
+                              />
+                            </CardActions>
+                          </CardActionArea>
+                        </Card>
+                      </Link>
+                    </Grid>
+                  ))}
+              </Grid>
             </Grid>
           </Grid>
-        </Grid>
-      </Loading>
-    </>
-  );
-};
+        </Loading>
+      </>
+    );
+  }
+);
 
 const withRedux = connect(
   (state: RootState) => ({
