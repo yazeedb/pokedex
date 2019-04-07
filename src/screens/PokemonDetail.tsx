@@ -9,21 +9,27 @@ import { partition } from 'ramda';
 import { FetchStatuses } from '../store/interfaces/FetchStatuses';
 import { Loading } from './shared/Loading';
 import {
-  Chip,
   Typography,
   Grid,
   ExpansionPanelSummary,
   ExpansionPanel,
-  ExpansionPanelDetails
+  ExpansionPanelDetails,
+  Toolbar,
+  IconButton
 } from '@material-ui/core';
+import BackIcon from '@material-ui/icons/ArrowBackIos';
 import { unstable_useMediaQuery as useMediaQuery } from '@material-ui/core/useMediaQuery';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { typesToColors } from './shared/colors';
 import { PokemonMove } from '../store/interfaces/PokemonDetail';
 import { TypeBadge } from './shared/TypeBadge';
+import { AppBar } from './shared/AppBar';
+import { Link } from 'react-router-dom';
 
 type PokemonDetailProps = {
-  state: PokemonDetailState;
+  state: {
+    pokemonDetail: PokemonDetailState;
+    title: appTitle.TitleState;
+  };
   actions: {
     pokemonDetail: typeof pokemonDetail.actions;
     setTitle: typeof appTitle.setTitle;
@@ -271,18 +277,34 @@ const Component: React.FunctionComponent<PokemonDetailProps> = ({
     actions.pokemonDetail.fetchPokemonDetail(parseInt(match.params.id, 10));
   }, [match.params.id]);
 
-  const fetching = state.fetchStatus === FetchStatuses.fetching;
+  const fetching = state.pokemonDetail.fetchStatus === FetchStatuses.fetching;
 
   return (
-    <Loading show={fetching} message={state.message}>
-      {renderWhenReady(state)}
-    </Loading>
+    <>
+      <AppBar>
+        <Toolbar>
+          <Link to="/" style={{ color: 'white' }}>
+            <IconButton color="inherit" aria-label="Menu">
+              <BackIcon />
+            </IconButton>
+          </Link>
+
+          <span style={{ margin: '0 auto' }}>{state.title.title}</span>
+        </Toolbar>
+      </AppBar>
+      <Loading show={fetching} message={state.pokemonDetail.message}>
+        {renderWhenReady(state.pokemonDetail)}
+      </Loading>
+    </>
   );
 };
 
 const withRedux = connect(
   (state: RootState) => ({
-    state: state.pokemonDetail
+    state: {
+      pokemonDetail: state.pokemonDetail,
+      title: state.title
+    }
   }),
   (dispatch) => ({
     actions: {

@@ -1,29 +1,22 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { AppBar as MUIAppBar } from '@material-ui/core/';
-import { TitleState } from '../../store/AppTitle';
-import { RootState } from '../../store/rootReducer';
 import { colors } from './colors';
 
 type AppBarProps = {
-  state: TitleState;
+  style?: React.CSSProperties;
 };
 
-const Component: React.FunctionComponent<AppBarProps> = ({ state }) => (
+export const AppBar: React.FunctionComponent<AppBarProps> = ({
+  children,
+  style = {}
+}) => (
   <MUIAppBar
     position="static"
     style={{
-      textAlign: 'center',
       backgroundColor: colors.primary,
-      padding: '20px 0'
+      ...style
     }}
   >
-    {state.title}
+    {children}
   </MUIAppBar>
 );
-
-const withRedux = connect((state: RootState) => ({
-  state: state.title
-}));
-
-export const AppBar = withRedux(Component);

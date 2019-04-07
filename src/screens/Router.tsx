@@ -7,7 +7,6 @@ import { Page404 } from './Page404';
 
 export const Router = () => (
   <BrowserRouter>
-    <AppBar />
     <Switch>
       <Route exact path="/" component={PokemonPreviewList} />
       <Route exact path="/pokemon/:id" component={PokemonDetail} />
