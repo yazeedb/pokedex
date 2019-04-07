@@ -125,7 +125,10 @@ const Component: React.FunctionComponent<PokemonPreviewListProps> = ({
                             </Typography>
                           </CardContent>
                           <CardActions>
-                            <TypeBadge types={pokemon.types} />
+                            <TypeBadge
+                              types={pokemon.types}
+                              style={{ marginRight: '5px' }}
+                            />
                           </CardActions>
                         </CardActionArea>
                       </Card>
