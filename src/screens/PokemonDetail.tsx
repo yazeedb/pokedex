@@ -97,7 +97,7 @@ const categorizeAndRenderMoves = (moves: PokemonMove[]) => {
             : 1
         )
         .map((move) => (
-          <ExpansionPanel key={move.move}>
+          <ExpansionPanel key={move.move.name}>
             <ExpansionPanelSummary
               expandIcon={<ExpandMoreIcon />}
               style={{ textTransform: 'capitalize' }}

@@ -1,5 +1,8 @@
 export type PokemonMove = {
-  move: string;
+  move: {
+    name: string;
+    url: string;
+  };
   version_group_details: {
     level_learned_at: number;
     move_learn_method: {
