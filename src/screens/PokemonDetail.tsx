@@ -8,23 +8,16 @@ import { bindActionCreators } from 'redux';
 import { partition } from 'ramda';
 import { FetchStatuses } from '../store/interfaces/FetchStatuses';
 import { Loading } from './shared/Loading';
-import {
-  Typography,
-  Grid,
-  ExpansionPanelSummary,
-  ExpansionPanel,
-  ExpansionPanelDetails,
-  Toolbar,
-  IconButton
-} from '@material-ui/core';
+import { Typography, Grid, Toolbar, IconButton } from '@material-ui/core';
 import BackIcon from '@material-ui/icons/ArrowBackIos';
 import { unstable_useMediaQuery as useMediaQuery } from '@material-ui/core/useMediaQuery';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { PokemonMove } from '../store/interfaces/PokemonDetail';
 import { TypeBadge } from './shared/TypeBadge';
 import { AppBar } from './shared/AppBar';
 import { Link } from 'react-router-dom';
 import { colors } from './shared/colors';
+import { MoveDetails } from './components/MoveDetails';
+import { LazyExpansionPanel } from './shared/LazyExpansionPanel';
 
 type PokemonDetailProps = {
   state: {
@@ -97,15 +90,13 @@ const categorizeAndRenderMoves = (moves: PokemonMove[]) => {
             : 1
         )
         .map((move) => (
-          <ExpansionPanel key={move.move.name}>
-            <ExpansionPanelSummary
-              expandIcon={<ExpandMoreIcon />}
-              style={{ textTransform: 'capitalize' }}
-            >
-              {move.move}
-            </ExpansionPanelSummary>
-            <ExpansionPanelDetails>hello world</ExpansionPanelDetails>
-          </ExpansionPanel>
+          <LazyExpansionPanel
+            summaryText={move.move.name}
+            panelDetailStyles={{ padding: 0 }}
+            key={move.move.name}
+          >
+            <MoveDetails move={move} />
+          </LazyExpansionPanel>
         ))}
     </div>
   ));
