@@ -40,10 +40,6 @@ const Component: React.FunctionComponent<PokemonPreviewListProps> = ({
   React.useEffect(() => {
     actions.pokemonPreviewList.fetchPokemonList(null);
     actions.setTitle('All Pokemon');
-
-    return () => {
-      actions.pokemonPreviewList.reset(null);
-    };
   }, []);
 
   const fetching =

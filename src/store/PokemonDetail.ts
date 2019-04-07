@@ -33,7 +33,8 @@ export const { slice, actions, reducer } = createSlice<PokemonDetailState>({
       ...state,
       fetchStatus: FetchStatuses.error,
       message: action.payload
-    })
+    }),
+    reset: () => initialState
   }
 });
 

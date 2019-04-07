@@ -275,6 +275,10 @@ const Component: React.FunctionComponent<PokemonDetailProps> = ({
   React.useEffect(() => {
     actions.setTitle('Pokemon Detail');
     actions.pokemonDetail.fetchPokemonDetail(parseInt(match.params.id, 10));
+
+    return () => {
+      actions.pokemonDetail.reset(null);
+    };
   }, [match.params.id]);
 
   const fetching = state.pokemonDetail.fetchStatus === FetchStatuses.fetching;
