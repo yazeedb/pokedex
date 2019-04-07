@@ -15,7 +15,7 @@ const getEnglishMoveDescription = (data: PokemonMoveDetail) => {
   );
 
   if (!description) {
-    return 'Description not found';
+    return 'Description not found!';
   }
 
   return description.flavor_text;
