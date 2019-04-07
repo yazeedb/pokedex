@@ -1,5 +1,6 @@
 export const colors = {
   primary: '#E24951',
+  secondary: '#F2F2F2',
   meterBackground: '#E5E5E5',
   previewListItemBorderColor: '#D4D3D7'
 };

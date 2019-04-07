@@ -11,6 +11,7 @@ import {
 } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { TypeBadge } from '../shared/TypeBadge';
+import { colors } from '../shared/colors';
 
 type PokemonCardProps = {
   pokemon: PokemonPreview;
@@ -22,7 +23,7 @@ export const PokemonCard: React.FunctionComponent<PokemonCardProps> = ({
     <Link to={`/pokemon/${pokemon.id}`} style={{ textDecoration: 'none' }}>
       <Card
         style={{
-          backgroundColor: '#F2F2F2'
+          backgroundColor: colors.secondary
         }}
       >
         <CardActionArea>

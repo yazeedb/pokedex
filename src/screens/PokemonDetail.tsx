@@ -24,6 +24,7 @@ import { PokemonMove } from '../store/interfaces/PokemonDetail';
 import { TypeBadge } from './shared/TypeBadge';
 import { AppBar } from './shared/AppBar';
 import { Link } from 'react-router-dom';
+import { colors } from './shared/colors';
 
 type PokemonDetailProps = {
   state: {
@@ -43,7 +44,7 @@ type PokemonDetailProps = {
 
 const padding = '20px';
 const maxWidth = '960px';
-const oddWrapperBackgroundColor = '#F2F2F2';
+const oddWrapperBackgroundColor = colors.secondary;
 
 type Mapping = { learnMethod: string; moves: PokemonMove[] };
 const categorizeAndRenderMoves = (moves: PokemonMove[]) => {
