@@ -16,6 +16,8 @@
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
+    "react-virtualized": "^9.21.0",
+    "react-virtualized-auto-sizer": "^1.0.2",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-observable": "^1.0.0",
@@ -44,6 +46,7 @@
     "@types/react-lazyload": "^2.3.2",
     "@types/react-redux": "^7.0.5",
     "@types/react-router-dom": "^4.3.1",
+    "@types/react-virtualized": "^9.21.1",
     "@types/redux-logger": "^3.0.7"
   }
 }

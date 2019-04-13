@@ -1,7 +1,8 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Grid, TextField } from '@material-ui/core';
+import { TextField, withStyles } from '@material-ui/core';
+import { AutoSizer, List, WindowScroller } from 'react-virtualized';
 import * as appTitle from '../store/AppTitle';
 import { RootState } from '../store/rootReducer';
 import * as pokemonPreviewList from '../store/PokemonPreviewList';
@@ -19,10 +20,34 @@ type PokemonPreviewListProps = {
     pokemonPreviewList: typeof pokemonPreviewList.actions;
     setTitle: typeof appTitle.setTitle;
   };
+  classes: any;
 };
 
+const ITEM_WIDTH = 220;
+const ITEM_HEIGHT = 400;
+
+const styles = (theme: any) => ({
+  Root: {
+    padding: '0px 25px',
+    margin: '20px 0',
+    justifyContent: 'center'
+  },
+  Row: {
+    display: 'flex',
+    justifyContent: 'center'
+  },
+  Item: {
+    width: ITEM_WIDTH,
+    height: ITEM_HEIGHT,
+    margin: '0 15px'
+  },
+  Card: {
+    height: '100%'
+  }
+});
+
 const Component: React.FunctionComponent<PokemonPreviewListProps> = React.memo(
-  ({ state, actions }) => {
+  ({ state, actions, classes }) => {
     React.useEffect(() => {
       actions.pokemonPreviewList.fetchPokemonList(null);
       actions.setTitle('All Pokemon');
@@ -30,6 +55,13 @@ const Component: React.FunctionComponent<PokemonPreviewListProps> = React.memo(
 
     const fetching =
       state.pokemonPreviewList.fetchStatus === FetchStatuses.fetching;
+
+    const matchingPokemon = state.pokemonPreviewList.pokemonPreviewList.filter(
+      (pokemon) =>
+        pokemon.name
+          .toLowerCase()
+          .includes(state.pokemonPreviewList.searchValue.toLowerCase().trim())
+    );
 
     return (
       <>
@@ -53,25 +85,60 @@ const Component: React.FunctionComponent<PokemonPreviewListProps> = React.memo(
               }
             }}
           />
-          <Grid
-            container
-            spacing={24}
-            style={{ padding: 24 }}
-            direction="row"
-            justify="center"
-          >
-            {state.pokemonPreviewList.pokemonPreviewList
-              .filter((pokemon) =>
-                pokemon.name
-                  .toLowerCase()
-                  .includes(
-                    state.pokemonPreviewList.searchValue.toLowerCase().trim()
-                  )
-              )
-              .map((pokemon) => (
-                <PokemonCard pokemon={pokemon} key={pokemon.name} />
-              ))}
-          </Grid>
+          <div className={classes.Root}>
+            <WindowScroller>
+              {({ height }) => (
+                <AutoSizer disableHeight>
+                  {({ width }) => {
+                    const itemsPerRow = Math.floor(width / ITEM_WIDTH) || 1;
+                    const rowCount = Math.ceil(
+                      matchingPokemon.length / itemsPerRow
+                    );
+
+                    return (
+                      <div>
+                        <List
+                          className={classes.Root}
+                          width={width}
+                          height={height}
+                          rowCount={rowCount}
+                          rowHeight={ITEM_WIDTH * 2}
+                          rowRenderer={({ index, key, style }) => {
+                            const fromIndex = index * itemsPerRow;
+                            const toIndex = Math.min(
+                              fromIndex + itemsPerRow,
+                              matchingPokemon.length
+                            );
+
+                            const items = matchingPokemon
+                              .slice(fromIndex, toIndex)
+                              .map((pokemon) => (
+                                <div
+                                  className={classes.Item}
+                                  key={pokemon.name}
+                                >
+                                  <PokemonCard pokemon={pokemon} />
+                                </div>
+                              ));
+
+                            return (
+                              <div
+                                className={classes.Row}
+                                key={key}
+                                style={style}
+                              >
+                                {items}
+                              </div>
+                            );
+                          }}
+                        />
+                      </div>
+                    );
+                  }}
+                </AutoSizer>
+              )}
+            </WindowScroller>
+          </div>
         </Loading>
       </>
     );
@@ -96,4 +163,5 @@ const withRedux = connect(
   })
 );
 
-export const PokemonPreviewList = withRedux(Component);
+// @ts-ignore
+export const PokemonPreviewList = withStyles(styles)(withRedux(Component));
