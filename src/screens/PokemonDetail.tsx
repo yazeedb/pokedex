@@ -21,6 +21,7 @@ import { MoveDetails } from './components/MoveDetails';
 import { LazyExpansionPanel } from './shared/LazyExpansionPanel';
 import { StatMeter } from './components/StatMeter';
 import { totalPokemon } from '../constants';
+import './PokemonDetail.css';
 
 const shouldRenderBackButton = (id: number) => id > 1;
 const shouldRenderNextButton = (id: number) => id < totalPokemon;
@@ -118,7 +119,7 @@ const renderWhenReady = (state: PokemonDetailState) => {
   const { details, species } = state.pokemonDetail;
 
   return (
-    <div>
+    <div className="pokemon-detail">
       <Grid
         container
         style={{
@@ -129,16 +130,20 @@ const renderWhenReady = (state: PokemonDetailState) => {
         alignItems="center"
       >
         {shouldRenderBackButton(details.id) && (
-          <Grid item>
-            <Link to={`/pokemon/${details.id - 1}`}>
-              <IconButton
-                aria-label="Previous"
-                style={{ float: 'left', color: colors.primary }}
-              >
-                <BackIcon fontSize="large" />
-              </IconButton>
-            </Link>
-          </Grid>
+          <Link
+            to={`/pokemon/${details.id - 1}`}
+            style={{
+              position: 'absolute',
+              left: '20px'
+            }}
+          >
+            <IconButton
+              aria-label="Previous"
+              style={{ float: 'left', color: colors.primary }}
+            >
+              <BackIcon fontSize="large" />
+            </IconButton>
+          </Link>
         )}
 
         <img
@@ -147,19 +152,24 @@ const renderWhenReady = (state: PokemonDetailState) => {
           style={{
             margin: '0 auto'
           }}
+          className="pokemon-sprite"
         />
 
         {shouldRenderNextButton(details.id) && (
-          <Grid item>
-            <Link to={`/pokemon/${details.id + 1}`}>
-              <IconButton
-                aria-label="Next"
-                style={{ float: 'right', color: colors.primary }}
-              >
-                <ForwardIcon fontSize="large" />
-              </IconButton>
-            </Link>
-          </Grid>
+          <Link
+            to={`/pokemon/${details.id + 1}`}
+            style={{
+              position: 'absolute',
+              right: '20px'
+            }}
+          >
+            <IconButton
+              aria-label="Next"
+              style={{ float: 'right', color: colors.primary }}
+            >
+              <ForwardIcon fontSize="large" />
+            </IconButton>
+          </Link>
         )}
       </Grid>
       <div
