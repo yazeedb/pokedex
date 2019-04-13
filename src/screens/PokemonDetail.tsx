@@ -20,6 +20,10 @@ import { colors } from './shared/colors';
 import { MoveDetails } from './components/MoveDetails';
 import { LazyExpansionPanel } from './shared/LazyExpansionPanel';
 import { StatMeter } from './components/StatMeter';
+import { totalPokemon } from '../constants';
+
+const shouldRenderBackButton = (id: number) => id > 1;
+const shouldRenderNextButton = (id: number) => id < totalPokemon;
 
 type PokemonDetailProps = {
   state: {
@@ -124,27 +128,39 @@ const renderWhenReady = (state: PokemonDetailState) => {
         justify="space-between"
         alignItems="center"
       >
-        <Grid item>
-          <IconButton
-            aria-label="Previous"
-            style={{ float: 'left', color: colors.primary }}
-          >
-            <BackIcon fontSize="large" />
-          </IconButton>
-        </Grid>
+        {shouldRenderBackButton(details.id) && (
+          <Grid item>
+            <Link to={`/pokemon/${details.id - 1}`}>
+              <IconButton
+                aria-label="Previous"
+                style={{ float: 'left', color: colors.primary }}
+              >
+                <BackIcon fontSize="large" />
+              </IconButton>
+            </Link>
+          </Grid>
+        )}
 
-        <Grid item>
-          <img src={`/pokemon-icons/${details.id}.png`} width="200px" />
-        </Grid>
+        <img
+          src={`/pokemon-icons/${details.id}.png`}
+          width="200px"
+          style={{
+            margin: '0 auto'
+          }}
+        />
 
-        <Grid item>
-          <IconButton
-            aria-label="Next"
-            style={{ float: 'right', color: colors.primary }}
-          >
-            <ForwardIcon fontSize="large" />
-          </IconButton>
-        </Grid>
+        {shouldRenderNextButton(details.id) && (
+          <Grid item>
+            <Link to={`/pokemon/${details.id + 1}`}>
+              <IconButton
+                aria-label="Next"
+                style={{ float: 'right', color: colors.primary }}
+              >
+                <ForwardIcon fontSize="large" />
+              </IconButton>
+            </Link>
+          </Grid>
+        )}
       </Grid>
       <div
         style={{
