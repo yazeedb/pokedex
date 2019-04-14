@@ -21,7 +21,6 @@ import { MoveDetails } from './components/MoveDetails';
 import { LazyExpansionPanel } from './shared/LazyExpansionPanel';
 import { StatMeter } from './components/StatMeter';
 import { totalPokemon } from '../constants';
-import './PokemonDetail.css';
 
 const shouldRenderBackButton = (id: number) => id > 1;
 const shouldRenderNextButton = (id: number) => id < totalPokemon;
@@ -111,6 +110,7 @@ const categorizeAndRenderMoves = (moves: PokemonMove[]) => {
 
 const renderWhenReady = (state: PokemonDetailState) => {
   const isSmBreakpoint = useMediaQuery('(max-width:600px)');
+  const showMiniSprite = useMediaQuery('(max-width:450px)');
 
   if (!state.pokemonDetail) {
     return null;
@@ -148,7 +148,7 @@ const renderWhenReady = (state: PokemonDetailState) => {
 
         <img
           src={`/pokemon-icons/${details.id}.png`}
-          width="200px"
+          width={showMiniSprite ? '125px' : '200px'}
           style={{
             margin: '0 auto'
           }}
