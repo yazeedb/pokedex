@@ -48,6 +48,7 @@
     "@types/react-redux": "^7.0.5",
     "@types/react-router-dom": "^4.3.1",
     "@types/react-virtualized": "^9.21.1",
-    "@types/redux-logger": "^3.0.7"
+    "@types/redux-logger": "^3.0.7",
+    "elm-webpack-loader": "^5.0.0"
   }
 }
