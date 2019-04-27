@@ -286,6 +286,7 @@ module.exports = function(webpackEnv) {
       ]
     },
     module: {
+      noParse: /\.elm$/,
       strictExportPresence: true,
       rules: [
         // Disable require.ensure as it's not a standard language feature.
